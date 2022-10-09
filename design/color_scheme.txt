@@ -1,0 +1,7 @@
+light blue c8dceb
+med blue 95d8b1
+dark blue 809bce
+
+light green e2efe7 
+med green d6eadf
+dark green b8d8cd
