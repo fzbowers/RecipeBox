@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 
@@ -20,5 +22,6 @@ def new_section(request):
 def all_sections(request):
     return render(request, "all_sections.html")
 
-def account(request):
-    return render(request, "account.html")
+def account(response):
+    form = UserCreationForm()
+    return render(response, "account.html", {"form": form})
