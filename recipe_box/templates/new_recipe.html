@@ -3,7 +3,61 @@
 
 <title>New Recipe</title>
 <section id="new-recipe">
-    <p>THIS IS THE NEW RECIPE PAGE</p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <div class="container-fluid">
+          
+            
+                <label for="Title"> Title</label>
+                <input type="text" id="Title" name="Title">
+                <br>
+
+                <label for="Section">Section</label>
+                <select id="Section" name="Section">
+                <option value="Section1">Section 1</option>
+                <option value="Section2">Section 2</option>
+                <option value="Section3">Section 3</option>
+                </select>
+
+
+                <div class="row">
+                  
+                    <div class="col">
+                        <label for="Ingredient"> Ingredients</label>
+                        <br>
+                        <input type="text" id="Ingredient" name="Ingredient" size="120">
+                        <br>
+                        <input type="text" id="Ingredient" name="Ingredient" size="120">
+                    </div>
+
+                    <div class="col">
+                        <label for="Amount"> Amounts</label>
+                        <br>
+                        <input type="text" id="Amount" name="Amount" size="15">
+                        <br>
+                        <input type="text" id="Amount" name="Amount" size="15">
+                    </div>
+        
+                </div>
+
+                <label for="Direction"> Directions</label>
+                <br>
+                <input type="text" id="Direction" name="Direction" size="150">
+                <br>
+                <input type="text" id="Direction" name="Direction" size="150">
+
+                <br>
+          
+                <a class="navbar-brand" href="/">
+                    <input type="submit" value="Create Recipe">
+                </a>
+                
+                <a class="navbar-brand" href="/">
+                    <button type="Cancel" >Cancel</button>
+                </a>
+
+        </div>
 </section>
 
 {% endblock %}
