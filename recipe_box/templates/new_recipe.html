@@ -20,42 +20,52 @@
                 <option value="Section3">Section 3</option>
                 </select>
 
+                <div class="input_ingredient_wrap">
 
-                <div class="row">
-                  
-                    <div class="col">
-                        <label for="Ingredient"> Ingredients</label>
-                        <br>
-                        <input type="text" id="Ingredient" name="Ingredient" size="120">
-                        <br>
-                        <input type="text" id="Ingredient" name="Ingredient" size="120">
-                    </div>
+                    <div class="row">
+                    
+                        <div class="col">
+                            <label for="Ingredient"> Ingredients</label>
+                            <button class="add_ingredient_button">Add Ingredient</button>
+                            <br>
+                            <input type="text" id="Ingredient" name="Ingredient" size="120">
+                            <br>
+                            
+                        </div>
 
-                    <div class="col">
-                        <label for="Amount"> Amounts</label>
-                        <br>
-                        <input type="text" id="Amount" name="Amount" size="15">
-                        <br>
-                        <input type="text" id="Amount" name="Amount" size="15">
-                    </div>
+                        <div class="col">
+                            <label for="Amount"> Amounts</label>
+                            <br>
+                            <input type="text" id="Amount" name="Amount" size="15">
+                            <br>
         
+                        </div>
+                        <br>
+
+                    </div>
+                    
                 </div>
 
-                <label for="Direction"> Directions</label>
                 <br>
-                <input type="text" id="Direction" name="Direction" size="150">
-                <br>
-                <input type="text" id="Direction" name="Direction" size="150">
 
+                <div class="input_direction_wrap">
+                    <div class="row">
+                        <label for="Direction"> Directions</label>
+                        <button class="add_direction_button">Add Direction</button>
+                    </div>
+                    <br>
+                    <input type="text" id="Direction" name="Direction" size="150">
+
+                </div>
                 <br>
-          
-                <a class="navbar-brand" href="/">
-                    <input type="submit" value="Create Recipe">
-                </a>
+
+                <input type="submit" onclick="alert('can not add')" value="Create Recipe">
+                
                 
                 <a class="navbar-brand" href="/">
                     <button type="Cancel" >Cancel</button>
                 </a>
+
 
         </div>
 </section>
