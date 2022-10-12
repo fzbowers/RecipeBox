@@ -175,7 +175,7 @@ footer {
     padding: 8px;
     font-size: 25px;
     text-align: left;
-    height: 60px;
+    height: px;
     margin: 12px;
 }
 
@@ -197,18 +197,11 @@ footer {
 
 
 
-/* STYLE NEW SECTION AND NEW RECIPE PAGES */
-label {
-    color: #809bce;
-    font-size: 22px;
-
-}
-
-
-
 /* STYLE NEW SECTION PAGE */
 #new-section{
     margin: 20px;
+    color: #809bce;
+    font-size: 22px;
 }
 
 
