@@ -11,4 +11,5 @@ urlpatterns = [
     path("new_section/", views.new_section, name="new_section"),
     path("all_sections/", views.all_sections, name="all_sections"),
     path("account/", views.account, name="account"),
+    path("create_account/", views.create_account, name="create_account")
 ]
