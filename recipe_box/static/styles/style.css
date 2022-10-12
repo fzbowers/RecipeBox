@@ -5,23 +5,27 @@ body {
     background: #ffff;
     font-family: 'Sansita', sans-serif; /* add backup fonts */
 
+    position: relative;
+    min-height: 100vh;
+}
+
+.page-content {
+    padding-bottom: 2.5rem;
 }
 
 
 
-/* Navigation Bar */
+/* STYLE NAVIGATION BAR */
 .navbar {
     background: #e2efe7; 
     margin: 0;
     padding: 8;
 }
 
-
 /* Logo */
 .navbar-brand{
     padding: 0;
 }
-
 
 /* Page Links */
 .nav-link {
@@ -58,7 +62,6 @@ body {
     color: #809bce;
     height: 50px;
     font-size: 20px;
-    
 }
 
 .menu input[type=search] {
@@ -86,9 +89,17 @@ body {
 
 
 
-/* Style Footer */
+
+
+
+
+/* STYLE FOOTER */
 footer {
-    height: 15px;
+    position: absolute;
+    bottom: 0;
+
+
+    height: 2.5rem;
     width: 100%;
     text-align: center;
     color: #809bce;
@@ -104,7 +115,14 @@ footer {
 
 
 
-/* Style Home Page */
+
+
+
+
+
+
+
+/* STYLE HOME PAGE */
 .section-col {
     background: #d6eadf;
     /* border: 2px solid #aebeb5; */ /* maybe */
@@ -116,12 +134,9 @@ footer {
     /* border: 2px solid #7995a9; */ /* maybe */
 }
 
-
 .section-col h2 {
     color: #809bce;
 }
-
-
 
 .pinned-col h2 {
     color: #ffff;
@@ -132,10 +147,10 @@ footer {
     text-align: center;
     margin: 10px;
     padding-top: 10px;
-
+    padding-bottom: 10px;
 }
 
-/* ALL COLUMNS */
+/* All columns */
 .section-col,
 .pinned-col,
 .mini-section,
@@ -143,7 +158,7 @@ footer {
     border-radius: 10px;
 }
 
-/* NESTED SECTIONS */
+/* Nested Sections */
 .mini-section {
     border: 2px solid #aebeb5;
     color: #809bce;
@@ -154,7 +169,6 @@ footer {
     color: #ffff;
 }
 
-
 .mini-section,
 .mini-pinned {
 
@@ -162,7 +176,7 @@ footer {
     font-size: 25px;
     text-align: left;
     height: 60px;
-    margin: 15px;
+    margin: 12px;
 }
 
 .col-link {
@@ -174,5 +188,88 @@ footer {
 
 #home .row {
     justify-content: space-evenly;
-    min-height: 65vh;
+
 }
+
+
+
+
+
+
+
+/* STYLE NEW SECTION AND NEW RECIPE PAGES */
+label {
+    color: #809bce;
+    font-size: 22px;
+
+}
+
+
+
+/* STYLE NEW SECTION PAGE */
+#new-section{
+    margin: 20px;
+}
+
+
+#title,
+#freeform {
+    color: #809bce;
+    font-size: 20px;
+    background-color: #e2efe7;
+    outline: none;
+    border: 1px solid #809bce;
+    padding-left: 8px;
+}
+
+#title {
+    min-width: 84vw;
+    margin: 8px;
+}
+
+#freeform {
+    min-height: 40vh;
+    min-width: 88vw;
+    margin: 0;
+}
+
+
+input[type=submit],
+#cancel-btn {
+    cursor: pointer;
+    border: none;
+
+    font-size: 20px;
+}
+
+
+input[type=submit] {
+    background-color: #809bce;
+    color: #ffff;
+
+
+    margin-top: 10px;
+    margin-right: 15px;
+
+    height: 50px;
+    width: 150px;
+
+}
+
+#cancel-btn {
+    outline: none;
+    background-color: #e2efe7;
+    color: #809bce;
+
+
+    height: 50px;
+    width: 130px;
+
+}
+
+/* STYPE NEW RECIPE PAGE */
+
+
+
+
+
