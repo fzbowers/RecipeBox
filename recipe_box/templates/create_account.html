@@ -3,16 +3,14 @@
 
 <title>Account</title>
 <section id="account">
-    <p>THIS IS THE CREATE ACCOUNT PAGE</p>
-</section>
-
-{% block title %}Create an Account{% endblock %}
-{% load crispy_forms_tags %}
-
-{% block content %}
+    
+    {% block title %}Create an Account{% endblock %}
+    {% load crispy_forms_tags %}
+    {% block content %}
     <form method="POST" class="form-group">{% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit" class="btn btn-success">Register</button>
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-success">Register</button>
     </form>
+</section>
 {% endblock %}
 {% endblock %}

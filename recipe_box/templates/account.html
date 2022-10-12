@@ -2,13 +2,11 @@
 {% block page_content %}
 
 <title>Account</title>
-<section id="account">
-    <p>THIS IS THE ACCOUNT PAGE</p>
-</section>
-
-{% block content %}
+<section id="account">    
+    {% block content %}
     <p>Login <a href="../login/">Here!</a></p>
     <p>No account? Create one <a href="../create_account/">here!</a></p>
-{% endblock %}
+    {% endblock %}
+</section>
 
 {% endblock %}
