@@ -34,9 +34,8 @@ class Section(models.Model):
     name = models.CharField(max_length=120,
                             unique=True,
                             verbose_name=('Section'))
-    slug = models.SlugField(unique=True, help_text='Automatically generated from the title')
     order_index = models.PositiveIntegerField(null=True, blank=True)
-
+    
     class Meta:
         verbose_name = ('Section')
         verbose_name_plural = ('Sections')
