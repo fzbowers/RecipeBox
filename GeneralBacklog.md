@@ -15,13 +15,41 @@
 - Create code for the input to login to an existing account
 
 
-### Create Code for Recipe Input:
+### Create Code for Recipe Input:v=
  - store name, start thinking about mapping
  - storing ingredients 
  - store instructions
  - store pictures
 
 
+## Sprint 2
+
+### Lili
+- Finish css for new recipe and new section
+- create layout for landing page 
+- add individual recipe page to figma 
+- work on search bar 
+
+
+### Fatima
+- Create landing page
+- Create individual recipe page 
+- Write css for landing and individual recipe pages
+
+
+### Katrina
+- Figure out how to store users
+- Create admin page
+- Research user access
+- Write code for logging out
+- Alter create account and login for landing page
+
+
+### Paige 
+- Move recipe models
+- Create views for recipes
+- Continue working on model for section
+- Add components for recipe models
 
 ## Product Backlog
 - create a website
@@ -55,6 +83,8 @@
   - ability to log into account
   - individual’s account page
   - adding new users
+- create login page 
+  - prompt users to make account or login
 
 
 ## Pages
@@ -77,5 +107,10 @@
   - log in/out
   - account options, tbd
 
+## Maybe
+Images for individual instructions
+
 ## Notes
 - python framework: django
+
+
