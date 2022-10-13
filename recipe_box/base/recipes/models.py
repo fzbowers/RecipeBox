@@ -4,21 +4,33 @@ from django.db import models
 
 # Create your models here.
 
+class Section(models.Model):
+    name = models.CharField(max_length=120,
+                            unique=True,
+                            verbose_name=('Section'))
+    order_index = models.PositiveIntegerField(null=True, blank=True)
+    
+    class Meta:
+        verbose_name = ('Section')
+        verbose_name_plural = ('Sections')
+        ordering = ['order_index']
+
+class Recipes(models.Model):
+    title = models.CharField(max_length = 50)
+    section = models.ForeignKey(Section, on_delete=models.PROTECT)
+    class Meta:
+        ordering = ['title']
+        verbose_name = ('Recipe')
+        verbose_name_plural = ('Recipies')
+
 class Ingredient(models.Model):
-    body = models.CharField(max_length = 100)
+    text = models.CharField(max_length = 100)
+    recipe = models.ForeignKey(Recipes, related_name='ingredients', on_delete=models.CASCADE)
     
     class Meta:
         verbose_name = ('Ingredient')
         verbose_name_plural = ('Ingredients')
 
-class Recipes(models.Model):
-    title = models.CharField(max_length = 50)
-    ingredients = models.ManyToManyField("Ingredient")
-
-    class Meta:
-        ordering = ['title']
-        verbose_name = ('Recipe')
-        verbose_name_plural = ('Recipies')
 
 class Instruction(models.Model):
 
@@ -30,13 +42,3 @@ class Instruction(models.Model):
         verbose_name_plural = ('Instructions')
         ordering = ['order', 'id']
 
-class Section(models.Model):
-    name = models.CharField(max_length=120,
-                            unique=True,
-                            verbose_name=('Section'))
-    order_index = models.PositiveIntegerField(null=True, blank=True)
-    
-    class Meta:
-        verbose_name = ('Section')
-        verbose_name_plural = ('Sections')
-        ordering = ['order_index']
