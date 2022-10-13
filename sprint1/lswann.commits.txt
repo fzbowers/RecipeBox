@@ -1,0 +1,144 @@
+8bda17cb (Lili Swann    2022-10-13 11:40:23 -0400  6)     <!--input box for title-->          
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400  7)     <label for="Title"> Title</label>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400  8)     <input type="text" id="Title" name="Title">
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400  9)     <br>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 10) 
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 11)     <!--color coelection dorp down menu-->
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 12)     <!--TO DO: add color visuals and not just name-->
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 13)     <label for="Color">Color</label>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 14)     <select id="Color" name="Color">
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 15)     <option value="Color1">Color 1</option>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 16)     <option value="Color2">Color 2</option>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 17)     <option value="Color3">Color 3</option> 
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 18)     </select>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 19) 
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 20)     <br>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 21) 
+8bda17cb (Lili Swann    2022-10-13 11:40:23 -0400 22)      <!--free form text box for description-->
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 23)     <label for="Description">Description</label>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 24)     <br>
+be5401e0 (Lili Swann    2022-10-09 21:39:19 -0400 25) 
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 26)     <textarea id="freeform" name="Description" rows="4" cols="50">
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 27)     Enter description here...
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 28)     </textarea>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 29) 
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 30)     <br>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 31) 
+8bda17cb (Lili Swann    2022-10-13 11:40:23 -0400 32)      <!--submit and cancel button-->
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 33)     <input type="submit" onclick="alert('can not add')" value="Create Section">
+8bda17cb (Lili Swann    2022-10-13 11:40:23 -0400 34)             
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 35)     <a class="navbar-brand" href="/">
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 36)         <button type="Cancel" >Cancel</button>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 37)     </a>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 38) 
+8bda17cb (Lili Swann    2022-10-13 11:40:23 -0400 40)   
+be5401e0 (Lili Swann    2022-10-09 21:39:19 -0400  6)     <p></p>
+be5401e0 (Lili Swann    2022-10-09 21:39:19 -0400  7)     <p></p>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400  8)     <p></p>        
+be5401e0 (Lili Swann    2022-10-09 21:39:19 -0400  9) 
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 10)         <!--inout box for adding title-->
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 11)         <label for="Title"> Title</label>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 12)         <input type="text" id="Title" name="Title">
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 13)         <br>
+be5401e0 (Lili Swann    2022-10-09 21:39:19 -0400 14) 
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 15)         <!--drop down menu for selecting section-->
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 16)         <label for="Section">Section</label>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 17)         <select id="Section" name="Section">
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 18)         <option value="Section1">Section 1</option>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 19)         <option value="Section2">Section 2</option>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 20)         <option value="Section3">Section 3</option>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 21)         </select>
+dc57b75c (Lili Swann    2022-10-10 18:19:25 -0400 22) 
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 23)         <!--code for adding and removing text boxes based on tutorial from https://www.sanwebe.com/2013/03/addremove-input-fields-dynamically-with-jquery-->
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 24)         <!--input box for ingredients, add more boxes as needed-->
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 25)         <div class="input_ingredient_wrap">
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 26)             <div class="row">
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 27)                 <div class="col">
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 28)                     <label for="Ingredient"> Ingredients</label>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 29)                     <button class="add_ingredient_button">Add Ingredient</button>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 30)                     <br>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 31)                     <input type="text" id="Ingredient" name="Ingredient" size="120">
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 32)                     <br>
+be5401e0 (Lili Swann    2022-10-09 21:39:19 -0400 33)                 </div>
+be5401e0 (Lili Swann    2022-10-09 21:39:19 -0400 34) 
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 35)                 <div class="col">
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 36)                     <label for="Amount"> Amounts</label>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 37)                     <br>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 38)                     <input type="text" id="Amount" name="Amount" size="15">
+dc57b75c (Lili Swann    2022-10-10 18:19:25 -0400 39)                     <br>
+dc57b75c (Lili Swann    2022-10-10 18:19:25 -0400 40)                 </div>
+be5401e0 (Lili Swann    2022-10-09 21:39:19 -0400 41)                 <br>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 42)             </div>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 43)         </div>
+dc57b75c (Lili Swann    2022-10-10 18:19:25 -0400 44) 
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 45)         <br>
+be5401e0 (Lili Swann    2022-10-09 21:39:19 -0400 46) 
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 47)         <!--input box for directions, add more boxes as needed-->
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 48)         <div class="input_direction_wrap">
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 49)             <div class="row">
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 50)                 <label for="Direction"> Directions</label>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 51)                 <button class="add_direction_button">Add Direction</button>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 52)             </div>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 53)             <br>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 54)             <input type="text" id="Direction" name="Direction" size="150">
+dc57b75c (Lili Swann    2022-10-10 18:19:25 -0400 55) 
+be5401e0 (Lili Swann    2022-10-09 21:39:19 -0400 56)         </div>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 57)         <br>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 58) 
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 59)         <!--add and cancel buttons-->
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 60)         <input type="submit" onclick="alert('can not add')" value="Create Recipe">  
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 61)         
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 62)         <a class="navbar-brand" href="/">
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 63)             <button type="Cancel" >Cancel</button>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 64)         </a>
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 65) 
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 66) 
+0dae3c45 (Lili Swann    2022-10-13 11:31:29 -0400 67) 
+dc57b75c (Lili Swann    2022-10-10 18:19:25 -0400  3) 
+dc57b75c (Lili Swann    2022-10-10 18:19:25 -0400  6) 
+dc57b75c (Lili Swann    2022-10-10 18:19:25 -0400  7) 
+dc57b75c (Lili Swann    2022-10-10 18:19:25 -0400  8) 
+dc57b75c (Lili Swann    2022-10-10 18:19:25 -0400 21)     
+dc57b75c (Lili Swann    2022-10-10 18:19:25 -0400 30) 
+dc57b75c (Lili Swann    2022-10-10 18:19:25 -0400 31)     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+dc57b75c (Lili Swann    2022-10-10 18:19:25 -0400 32)     <script src="{% static 'recipe_box_js.js' %}"></script>
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400  1) 
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400  2) 
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400  3)   $(document).ready(function() {
+0dae3c45 (Lili Swann 2022-10-13 11:31:29 -0400  4) 
+0dae3c45 (Lili Swann 2022-10-13 11:31:29 -0400  5) 	//code for adding and removing buttons based on tutorial from https://www.sanwebe.com/2013/03/addremove-input-fields-dynamically-with-jquery 
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400  6) 	var max_fields      = 30; //maximum input boxes allowed
+0dae3c45 (Lili Swann 2022-10-13 11:31:29 -0400  7)     var ing_wrapper   		= $(".input_ingredient_wrap"); 
+0dae3c45 (Lili Swann 2022-10-13 11:31:29 -0400  8)     var dir_wrapper   		= $(".input_direction_wrap"); 
+0dae3c45 (Lili Swann 2022-10-13 11:31:29 -0400  9) 	var add_ingredient      = $(".add_ingredient_button"); //Add description ID
+0dae3c45 (Lili Swann 2022-10-13 11:31:29 -0400 10)     var add_direction      = $(".add_direction_button"); //Add ingredent ID
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 11) 
+0dae3c45 (Lili Swann 2022-10-13 11:31:29 -0400 12) 	//add ingredient and amount text box on click 
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 13) 	var x = 1; //initlal text box count
+0dae3c45 (Lili Swann 2022-10-13 11:31:29 -0400 14) 	$(add_ingredient).click(function(e){ 
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 15) 		e.preventDefault();
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 16) 		if(x < max_fields){ //max input box allowed
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 17) 			x++; //text box increment
+0dae3c45 (Lili Swann 2022-10-13 11:31:29 -0400 18) 			$(ing_wrapper).append('<div class="row"><div class="col"><input type="text" id="Ingredient" name="Ingredient" size="120"></div><div class="col"><input type="text" id="Amount" name="Amount" size="15"></div><a href="#" class="remove_field">Remove</a></div>'); //add input box
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 19) 		}
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 20) 	});
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 21) 
+0dae3c45 (Lili Swann 2022-10-13 11:31:29 -0400 22) 	//remove ingredient box and amount on click 
+0dae3c45 (Lili Swann 2022-10-13 11:31:29 -0400 23)     $(ing_wrapper).on("click",".remove_field", function(e){ 
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 24) 		e.preventDefault(); $(this).parent('div').remove();  x--;
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 25) 	})
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 26) 
+0dae3c45 (Lili Swann 2022-10-13 11:31:29 -0400 27) 	//add description on click 
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 28)     var y = 1; //initlal text box count
+0dae3c45 (Lili Swann 2022-10-13 11:31:29 -0400 29) 	$(add_direction).click(function(e){ 
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 30) 		e.preventDefault();
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 31) 		if(y < max_fields){ //max input box allowed
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 32) 			y++; //text box increment
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 33) 			$(dir_wrapper).append('<div><input type="text" id="Direction" name="Direction" size="150"><a href="#" class="remove_field">Remove</a></div>'); //add input box
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 34) 		}
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 35) 	});
+0dae3c45 (Lili Swann 2022-10-13 11:31:29 -0400 36) 	//remove description on click
+0dae3c45 (Lili Swann 2022-10-13 11:31:29 -0400 37) 	$(dir_wrapper).on("click",".remove_field", function(e){ 
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 38) 		e.preventDefault(); $(this).parent('div').remove(); y--;
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 39) 	})
+dc57b75c (Lili Swann 2022-10-10 18:19:25 -0400 40) });
