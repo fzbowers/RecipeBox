@@ -2,17 +2,11 @@
 {% block page_content %}
 
 <title>Account</title>
-<section id="account">
-    <p>THIS IS THE ACCOUNT PAGE</p>
+<section id="account">    
+    {% block content %}
+    <p>Login <a href="../login/">Here!</a></p>
+    <p>No account? Create one <a href="../create_account/">here!</a></p>
+    {% endblock %}
 </section>
 
-{% block title %}Create an Account{% endblock %}
-{% load crispy_forms_tags %}
-
-{% block content %}
-    <form method="POST" class="form-group">{% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit" class="btn btn-success">Register</button>
-    </form>
-{% endblock %}
 {% endblock %}

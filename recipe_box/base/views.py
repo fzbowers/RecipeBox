@@ -23,12 +23,15 @@ def new_section(request):
 def all_sections(request):
     return render(request, "all_sections.html")
 
-def account(response):
+def account(request):
+    return render(request, "account.html")
+
+def create_account(response):
     if response.method == "POST":
         form = RegisterForm(response.POST)
         if form.is_valid():
             form.save()
-        return redirect("home")
+        return redirect("account")
     else:
         form = RegisterForm()
-    return render(response, "account.html", {"form": form})
+    return render(response, "create_account.html", {"form": form})
