@@ -5,69 +5,66 @@
 <section id="new-recipe">
     <p></p>
     <p></p>
-    <p></p>
-    <div class="container-fluid">
-          
-            
-                <label for="Title"> Title</label>
-                <input type="text" id="Title" name="Title">
-                <br>
+    <p></p>        
 
-                <label for="Section">Section</label>
-                <select id="Section" name="Section">
-                <option value="Section1">Section 1</option>
-                <option value="Section2">Section 2</option>
-                <option value="Section3">Section 3</option>
-                </select>
+        <!--inout box for adding title-->
+        <label for="Title"> Title</label>
+        <input type="text" id="Title" name="Title">
+        <br>
 
-                <div class="input_ingredient_wrap">
+        <!--drop down menu for selecting section-->
+        <label for="Section">Section</label>
+        <select id="Section" name="Section">
+        <option value="Section1">Section 1</option>
+        <option value="Section2">Section 2</option>
+        <option value="Section3">Section 3</option>
+        </select>
 
-                    <div class="row">
-                    
-                        <div class="col">
-                            <label for="Ingredient"> Ingredients</label>
-                            <button class="add_ingredient_button">Add Ingredient</button>
-                            <br>
-                            <input type="text" id="Ingredient" name="Ingredient" size="120">
-                            <br>
-                            
-                        </div>
-
-                        <div class="col">
-                            <label for="Amount"> Amounts</label>
-                            <br>
-                            <input type="text" id="Amount" name="Amount" size="15">
-                            <br>
-        
-                        </div>
-                        <br>
-
-                    </div>
-                    
-                </div>
-
-                <br>
-
-                <div class="input_direction_wrap">
-                    <div class="row">
-                        <label for="Direction"> Directions</label>
-                        <button class="add_direction_button">Add Direction</button>
-                    </div>
+        <!--code for adding and removing text boxes based on tutorial from https://www.sanwebe.com/2013/03/addremove-input-fields-dynamically-with-jquery-->
+        <!--input box for ingredients, add more boxes as needed-->
+        <div class="input_ingredient_wrap">
+            <div class="row">
+                <div class="col">
+                    <label for="Ingredient"> Ingredients</label>
+                    <button class="add_ingredient_button">Add Ingredient</button>
                     <br>
-                    <input type="text" id="Direction" name="Direction" size="150">
+                    <input type="text" id="Ingredient" name="Ingredient" size="120">
+                    <br>
+                </div>
 
+                <div class="col">
+                    <label for="Amount"> Amounts</label>
+                    <br>
+                    <input type="text" id="Amount" name="Amount" size="15">
+                    <br>
                 </div>
                 <br>
+            </div>
+        </div>
 
-                <input type="submit" onclick="alert('can not add')" value="Create Recipe">
-                
-                
-                <a class="navbar-brand" href="/">
-                    <button type="Cancel" >Cancel</button>
-                </a>
+        <br>
 
+        <!--input box for directions, add more boxes as needed-->
+        <div class="input_direction_wrap">
+            <div class="row">
+                <label for="Direction"> Directions</label>
+                <button class="add_direction_button">Add Direction</button>
+            </div>
+            <br>
+            <input type="text" id="Direction" name="Direction" size="150">
 
         </div>
+        <br>
+
+        <!--add and cancel buttons-->
+        <input type="submit" onclick="alert('can not add')" value="Create Recipe">  
+        
+        <a class="navbar-brand" href="/">
+            <button type="Cancel" >Cancel</button>
+        </a>
+
+
+
 </section>
 
 {% endblock %}
