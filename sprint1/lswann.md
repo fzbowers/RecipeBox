@@ -41,6 +41,12 @@ recipe_box/templates/new_recipe.html
 recipe_box/templates/new_section.html
 recipe_box/templates/base.html
 
+design:
+Page_design_v_1.pdf
+design/color_scheme.txt
+design/link_to_website_design
+Logo
+
 
 ## What I Accomplished
 - I worked closely with Fatima to create a design for the website that is functional and aesthetically pleasing. 
