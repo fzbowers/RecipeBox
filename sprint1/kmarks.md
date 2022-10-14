@@ -31,5 +31,6 @@ Katrina Marks, KatrinaMarks, Recipe Box
 
 ### What you accomplished
 * I created a functioning create account page. Django did a lot of the work for me. I used Django's base create account form.
-Then I made it look nicer using crispy forms and bootstrap. I also added an email field 
-(Give a description of the features you added or tasks you accomplished. Provide some detail here. This section will be a little longer than the bulleted lists above) 
+Then I made it look nicer using crispy forms and bootstrap. I also added an email field to the original form. 
+* I created the login page also using a django form, then made it look nicer using the same method as above. Django automatically looks for a login.html under a registration folder; then it handles the user authentication for you. 
+* I put links to both of the above on our account page. After successfully creating an account, the website will take you to the login page. If you go to the login page but don't have an account, you can click a link from there to take you to the create account page.    
