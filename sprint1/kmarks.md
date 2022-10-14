@@ -1,4 +1,4 @@
-# Sprint n (1, 2, 3 or 4)
+# Sprint 1
 
 Katrina Marks, KatrinaMarks, Recipe Box
 
