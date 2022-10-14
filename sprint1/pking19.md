@@ -16,7 +16,9 @@ Every item was started but there are more variables to add to each model
 
 ### What problems you encountered
 
-
+I struggled with learning python and django, but I have gotten a little more comfortable,
+and I was not able to get my models connected to the front end, but hopefully I will be 
+able to in the second sprint
 
 ### Issues you worked on
 
@@ -33,4 +35,7 @@ Every item was started but there are more variables to add to each model
  - RecipeBox/recipe_box/base/recipes/views.py
 
 ### What you accomplished
-(Give a description of the features you added or tasks you accomplished. Provide some detail here. This section will be a little longer than the bulleted lists above) 
+
+I created the models for the recipes, ingredients, and instructions. This meant creating
+data structures for each and giving them variables that could connect with each other as well.
+It wasn't much because I spent a lot of this sprint learning pyhton and django.
