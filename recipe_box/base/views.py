@@ -19,9 +19,6 @@ def all_recipes(request):
 
 def new_section(request):
     return render(request, "new_section.html")
-  
-def all_sections(request):
-    return render(request, "all_sections.html")
 
 def account(request):
     return render(request, "account.html")
