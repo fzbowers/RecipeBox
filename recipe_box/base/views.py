@@ -23,6 +23,9 @@ def new_section(request):
 def account(request):
     return render(request, "account.html")
 
+def landing(request):
+    return render(request, "landing.html")
+
 def create_account(response):
     if response.method == "POST":
         form = RegisterForm(response.POST)
