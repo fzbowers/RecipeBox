@@ -1,5 +1,6 @@
 
-body {
+body,
+#landing {
     padding: 0;
     margin: 0;  
     background: #ffff;
@@ -8,11 +9,9 @@ body {
     position: relative;
     min-height: 100vh;
 }
-
 .page-content {
     padding-bottom: 2.5rem;
 }
-
 
 
 /* STYLE NAVIGATION BAR */
