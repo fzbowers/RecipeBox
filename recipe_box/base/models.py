@@ -13,13 +13,11 @@ class Section(models.Model):
     class Meta:
         verbose_name = ('Section')
         verbose_name_plural = ('Sections')
-        ordering = ['order_index']
 
 class Recipes(models.Model):
     title = models.CharField(max_length = 50)
     section = models.ForeignKey(Section, on_delete=models.PROTECT)
     class Meta:
-        ordering = ['title']
         verbose_name = ('Recipe')
         verbose_name_plural = ('Recipies')
 
@@ -40,4 +38,3 @@ class Instruction(models.Model):
     class Meta:
         verbose_name = ('Instruction')
         verbose_name_plural = ('Instructions')
-        ordering = ['order', 'id']
