@@ -12,4 +12,5 @@ urlpatterns = [
     path("account/", views.account, name="account"),
     path("create_account/", views.create_account, name="create_account"),
     path("welcome/", views.landing, name="landing"),
+    path("recipe/", views.individual_recipe, name="individual_recipe")
 ]

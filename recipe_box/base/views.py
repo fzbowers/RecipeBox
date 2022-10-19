@@ -26,6 +26,9 @@ def account(request):
 def landing(request):
     return render(request, "landing.html")
 
+def individual_recipe(request):
+    return render(request, "individual_recipe.html")
+
 def create_account(response):
     if response.method == "POST":
         form = RegisterForm(response.POST)
