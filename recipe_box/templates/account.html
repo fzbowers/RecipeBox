@@ -6,6 +6,17 @@
     {% block content %}
     <p>Login <a href="../login/">Here!</a></p>
     <p>No account? Create one <a href="../create_account/">here!</a></p>
+
+    {% if user.is_authenticated %}
+    {{request.user}} | <a href="#"
+    onClick="document.getElementByld('logoutform').submit()"><button
+    type="button">Logout</button></a>
+    <form id="logoutform" method="POST">
+    {% csrf_token %}
+    <input type="hidden">
+    </form>
+    {% endif %}
+
     {% endblock %}
 </section>
 
