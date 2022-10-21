@@ -34,12 +34,7 @@ def create_account(response):
         form = RegisterForm(response.POST)
         if form.is_valid():
             form.save()
-        return redirect("account")
+        return redirect("landing")
     else:
         form = RegisterForm()
     return render(response, "create_account.html", {"form": form})
-
-def pagelogout(request):
-    if request.method =="POST":
-        pagelogout(request)
-        return redirect('landing')

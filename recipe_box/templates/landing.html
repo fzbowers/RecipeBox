@@ -35,13 +35,15 @@
                 <img class="landing-logo" src="{% static 'img/blue-logo.png' %}">
                 </a>
             </h1>
-            
-            <form id="login-form">
-                <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
-                <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
-                <input type="submit" value="Login" id="login-form-submit">
-            </form>
         </main>
+
+        <section id="account">    
+             {% block content %}
+             <p>Login <a href="../login/">Here!</a></p>
+             <p>No account? Create one <a href="../create_account/">here!</a></p>
+             {% endblock %}
+        </section>
+
     
     </section>
 
