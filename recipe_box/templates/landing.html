@@ -28,28 +28,17 @@
 
     <title>Landing</title>
     <section id="landing">
+      <div class="landing-box">
+        <a class="landing-logo" href="/"><img class="logo-img" src="{% static 'img/blue-logo.png' %}"></a>
         
-        <main id="main-holder">
-            <h1 id="login-header">
-                <a href="/welcome">
-                <img class="landing-logo" src="{% static 'img/blue-logo.png' %}">
-                </a>
-            </h1>
-        </main>
-
-        <section id="account">    
-             {% block content %}
-             <p>Login <a href="../login/">Here!</a></p>
-             <p>No account? Create one <a href="../create_account/">here!</a></p>
-             {% endblock %}
-        </section>
-
-    
+        <div class="landing-account">
+          {% block content %}
+          <p>Login <a href="../login/">Here!</a></p>
+          <p>No account? Create one <a href="../create_account/">here!</a></p>
+          {% endblock %}
+        </div>
+      </div>
     </section>
-
-
-
-
 
   </body>
 </html>
