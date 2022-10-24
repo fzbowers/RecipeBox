@@ -210,6 +210,10 @@ footer {
 
 
 /* STYLE HOME PAGE */
+#home {
+    padding-top: 20px;
+}
+
 .section-col {
     background: #d6eadf;
     /* border: 2px solid #aebeb5; */ /* maybe */
@@ -284,6 +288,7 @@ footer {
 
 
 
+
 /* STYLE NEW SECTION PAGE */
 #new-section{
     margin: 20px;
@@ -347,9 +352,99 @@ input[type=submit] {
 
 }
 
-/* STYPE NEW RECIPE PAGE */
+/* STYLE NEW RECIPE PAGE */
 
 
 
 
 
+
+
+
+
+/* STYLE INDIVIDUAL RECIPE PAGE */
+#recipe {
+    padding: 10px;
+}
+
+.recipe-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+}
+#recipe-title {
+
+    margin: 0;
+    margin-left: 15px;
+    font-size: 35px;
+}
+
+/* blue text */
+#recipe-title,
+.mini-left,
+.mini-right {
+    color: #809bce;
+}
+
+/* green text */
+#recipe-time,
+.recipe-left,
+.recipe-right {
+    color: #b8d8cd;
+    font-size: 28px;
+}
+#recipe-time {
+    margin: 0;
+    margin-right: 15px;  
+}
+
+hr {
+    background-color: #b8d8cd;
+    height: 2px;
+    border: none;
+}
+
+
+.recipe-left,
+.recipe-right {
+    text-align: center;
+}
+
+.mini-left{
+    padding: 5px;
+}
+.mini-left,
+.mini-right {
+    font-size: 22px;
+
+}
+
+
+/* set for all buttons */
+button,
+button[type=submit] {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.blue-btn {
+    color: #ffff;
+    background-color: #809bce;
+}
+
+.green-btn {
+    color: #809bce;
+    background-color: #e2efe7;
+    
+}
+
+.blue-btn,
+.green-btn {
+    height: 50px;
+    width: 150px;
+    margin: 15px;
+    font-size: 20px;
+
+}

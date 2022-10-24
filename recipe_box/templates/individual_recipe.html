@@ -3,7 +3,47 @@
 
 <title>Individual Recipe</title>
 <section id="recipe">
-    <p>THIS IS THE RECIPE PAGE</p>
+
+    <!-- Recipe title and time section -->
+    <div class="row recipe-top">
+        <p id="recipe-title">Recipe Title</p>
+        <p id="recipe-time">Time: ##</p>
+
+    </div>
+
+    <hr>
+
+    <!-- Ingredients and directions section-->
+    <div class="row recipe-middle">
+        <div class="col-sm-4 recipe-left">
+            <p>Ingredients</p>
+            <div class="row">
+                <div class="col-sm-12 mini-left">Amount Ingredient</div>
+                <div class="col-sm-12 mini-left">Amount Ingredient</div>
+                <div class="col-sm-12 mini-left">Amount Ingredient</div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-8 recipe-left">
+            <p>Directions</p>
+            <div class="col-sm-12 mini-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+            <hr>
+            <div class="col-sm-12 mini-right">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+            <hr>
+            <div class="col-sm-12 mini-right">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </div>
+        </div>
+    </div>
+
+    <!-- Buttons section-->
+    <div class="row recipe-bottom">
+        <button type="submit" class="blue-btn">Edit</button>
+        <button type="submit" class="green-btn">Add to Pinned</button>
+        <button type="submit" class="green-btn">Add to Section</button>
+
+    </div>
+
+
 </section>
 
 {% endblock %}
