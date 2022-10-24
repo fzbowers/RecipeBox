@@ -139,3 +139,4 @@ CRISPY_TEMPLATE_PACK="bootstrap4"
 
 LOGIN_REDIRECT_URL = "/home"
 LOGOUT_REDIRECT_URL = "/"
+# PASSWORD_RESET_REDIRECT_URL = "/done" this doesn't work yet
