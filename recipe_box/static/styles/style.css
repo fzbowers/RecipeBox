@@ -17,39 +17,87 @@ body,
   
 
 
-/* STYLE LANDING PAGE */
+/* STYLE LOGIN PAGE */
 #landing {
     display: grid;
     justify-items: center;
     align-items: center;
+
     background-color: #e2efe7;
 }
 
-
 .landing-box {
     display: grid;
-    justify-items: center;
-    width: 50vw;
+    justify-content: space-around;
+    width: 45vw;
     height: 80vh;
     background-color: white;
     border: 2px solid #809bce;
 }
 
-
-.landing-logo {
+.landing-logo,
+.landing-text {
     display: flex;
     justify-content: center;
-    max-width: 80%;
-    max-height: 55%;
+    justify-self: center;
     padding: 10px;
+
+}
+
+.landing-logo {
+    max-width: 100%;
+    max-height: 80%;
 }
 
 .logo-img {
-    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.landing-form {
+    font-size: 15px;
+}
+
+.landing-text,
+.landing-form {
+    color: #809bce;
+    
+}
+
+.landing-text,
+.no-acc {
+    font-size: 20px;
+}
+
+.landing-btn {
+    background-color: #e2efe7;
+    color: #809bce;
+
+    height: 35px;
+    width: 115px;
+
+    font-size: 20px;
+}
+
+.landing-link:link {
+    text-decoration: none;
+}
+/* STYLE CRISPY landing-form- */
+.asteriskField {
+    display: none;
 }
 
 
-  
+.text-box {
+    position: relative;
+    top: -50px;
+}
+.forgot-pass,
+.landing-btn {
+    position: relative;
+    top: -15px;
+}
+
 
 
 
@@ -272,7 +320,7 @@ footer {
 
 
 #title,
-#freeform {
+#freelanding-form-{
     color: #809bce;
     font-size: 20px;
     background-color: #e2efe7;
@@ -286,7 +334,7 @@ footer {
     margin: 8px;
 }
 
-#freeform {
+#freelanding-form-{
     min-height: 40vh;
     min-width: 88vw;
     margin: 0;

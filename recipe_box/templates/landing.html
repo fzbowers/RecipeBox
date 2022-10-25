@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 
 <!doctype html>
 <html lang="en">
@@ -26,20 +27,47 @@
     <script src="{% static 'recipe_box_js.js' %}"></script>
 
 
-    <title>Landing</title>
-    <section id="landing">
-      <div class="landing-box">
-        <a class="landing-logo" href="/"><img class="logo-img" src="{% static 'img/blue-logo.png' %}"></a>
-        
-        <div class="landing-account">
-          {% block content %}
-          <p>Login <a href="../login/">Here!</a></p>
-          <p>No account? Create one <a href="../create_account/">here!</a></p>
-          {% endblock %}
-        </div>
-      </div>
-    </section>
+    {% block content %}
 
-  </body>
+
+
+   
+</div>
+
+    <section id="landing">
+        <div class="landing-box">
+
+            <a class="landing-logo" href="/login"><img class="logo-img" src="{% static 'img/blue-logo.png' %}"></a>
+        
+            <div class="text-box">
+            <p class="landing-text">Login to start cooking!</p>
+        
+
+        
+            <div class="landing-account">
+            
+                <form method="post" class="form-group landing-form">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    
+                    
+                    
+                    <p class="forgot-pass">Forgot password? Click <a class="landing-link" href="../password_reset/">here!</a></p>
+                    <a href="../home"><button type="submit" class="landing-btn">Login</button></a>
+
+                    
+                    <p class="no-acc">No account? Create one <a class="landing-link" href="../create_account/">here!</a></p>
+                    
+                    <!--<p class="landing-text">Don’t have an account? Create one!</p>
+                    <a href="../create_account/"><button class="landing-btn">Create Account</button></a>-->
+                </form>
+            </div>
+            </div>
+        </div>
+    </section>
+</section>
+</body>
 </html>
+{% endblock %}
+
 
