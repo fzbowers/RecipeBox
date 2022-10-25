@@ -7,9 +7,12 @@
     <p></p>
     <p></p>        
 
+        <h2>Add New Recipe</h2>
+
+
         <!--inout box for adding title-->
         <label for="Title"> Title</label>
-        <input type="text" id="Title" name="Title">
+        <input type="text" id="title" name="Title">
         <br>
 
         <!--drop down menu for selecting section-->
@@ -26,16 +29,16 @@
             <div class="row">
                 <div class="col">
                     <label for="Ingredient"> Ingredients</label>
-                    <button class="add_ingredient_button">Add Ingredient</button>
+                    <button id="add-btn" class="add_ingredient_button">Add Ingredient</button>
                     <br>
-                    <input type="text" id="Ingredient" name="Ingredient" size="120">
+                    <input type="text" id="ingredient" name="Ingredient" size="120">
                     <br>
                 </div>
 
                 <div class="col">
                     <label for="Amount"> Amounts</label>
                     <br>
-                    <input type="text" id="Amount" name="Amount" size="15">
+                    <input type="text" id="amount" name="Amount" size="15">
                     <br>
                 </div>
                 <br>
@@ -46,13 +49,16 @@
 
         <!--input box for directions, add more boxes as needed-->
         <div class="input_direction_wrap">
-            <div class="row">
-                <label for="Direction"> Directions</label>
-                <button class="add_direction_button">Add Direction</button>
-            </div>
-            <br>
-            <input type="text" id="Direction" name="Direction" size="150">
+            <div class="col">
+                <div class="row">
+                    <label for="Direction"> Directions</label>
+                    <button id="add-btn" class="add_direction_button">Add Direction</button>
+                </div>
 
+                <div class="row">   
+                    <input type="text" id="direction" name="Direction" size="150">
+                </div>
+            </div>
         </div>
         <br>
 
@@ -60,7 +66,7 @@
         <input type="submit" onclick="alert('can not add')" value="Create Recipe">  
         
         <a href="/home">
-            <button type="Cancel" >Cancel</button>
+            <button id="cancel-btn" type="Cancel" >Cancel</button>
         </a>
 
 

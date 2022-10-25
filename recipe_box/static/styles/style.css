@@ -275,14 +275,16 @@ footer {
 #freeform {
     color: #809bce;
     font-size: 20px;
-    background-color: #e2efe7;
+    background-color: rgba(226, 239, 231, .6);
+    /* #e2efe7;*/
+
     outline: none;
-    border: 1px solid #809bce;
+    border: 1px solid #ffffff;
     padding-left: 8px;
 }
 
 #title {
-    min-width: 84vw;
+    min-width: 80vw;
     margin: 8px;
 }
 
@@ -327,9 +329,60 @@ input[type=submit] {
 }
 
 /* STYLE NEW RECIPE PAGE */
+#new-recipe{
+    margin: 20px;
+    color: #809bce;
+    font-size: 22px;
+}
 
 
 
+
+#direction,
+#ingredient,
+#amount {
+    color: #809bce;
+    font-size: 20px;
+    background-color: rgba(226, 239, 231, .6);
+    /* #e2efe7;*/
+
+    outline: none;
+    border: 1px solid #ffffff;
+    padding-left: 8px;
+}
+
+#direction {
+    margin: 8px;
+    max-width:90%;
+    
+}
+
+#ingerdient,
+#amount {
+    margin: 8px;
+}
+
+#ingredient {
+    max-width: 90%;
+}
+
+#amount {
+    max-width: 35%;
+}
+
+#remove {
+    text-align: left;
+}
+
+#add-btn {
+    height: 30px;
+    width: 130px;
+    margin: 10px;
+    font-size: 15px;
+    color: #ffff;
+    background-color: #809bce;
+
+}
 
 
 
