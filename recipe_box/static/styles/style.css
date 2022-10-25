@@ -312,7 +312,7 @@ footer {
 
 
 /* STYLE NEW SECTION PAGE */
-#new-section{
+#new-section {
     margin: 20px;
     color: #809bce;
     font-size: 22px;
@@ -320,7 +320,7 @@ footer {
 
 
 #title,
-#freeform{
+#freeform {
     color: #809bce;
     font-size: 20px;
     background-color: rgba(226, 239, 231, .6);
@@ -393,19 +393,13 @@ input[type=submit] {
 
     outline: none;
     border: 1px solid #ffffff;
-    padding-left: 8px;
 }
 
 #direction {
-    margin: 8px;
     max-width:90%;
     
 }
 
-#ingerdient,
-#amount {
-    margin: 8px;
-}
 
 #ingredient {
     max-width: 80%;
@@ -437,10 +431,10 @@ input[type=submit] {
 
 }
 
-
-
-
-
+.ing-amt {
+    display: flex;
+    justify-content: baseline;
+}
 
 
 
