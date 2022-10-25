@@ -356,7 +356,6 @@ input[type=submit] {
     background-color: #809bce;
     color: #ffff;
 
-
     margin-top: 10px;
     margin-right: 15px;
 
@@ -376,7 +375,14 @@ input[type=submit] {
 
 }
 
+#color-selection{
+    font-size: 20px;
+    height: 30px;
+}
 
+select option[value="select-option"] {
+    color: #809bce;
+}
 select option[value="light-blue"] {
     background-color: #c8dceb;
 }
