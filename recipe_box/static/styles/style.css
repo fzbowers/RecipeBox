@@ -376,6 +376,27 @@ input[type=submit] {
 
 }
 
+
+select option[value="light-blue"] {
+    background-color: #c8dceb;
+}
+select option[value="medium-blue"] {
+    background-color: #95b8d1;
+}
+select option[value="dark-blue"] {
+    background-color: #809bce;
+}
+select option[value="light-green"] {
+    background-color: #e2efe7 ;
+}
+select option[value="medium-green"] {
+    background-color: #d6eadf;
+}
+select option[value="dark-green"] {
+    background: #b8d8cd;
+}
+
+
 /* STYLE NEW RECIPE PAGE */
 
 #new-recipe{
