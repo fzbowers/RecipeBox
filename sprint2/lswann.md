@@ -54,17 +54,17 @@ to the actual recipe model.
 
 
 ## Files I Worked On
-design/individual_recipe.png
-design/landing_page.png
-design/all_recipes_page.png
-recipe_box/base/views.py
-recipe_box/base/models.py
-recipe_box/base/urls.py
-recipe_box/base/admin.py
-recipe_box/recipe_box/urls.py
-recipe_box/static/styles/style.css
-recipe_box/templates/new_recipe.html
-recipe_box/templates/new_section.html
+- design/individual_recipe.png
+- design/landing_page.png
+- design/all_recipes_page.png
+- recipe_box/base/views.py
+- recipe_box/base/models.py
+- recipe_box/base/urls.py
+- recipe_box/base/admin.py
+- recipe_box/recipe_box/urls.py
+- recipe_box/static/styles/style.css
+- recipe_box/templates/new_recipe.html
+- recipe_box/templates/new_section.html
 
 
 ## What I Accomplished 
