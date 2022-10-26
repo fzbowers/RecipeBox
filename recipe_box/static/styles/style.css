@@ -13,6 +13,11 @@ body,
     padding-bottom: 2.5rem;
 }
 
+button,
+button:active,
+button:focus {
+    outline: none;
+}
 
   
 
@@ -377,6 +382,9 @@ input[type=submit] {
     font-size: 20px;
     height: 30px;
 }
+select {
+    outline: none;
+}
 
 /*color selection based on forum quetion:https://www.appsloveworld.com/django/100/324/change-background-color-in-a-select-option-dropdown */
 select option[value="select-option"] {
@@ -460,17 +468,13 @@ select option[value="dark-green"] {
 
 #amount {
     max-width: 10vw;
-    margin-left: 55px;
 }
 
-
-.new-ing {
-    padding: 0;
-}
-
-.first-amt {
-    position: relative;
-    left: -3.5px;
+.ingredient-title,
+.amount-title {
+    display: flex;
+    align-items: center;
+    height: 46px;
 }
 
 
