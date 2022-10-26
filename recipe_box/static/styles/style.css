@@ -321,12 +321,11 @@ footer {
 
 
 #title,
-#freeform {
+#freeform,
+#time {
     color: #809bce;
     font-size: 20px;
     background-color: rgba(226, 239, 231, .6);
-    /* #e2efe7;*/
-
     outline: none;
     border: 1px solid #ffffff;
     padding-left: 8px;
@@ -379,6 +378,7 @@ input[type=submit] {
     height: 30px;
 }
 
+/*color selection based on forum quetion:https://www.appsloveworld.com/django/100/324/change-background-color-in-a-select-option-dropdown */
 select option[value="select-option"] {
     color: #809bce;
 }
@@ -403,6 +403,12 @@ select option[value="dark-green"] {
 
 
 /* STYLE NEW RECIPE PAGE */
+
+#time {
+    max-width: 10vw;
+    margin: 8px;
+}
+
 #section-selection{
     font-size: 20px;
     height: 30px;
@@ -413,7 +419,6 @@ select option[value="dark-green"] {
     color: #809bce;
     font-size: 20px;
     background-color: rgba(226, 239, 231, .6);
-
 
     outline: none;
     border: 1px solid #ffffff;
@@ -431,7 +436,7 @@ select option[value="dark-green"] {
 }
 
 #remove {
-    
+    padding-left: 10px;
     color: #809bce;
 }
 
