@@ -369,8 +369,6 @@ input[type=submit] {
     outline: none;
     background-color: #e2efe7;
     color: #809bce;
-
-
     height: 50px;
     width: 130px;
 
@@ -405,8 +403,6 @@ select option[value="dark-green"] {
 
 
 /* STYLE NEW RECIPE PAGE */
-
-
 #direction,
 #ingredient,
 #amount {
@@ -426,8 +422,11 @@ select option[value="dark-green"] {
 
 }
 
+.amount-col {
+    padding: 0;
+}
+
 #remove {
-    
     color: #809bce;
 }
 
@@ -441,22 +440,8 @@ select option[value="dark-green"] {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #direction {
-    min-width: 90vw;
+    max-width: 80vw;
 }
 
 #ingredient {
@@ -468,40 +453,21 @@ select option[value="dark-green"] {
     margin-left: 55px;
 }
 
-/*
 
-
-
-
-
-
-
-
-
-/*
-
-#ingredient {
-    max-width: 80%;
+.new-ing {
+    padding: 0;
 }
 
-#amount {
-    max-width: 30%;
-}
-
-#ingredient-col,
-#amount-col,
-#remove-col {
-    margin: 1px;
-
+.first-amt {
+    position: relative;
+    left: -3.5px;
 }
 
 
 
-.ing-amt {
-    display: flex;
-}
 
-*/
+
+
 
 
 

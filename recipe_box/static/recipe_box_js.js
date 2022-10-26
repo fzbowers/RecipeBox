@@ -15,7 +15,7 @@
 		e.preventDefault();
 		if(x < max_fields){ //max input box allowed
 			x++; //text box increment
-			$(ing_wrapper).append('<div class="row ing-amt"><div class="ingredient-col col-sm-6"><input type="text" id="ingredient" name="Ingredient" size="120"></div><div class="amount-col col-sm-4"><input type="text" id="amount" name="Amount" size="15"></div class="col-sm-2"><a href="#" id="remove" class="remove_field">Remove</a></div>'); //add input box
+			$(ing_wrapper).append('<div class="col new-ing"><input type="text" id="ingredient" name="Ingredient"><input type="text" id="amount" name="Amount" class="new-amt"><a href="#" id="remove" class="remove_field">Remove</a></div>'); //add input box
 		}
 	});
 
