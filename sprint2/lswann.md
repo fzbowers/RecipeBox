@@ -57,6 +57,7 @@ to the actual recipe model.
 - design/individual_recipe.png
 - design/landing_page.png
 - design/all_recipes_page.png
+- design/Section_page.png
 - recipe_box/base/views.py
 - recipe_box/base/models.py
 - recipe_box/base/urls.py
@@ -68,7 +69,7 @@ to the actual recipe model.
 
 
 ## What I Accomplished 
-- I was able to create the design for the landing page, all recipes page and individual recipies page in Figma
+- I was able to create the design for the landing page, all recipes page, section page, and individual recipies page in Figma
 - I made the new section color drop down menu show the colors
 - I added the time entry box to new recipe page
 - I worked with Fatima to finish the css for new section and new recipe 
