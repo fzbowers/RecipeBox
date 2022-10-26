@@ -311,8 +311,9 @@ footer {
 
 
 
-/* STYLE NEW SECTION PAGE */
-#new-section {
+/* STYLE NEW SECTION AND NEW RECIPE PAGES */
+#new-section,
+#new-recipe {
     margin: 20px;
     color: #809bce;
     font-size: 22px;
@@ -405,11 +406,6 @@ select option[value="dark-green"] {
 
 /* STYLE NEW RECIPE PAGE */
 
-#new-recipe{
-    margin: 20px;
-    color: #809bce;
-    font-size: 22px;
-}
 
 #direction,
 #ingredient,
@@ -417,17 +413,72 @@ select option[value="dark-green"] {
     color: #809bce;
     font-size: 20px;
     background-color: rgba(226, 239, 231, .6);
-    /* #e2efe7;*/
+
 
     outline: none;
     border: 1px solid #ffffff;
 }
 
-#direction {
-    max-width:90%;
-    
+#ingredient-col,
+#amount-col,
+#remove-col {
+    margin: 1px;
+
 }
 
+#remove {
+    
+    color: #809bce;
+}
+
+#add-btn {
+    height: 30px;
+    width: 130px;
+    margin: 8px;
+    font-size: 15px;
+    color: #ffff;
+    background-color: #809bce;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#direction {
+    min-width: 90vw;
+}
+
+#ingredient {
+    min-width: 50vw;
+}
+
+#amount {
+    max-width: 10vw;
+    margin-left: 55px;
+}
+
+/*
+
+
+
+
+
+
+
+
+
+/*
 
 #ingredient {
     max-width: 80%;
@@ -444,25 +495,15 @@ select option[value="dark-green"] {
 
 }
 
-#remove {
-    text-align: center;
-    color: #809bce;
-}
 
-#add-btn {
-    height: 30px;
-    width: 130px;
-    margin: 8px;
-    font-size: 15px;
-    color: #ffff;
-    background-color: #809bce;
-
-}
 
 .ing-amt {
     display: flex;
-    justify-content: baseline;
 }
+
+*/
+
+
 
 
 
