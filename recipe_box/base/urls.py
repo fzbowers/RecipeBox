@@ -1,12 +1,14 @@
 from django.urls import path
 from . import views
+from .views import HomePageView, SearchResultsView
+
   
 
 # All pages of the website
 urlpatterns = [
     path("", views.landing, name="landing"),
     path("home/", views.home, name="home"),
-    path("search/", views.search, name="search"),
+    path("search/",  SearchResultsView.as_view(), name="search_results"),
     path("new_recipe/", views.new_recipe, name="new_recipe"),
     path("all_recipes/", views.all_recipes, name="all_recipes"),
     path("new_section/", views.new_section, name="new_section"),

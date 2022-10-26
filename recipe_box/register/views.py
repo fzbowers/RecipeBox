@@ -11,13 +11,4 @@ def register(response):
     return render(response, "account.html", {"form":form})
 
 
-class SearchResultsView(ListView):
-    model = Recipe
-    template_name = 'search.html'
 
-    def get_queryset(self): # new
-        query = self.request.GET.get("q")
-        object_list = Recipe.objects.filter(
-            Q(title__icontains=query) | Q(section__icontains=query)
-        )
-        return object_list

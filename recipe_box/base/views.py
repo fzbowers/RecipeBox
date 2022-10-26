@@ -2,8 +2,23 @@ from django.shortcuts import render, redirect
 #from django.contrib.auth import login, authenticate
 #from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterForm
+from django.views.generic import TemplateView, ListView
+
+from .models import Recipes
 
 # Create your views here.
+
+# search function based on tutorial from https://learndjango.com/tutorials/django-search-tutorial
+class SearchResultsView(ListView):
+    model = Recipes
+    template_name = 'search.html'
+
+    def get_queryset(self): # new
+        query = self.request.GET.get("q")
+        object_list = Recipes.objects.filter(
+            Q(title__icontains=query) | Q(section__icontains=query)
+        )
+        return object_list
 
 def home(request):
     return render(request, "home.html")
