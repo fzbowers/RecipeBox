@@ -22,7 +22,6 @@
 	//remove ingredient box and amount on click 
     $(ing_wrapper).on("click",".remove_field", function(e){ 
 		e.preventDefault(); $('#row-ing-amt').remove(); x--;
-		// $(this).parent('div').remove();  x--;
 	})
 
 	//add description on click 
