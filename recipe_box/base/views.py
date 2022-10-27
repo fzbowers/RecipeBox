@@ -38,8 +38,8 @@ def new_section(request):
 def account(request):
     return render(request, "account.html")
 
-def landing(request):
-    return render(request, "landing.html")
+def login(request):
+    return render(request, "registration/login.html")
 
 def individual_recipe(request):
     return render(request, "individual_recipe.html")
@@ -49,7 +49,7 @@ def create_account(response):
         form = RegisterForm(response.POST)
         if form.is_valid():
             form.save()
-        return redirect("landing")
+        return redirect("login")
     else:
         form = RegisterForm()
     return render(response, "create_account.html", {"form": form})
