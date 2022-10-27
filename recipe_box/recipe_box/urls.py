@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from register import views as v
+from django.contrib.auth import views as auth_views
 #from userinfo.forms import PasswordResetForm 
 
 urlpatterns = [
