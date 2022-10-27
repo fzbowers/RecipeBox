@@ -45,5 +45,6 @@ Katrina Marks, KatrinaMarks, Recipe Box
 
 
 ### What you accomplished
+* I learned how to make admin accounts so that we can see all of the users and their information.
 * The user now has a logout option on the account page.
 * I made decent progress on letting a user reset their password if they forgot it.    
