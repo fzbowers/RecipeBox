@@ -45,21 +45,14 @@
 
         
             <div class="landing-account">
-            
                 <form method="post" class="form-group landing-form">
                     {% csrf_token %}
                     {{form|crispy}}
                     
-                    
-                    
                     <p class="forgot-pass">Forgot password? Click <a class="landing-link" href="../password_reset/">here!</a></p>
                     <a href="../home"><button type="submit" class="landing-btn">Login</button></a>
 
-                    
                     <p class="no-acc">No account? Create one <a class="landing-link" href="../create_account/">here!</a></p>
-                    
-                    <!--<p class="landing-text">Don’t have an account? Create one!</p>
-                    <a href="../create_account/"><button class="landing-btn">Create Account</button></a>-->
                 </form>
             </div>
             </div>
@@ -69,5 +62,3 @@
 </body>
 </html>
 {% endblock %}
-
-

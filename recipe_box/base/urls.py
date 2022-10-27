@@ -6,7 +6,7 @@ from .views import SearchResultsView
 
 # All pages of the website
 urlpatterns = [
-    path("", views.landing, name="landing"),
+    path("", views.login, name="login"),
     path("home/", views.home, name="home"),
     path("search/",  SearchResultsView.as_view(), name="search_results"),
     path("new_recipe/", views.new_recipe, name="new_recipe"),

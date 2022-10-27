@@ -26,7 +26,7 @@ class Recipe(models.Model):
 
     class Meta:
         verbose_name = ('Recipe')
-        verbose_name_plural = ('Recipies')
+        verbose_name_plural = ('Recipes')
 
 class Ingredient(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
