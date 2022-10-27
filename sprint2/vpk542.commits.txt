@@ -1,1 +1,556 @@
+File: recipe_box/base/urls.py
+418866cb1 (Fatima Bowers 2022-10-27 13:22:30 -0400  9)     path("", views.login, name="login"),
+253324faa (Fatima Bowers 2022-10-20 08:32:38 -0400 10)     path("home/", views.home, name="home"),
+652829d53 (Fatima Bowers 2022-10-18 23:25:40 -0400 17)     path("recipe/", views.individual_recipe, name="individual_recipe")
+9017af7bf (Fatima Bowers 2022-10-16 22:52:56 -0400 18) ]
 
+File: recipe_box/base/views.py
+418866cb1 (Fatima Bowers 2022-10-27 13:22:30 -0400 41) def login(request):
+418866cb1 (Fatima Bowers 2022-10-27 13:22:30 -0400 42)     return render(request, "registration/login.html")
+d3a344748 (Fatima Bowers 2022-10-16 23:32:35 -0400 43) 
+652829d53 (Fatima Bowers 2022-10-18 23:25:40 -0400 44) def individual_recipe(request):
+652829d53 (Fatima Bowers 2022-10-18 23:25:40 -0400 45)     return render(request, "individual_recipe.html")
+652829d53 (Fatima Bowers 2022-10-18 23:25:40 -0400 46) 
+418866cb1 (Fatima Bowers 2022-10-27 13:22:30 -0400 52)         return redirect("login")
+
+File: recipe_box/static/styles/style.css
+451e2102f (Fatima Bowers 2022-10-18 12:40:04 -0400   2) body,
+451e2102f (Fatima Bowers 2022-10-18 12:40:04 -0400   3) #landing {
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  15) 
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400  16) button,
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400  17) button:active,
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400  18) button:focus {
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400  19)     outline: none;
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400  20) }
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  21) 
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  22)   
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  23) 
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  24) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  25) /* STYLE LOGIN PAGE */
+9f79fd0d7 (Fatima Bowers 2022-10-23 23:08:29 -0400  26) #landing {
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  27)     display: grid;
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  28)     justify-items: center;
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  29)     align-items: center;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  30) 
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  31)     background-color: #e2efe7;
+9f79fd0d7 (Fatima Bowers 2022-10-23 23:08:29 -0400  32) }
+9f79fd0d7 (Fatima Bowers 2022-10-23 23:08:29 -0400  33) 
+9f79fd0d7 (Fatima Bowers 2022-10-23 23:08:29 -0400  34) .landing-box {
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  35)     display: grid;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  36)     justify-content: space-around;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  37)     width: 45vw;
+9f79fd0d7 (Fatima Bowers 2022-10-23 23:08:29 -0400  38)     height: 80vh;
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  39)     background-color: white;
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  40)     border: 2px solid #809bce;
+9f79fd0d7 (Fatima Bowers 2022-10-23 23:08:29 -0400  41) }
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  42) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  43) .landing-logo,
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  44) .landing-text {
+9f79fd0d7 (Fatima Bowers 2022-10-23 23:08:29 -0400  45)     display: flex;
+9f79fd0d7 (Fatima Bowers 2022-10-23 23:08:29 -0400  46)     justify-content: center;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  47)     justify-self: center;
+9f79fd0d7 (Fatima Bowers 2022-10-23 23:08:29 -0400  48)     padding: 10px;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  49) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  50) }
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  51) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  52) .landing-logo {
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  53)     max-width: 100%;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  54)     max-height: 80%;
+9f79fd0d7 (Fatima Bowers 2022-10-23 23:08:29 -0400  55) }
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  56) 
+9f79fd0d7 (Fatima Bowers 2022-10-23 23:08:29 -0400  57) .logo-img {
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  58)     max-width: 100%;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  59)     max-height: 100%;
+9f79fd0d7 (Fatima Bowers 2022-10-23 23:08:29 -0400  60) }
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  61) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  62) .landing-form {
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  63)     font-size: 15px;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  64) }
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  65) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  66) .landing-text,
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  67) .landing-form {
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  68)     color: #809bce;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  69)     
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  70) }
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  71) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  72) .landing-text,
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  73) .no-acc {
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  74)     font-size: 20px;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  75) }
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  76) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  77) .landing-btn {
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  78)     background-color: #e2efe7;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  79)     color: #809bce;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  80) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  81)     height: 35px;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  82)     width: 115px;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  83) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  84)     font-size: 20px;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  85) }
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  86) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  87) .landing-link:link {
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  88)     text-decoration: none;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  89) }
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400  90) /* STYLE CRISPY */
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  91) .asteriskField {
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  92)     display: none;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  93) }
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  94) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  95) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  96) .text-box {
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  97)     position: relative;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  98)     top: -50px;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  99) }
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 100) .forgot-pass,
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 101) .landing-btn {
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 102)     position: relative;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 103)     top: -15px;
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 104) }
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 105) 
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 106) 
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 107) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 240) #home {
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 241)     padding-top: 20px;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 242) }
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 243) 
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 317) /* NEW SECTION, NEW RECIPE, AND ALL RECIPES PAGES */
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 319) #new-recipe,
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 320) #all-recipes {
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 326) #new-section h2,
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 327) #new-recipe h2,
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 328) #all-recipes h2 {
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 329)     font-size: 36px;
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 330) }
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 331) 
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 332) /* STYLE NEW SECTION PAGE */
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 351)     min-height: 32vh;
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 391) select {
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 392)     outline: none;
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 393) }
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 419) /* STYLE NEW RECIPE PAGE */
+3f45c0fbd (Fatima Bowers 2022-10-26 12:44:38 -0400 448) .amount-col {
+3f45c0fbd (Fatima Bowers 2022-10-26 12:44:38 -0400 449)     padding: 0;
+3f45c0fbd (Fatima Bowers 2022-10-26 12:44:38 -0400 450) }
+3f45c0fbd (Fatima Bowers 2022-10-26 12:44:38 -0400 451) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 466) 
+3f45c0fbd (Fatima Bowers 2022-10-26 12:44:38 -0400 468)     max-width: 80vw;
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 479) .ingredient-title,
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 480) .amount-title {
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 481)     display: flex;
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 482)     align-items: center;
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 483)     height: 46px;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 490) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 496) /* STYLE INDIVIDUAL RECIPE PAGE */
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 497) #recipe {
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 498)     padding: 10px;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 499) }
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 500) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 501) .recipe-top {
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 502)     display: flex;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 503)     justify-content: space-between;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 504)     align-items: flex-end;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 505) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 506) }
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 507) #recipe-title {
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 508) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 509)     margin: 0;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 510)     margin-left: 15px;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 511)     font-size: 35px;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 512) }
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 514) /* blue text */
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 515) #recipe-title,
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 516) .mini-left,
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 517) .mini-right {
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 518)     color: #809bce;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 519) }
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 521) /* green text */
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 522) #recipe-time,
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 523) .recipe-left,
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 524) .recipe-right {
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 525)     color: #b8d8cd;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 526)     font-size: 28px;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 527) }
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 528) #recipe-time {
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 529)     margin: 0;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 530)     margin-right: 15px;  
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 531) }
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 533) hr {
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 534)     background-color: #b8d8cd;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 535)     height: 2px;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 536)     border: none;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 537) }
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 540) .recipe-left,
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 541) .recipe-right {
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 542)     text-align: center;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 543) }
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 544) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 545) .mini-left{
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 546)     padding: 5px;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 547) }
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 548) .mini-left,
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 549) .mini-right {
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 550)     font-size: 22px;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 551) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 552) }
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 553) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 554) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 555) /* set for all buttons */
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 556) button,
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 557) button[type=submit] {
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 558)     border: none;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 559)     outline: none;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 560)     cursor: pointer;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 561) }
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 562) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 563) .blue-btn {
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 564)     color: #ffff;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 565)     background-color: #809bce;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 566) }
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 567) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 568) .green-btn {
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 569)     color: #809bce;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 570)     background-color: #e2efe7;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 571)     
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 572) }
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 573) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 574) .blue-btn,
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 575) .green-btn {
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 576)     height: 50px;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 577)     width: 150px;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 578)     margin: 15px;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 579)     font-size: 20px;
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 580) 
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 581) }
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 582) 
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 583) 
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 584) 
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 585) /* STYLE ALL RECIPES PAGE */
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 586) 
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 587) .all-recipes-row {
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 588)     display: flex;
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 589)     justify-content: center;
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 590) }
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 591) .all-sections {
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 592)     border: 2px solid rgba(226, 239, 231, 0.6);
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 593)     color: #809bce;
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 594)     background-color: rgba(226, 239, 231, 0.6);
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 595) 
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 596) 
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 597)     font-size: 25px;
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 598)     margin: 12px;
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 599)     border-radius: 10px;
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 600) 
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 601)     display: flex;
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 602)     justify-content: space-between;
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 603)     align-items: center;
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 604)     padding: 10px;
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 605) 
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 606) }
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 607) 
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 608) .all-recipes-text {
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 609)     margin: 0;
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 610) 
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 611) }
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 612) 
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 613) 
+
+File: recipe_box/static/recipe_box_js.js
+
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 18) 			$(ing_wrapper).append('<div class="row" id="row-ing-amt"><div class="ingredient-col col-sm-7"><input type="text" id="ingredient" name="Ingredient"></div><div class="amount-col col-sm-4"><input type="text" id="amount" name="Amount"><a href="#" id="remove" class="remove_field">Remove</a></div></div>'); //add input box
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 24) 		e.preventDefault(); $('#row-ing-amt').remove(); x--;
+
+File: recipe_box/templates/registration/login.html
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  1) {% load static %}
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  2) {% load crispy_forms_tags %}
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  4) <!doctype html>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  5) <html lang="en">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  6)   <head>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  7)     <!-- Required meta tags -->
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  8)     <meta charset="utf-8">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  9)     <meta name="viewport" content="width=device-width, initial-scale=1">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 10) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 11)     <!-- Bootstrap CSS -->
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 12)     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 13)     <!-- Custom CSS -->
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 14)     <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">  
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 15)     <!-- Font -->
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 16)     <link href='https://fonts.googleapis.com/css?family=Sansita' rel='stylesheet'>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 17)   </head>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 18) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 19)   <body>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 20)     <!-- Optional JavaScript -->
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 21)     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 22)     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 23)     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 24)     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 25) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 26)     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 27)     <script src="{% static 'recipe_box_js.js' %}"></script>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 31) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 32) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 33) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 34)    
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 35) </div>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 36) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 37)     <section id="landing">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 38)         <div class="landing-box">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 39) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 40)             <a class="landing-logo" href="/login"><img class="logo-img" src="{% static 'img/blue-logo.png' %}"></a>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 41)         
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 42)             <div class="text-box">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 43)             <p class="landing-text">Login to start cooking!</p>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 44)         
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 45) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 46)         
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 47)             <div class="landing-account">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 48)                 <form method="post" class="form-group landing-form">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 49)                     {% csrf_token %}
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 50)                     {{form|crispy}}
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 51)                     
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 52)                     <p class="forgot-pass">Forgot password? Click <a class="landing-link" href="../password_reset/">here!</a></p>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 53)                     <a href="../home"><button type="submit" class="landing-btn">Login</button></a>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 54) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 55)                     <p class="no-acc">No account? Create one <a class="landing-link" href="../create_account/">here!</a></p>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 56)                 </form>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 57)             </div>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 58)             </div>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 59)         </div>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 60)     </section>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 62) </body>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 63) </html>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 65) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 66) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  1) {% load static %}
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  2) {% load crispy_forms_tags %}
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  4) <!doctype html>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  5) <html lang="en">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  6)   <head>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  7)     <!-- Required meta tags -->
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  8)     <meta charset="utf-8">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  9)     <meta name="viewport" content="width=device-width, initial-scale=1">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 10) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 11)     <!-- Bootstrap CSS -->
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 12)     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 13)     <!-- Custom CSS -->
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 14)     <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">  
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 15)     <!-- Font -->
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 16)     <link href='https://fonts.googleapis.com/css?family=Sansita' rel='stylesheet'>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 17)   </head>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 18) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 19)   <body>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 20)     <!-- Optional JavaScript -->
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 21)     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 22)     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 23)     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 24)     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 25) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 26)     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 27)     <script src="{% static 'recipe_box_js.js' %}"></script>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 31) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 32) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 33) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 34)    
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 35) </div>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 36) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 37)     <section id="landing">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 38)         <div class="landing-box">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 39) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 40)             <a class="landing-logo" href="/login"><img class="logo-img" src="{% static 'img/blue-logo.png' %}"></a>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 41)         
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 42)             <div class="text-box">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 43)             <p class="landing-text">Login to start cooking!</p>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 44)         
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 45) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 46)         
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 47)             <div class="landing-account">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 48)                 <form method="post" class="form-group landing-form">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 49)                     {% csrf_token %}
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 50)                     {{form|crispy}}
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 51)                     
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 52)                     <p class="forgot-pass">Forgot password? Click <a class="landing-link" href="../password_reset/">here!</a></p>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 53)                     <a href="../home"><button type="submit" class="landing-btn">Login</button></a>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 54) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 55)                     <p class="no-acc">No account? Create one <a class="landing-link" href="../create_account/">here!</a></p>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 56)                 </form>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 57)             </div>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 58)             </div>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 59)         </div>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 60)     </section>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 62) </body>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 63) </html>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 65) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 66)
+
+File: recipe_box/templates/all_recipes.html
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400  6)     <h2>All Recipes</h2>
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400  7) 
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400  8)     <div class="row all-recipes-row">
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400  9)         <div class="col-sm-11 all-sections">
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 10)             <p class="all-recipes-text">Recipe Title</p>
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 11)             <p class="all-recipes-text">Time: ##</p>
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 12)         </div>             
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 13)         <div class="col-sm-11 all-sections">
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 14)             <p class="all-recipes-text">Recipe Title</p>
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 15)             <p class="all-recipes-text">Time: ##</p>
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 16)         </div>
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 17)         <div class="col-sm-11 all-sections">
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 18)             <p class="all-recipes-text">Recipe Title</p>
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 19)             <p class="all-recipes-text">Time: ##</p>
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 20)         </div>
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 21)         <div class="col-sm-11 all-sections">
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 22)             <p class="all-recipes-text">Recipe Title</p>
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 23)             <p class="all-recipes-text">Time: ##</p>
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 24)         </div>       
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 25)         <div class="col-sm-11 all-sections">
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 26)             <p class="all-recipes-text">Recipe Title</p>
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 27)             <p class="all-recipes-text">Time: ##</p>
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 28)         </div>         
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 29)     
+88b9af477 (Fatima Bowers 2022-10-27 14:31:45 -0400 30)     </div>
+
+File: recipe_box/templates/base.html
+974255ef1 (Fatima Bowers 2022-10-22 17:37:49 -0400 40)     <a class="navbar-brand" href="/home">
+
+File: recipe_box/templates/individual_recipe.html
+652829d53 (Fatima Bowers 2022-10-18 23:25:40 -0400  1) {% extends "base.html" %}
+652829d53 (Fatima Bowers 2022-10-18 23:25:40 -0400  2) {% block page_content %}
+652829d53 (Fatima Bowers 2022-10-18 23:25:40 -0400  3) 
+652829d53 (Fatima Bowers 2022-10-18 23:25:40 -0400  4) <title>Individual Recipe</title>
+652829d53 (Fatima Bowers 2022-10-18 23:25:40 -0400  5) <section id="recipe">
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400  6) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400  7)     <!-- Recipe title and time section -->
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400  8)     <div class="row recipe-top">
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400  9)         <p id="recipe-title">Recipe Title</p>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 10)         <p id="recipe-time">Time: ##</p>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 11) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 12)     </div>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 13) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 14)     <hr>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 15) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 16)     <!-- Ingredients and directions section-->
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 17)     <div class="row recipe-middle">
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 18)         <div class="col-sm-4 recipe-left">
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 19)             <p>Ingredients</p>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 20)             <div class="row">
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 21)                 <div class="col-sm-12 mini-left">Amount Ingredient</div>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 22)                 <div class="col-sm-12 mini-left">Amount Ingredient</div>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 23)                 <div class="col-sm-12 mini-left">Amount Ingredient</div>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 24)             </div>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 25) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 26)         </div>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 27) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 28)         <div class="col-sm-8 recipe-left">
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 29)             <p>Directions</p>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 30)             <div class="col-sm-12 mini-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 31)             <hr>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 32)             <div class="col-sm-12 mini-right">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 33)             <hr>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 34)             <div class="col-sm-12 mini-right">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </div>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 35)         </div>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 36)     </div>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 37) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 38)     <!-- Buttons section-->
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 39)     <div class="row recipe-bottom">
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 40)         <button type="submit" class="blue-btn">Edit</button>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 41)         <button type="submit" class="green-btn">Add to Pinned</button>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 42)         <button type="submit" class="green-btn">Add to Section</button>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 43) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 44)     </div>
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 45) 
+17ebc145b (Fatima Bowers 2022-10-23 22:22:24 -0400 46) 
+652829d53 (Fatima Bowers 2022-10-18 23:25:40 -0400 47) </section>
+652829d53 (Fatima Bowers 2022-10-18 23:25:40 -0400 48) 
+652829d53 (Fatima Bowers 2022-10-18 23:25:40 -0400 49) {% endblock %}
+
+File: recipe_box/templates/landing.html
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  1) {% load static %}
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400  2) {% load crispy_forms_tags %}
+d3a344748 (Fatima Bowers 2022-10-16 23:32:35 -0400  3) 
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  4) <!doctype html>
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  5) <html lang="en">
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  6)   <head>
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  7)     <!-- Required meta tags -->
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  8)     <meta charset="utf-8">
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400  9)     <meta name="viewport" content="width=device-width, initial-scale=1">
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 10) 
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 11)     <!-- Bootstrap CSS -->
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 12)     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 13)     <!-- Custom CSS -->
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 14)     <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">  
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 15)     <!-- Font -->
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 16)     <link href='https://fonts.googleapis.com/css?family=Sansita' rel='stylesheet'>
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 17)   </head>
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 18) 
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 19)   <body>
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 20)     <!-- Optional JavaScript -->
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 21)     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 22)     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 23)     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 24)     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 25) 
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 26)     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 27)     <script src="{% static 'recipe_box_js.js' %}"></script>
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 28) 
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 29) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 30)     {% block content %}
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 31) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 32) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 33) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 34)    
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 35) </div>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 36) 
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 37)     <section id="landing">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 38)         <div class="landing-box">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 39) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 40)             <a class="landing-logo" href="/login"><img class="logo-img" src="{% static 'img/blue-logo.png' %}"></a>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 41)         
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 42)             <div class="text-box">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 43)             <p class="landing-text">Login to start cooking!</p>
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 44)         
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 45) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 46)         
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 47)             <div class="landing-account">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 48)                 <form method="post" class="form-group landing-form">
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 49)                     {% csrf_token %}
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 50)                     {{form|crispy}}
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 51)                     
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 52)                     <p class="forgot-pass">Forgot password? Click <a class="landing-link" href="../password_reset/">here!</a></p>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 53)                     <a href="../home"><button type="submit" class="landing-btn">Login</button></a>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 54) 
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 55)                     <p class="no-acc">No account? Create one <a class="landing-link" href="../create_account/">here!</a></p>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 56)                 </form>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 57)             </div>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 58)             </div>
+9f79fd0d7 (Fatima Bowers 2022-10-23 23:08:29 -0400 59)         </div>
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 60)     </section>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 61) </section>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 62) </body>
+0072d7e32 (Fatima Bowers 2022-10-19 00:06:12 -0400 63) </html>
+7b3f85a6e (Fatima Bowers 2022-10-24 21:34:35 -0400 64) {% endblock %}
+
+File: recipe_box/templates/new_recipe.html
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 23)         <option value="select-option">-select option-</option>
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 24)         <option value="Section1">section 1</option>
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 25)         <option value="Section2">section 2</option>
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 26)         <option value="Section3">section 3</option>
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 31)         
+3f45c0fbd (Fatima Bowers 2022-10-26 12:44:38 -0400 33)             <div class="row">
+3f45c0fbd (Fatima Bowers 2022-10-26 12:44:38 -0400 34)                 <div class="ingredient-col col-sm-7">
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 35)                     <div class="ingredient-title">
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 36)                         <label for="Ingredient">Ingredients</label>
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 37)                         <button id="add-btn" class="add_ingredient_button">Add Ingredient</button>
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 38)                     </div>
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 39)                     <input type="text" id="ingredient" name="Ingredient">
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 41) 
+c9b940399 (Fatima Bowers 2022-10-25 11:29:27 -0400 42)                 <div class="amount-col col-sm-4">
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 43)                     <div class="amount-title">
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 44)                         <label for="Amount">Amounts</label>
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 45)                     </div>
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 46)                     <input type="text" id="amount" name="Amount">
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 51)         
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 52)      
+08fd23c00 (Fatima Bowers 2022-10-26 19:21:27 -0400 53)                 
+974255ef1 (Fatima Bowers 2022-10-22 17:37:49 -0400 74)         <a href="/home">
+
+File: recipe_box/templates/new_section.html
+974255ef1 (Fatima Bowers 2022-10-22 17:37:49 -0400 39)     <a href="/home">
