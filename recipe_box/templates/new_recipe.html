@@ -23,32 +23,37 @@
         <!--drop down menu for selecting section-->
         <label for="Section">Section</label>
         <select id="section-selection" name="Section">
-        <option value="select-option">-Select Option-</option>
-        <option value="Section1">Section 1</option>
-        <option value="Section2">Section 2</option>
-        <option value="Section3">Section 3</option>
+        <option value="select-option">-select option-</option>
+        <option value="Section1">section 1</option>
+        <option value="Section2">section 2</option>
+        <option value="Section3">section 3</option>
         </select>
 
         <!--code for adding and removing text boxes based on tutorial from https://www.sanwebe.com/2013/03/addremove-input-fields-dynamically-with-jquery-->
         <!--input box for ingredients, add more boxes as needed-->
+        
         <div class="input_ingredient_wrap">
             <div class="row">
                 <div class="ingredient-col col-sm-7">
-                    <label for="Ingredient">Ingredients</label>
-                    <button id="add-btn" class="add_ingredient_button">Add Ingredient</button>
-                </div>
-                <div class="amount-col col-sm-4">
-                    <label for="Amount">Amounts</label>
-                </div>
-                
-                <div class="col">
-                <input type="text" id="ingredient" name="Ingredient">
-                <input type="text" id="amount" name="Amount" class="first-amt">
+                    <div class="ingredient-title">
+                        <label for="Ingredient">Ingredients</label>
+                        <button id="add-btn" class="add_ingredient_button">Add Ingredient</button>
+                    </div>
+                    <input type="text" id="ingredient" name="Ingredient">
                 </div>
 
+                <div class="amount-col col-sm-4">
+                    <div class="amount-title">
+                        <label for="Amount">Amounts</label>
+                    </div>
+                    <input type="text" id="amount" name="Amount">
+                </div>
             </div>
         </div>
 
+        
+     
+                
         <br>
 
         <!--input box for directions, add more boxes as needed-->

@@ -15,13 +15,14 @@
 		e.preventDefault();
 		if(x < max_fields){ //max input box allowed
 			x++; //text box increment
-			$(ing_wrapper).append('<div class="col new-ing"><input type="text" id="ingredient" name="Ingredient"><input type="text" id="amount" name="Amount" class="new-amt"><a href="#" id="remove" class="remove_field">Remove</a></div>'); //add input box
+			$(ing_wrapper).append('<div class="row" id="row-ing-amt"><div class="ingredient-col col-sm-7"><input type="text" id="ingredient" name="Ingredient"></div><div class="amount-col col-sm-4"><input type="text" id="amount" name="Amount"><a href="#" id="remove" class="remove_field">Remove</a></div></div>'); //add input box
 		}
 	});
 
 	//remove ingredient box and amount on click 
     $(ing_wrapper).on("click",".remove_field", function(e){ 
-		e.preventDefault(); $(this).parent('div').remove();  x--;
+		e.preventDefault(); $('#row-ing-amt').remove(); x--;
+		// $(this).parent('div').remove();  x--;
 	})
 
 	//add description on click 
