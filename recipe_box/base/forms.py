@@ -14,7 +14,7 @@ class RegisterForm(UserCreationForm):
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
-        fields = ['name', 'description']
+        fields = ['name', 'description', 'time_to_make']
 
 class IngredientForm(forms.ModelForm):
     class Meta:
