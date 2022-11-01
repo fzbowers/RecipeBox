@@ -299,7 +299,12 @@ footer {
 .col-link {
     color: #809bce;
 }
-.col-link:link {
+
+.col-pinned-link {
+    color: #ffff;
+}
+.col-link:link,
+.col-pinned-link:link {
     text-decoration: none;
 }
 

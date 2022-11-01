@@ -62,12 +62,16 @@ def account(request):
 def login(request):
     return render(request, "registration/login.html")
 
-def individual_recipe(request, id=None):
-    obj = get_object_or_404(Recipe, id=id, user=request.user)
-    context = {
-        "object": obj
-    }
-    return render(request, "individual_recipe.html", context)
+#def individual_recipe(request, id=None):
+#    obj = get_object_or_404(Recipe, id=id, user=request.user)
+#    context = {
+#        "object": obj
+#    }
+#return render(request, "individual_recipe.html", context)
+
+def individual_recipe(request):
+    return render(request, "individual_recipe.html")
+
 
 def create_account(response):
     if response.method == "POST":
