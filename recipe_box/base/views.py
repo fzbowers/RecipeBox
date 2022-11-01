@@ -1,12 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 #from django.contrib.auth import login, authenticate
 #from django.contrib.auth.forms import UserCreationForm
-from .forms import RegisterForm
+from .forms import RegisterForm, RecipeForm, IngredientForm, InstructionForm
 from django.views.generic import TemplateView, ListView
 
 #Importing stuff for sending reset password email
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.models import User
 from django.template.loader import render_to_string
@@ -38,10 +39,19 @@ def search(request):
     return render(request, "search.html")
   
 def new_recipe(request):
+    form = RecipeForm(request.POST or None)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.user = request.user
+        obj.save()
     return render(request, "new_recipe.html")
   
 def all_recipes(request):
-    return render(request, "all_recipes.html")
+  #  qs = Recipe.objects.filter(user=request.user)
+  #  context = {
+  #      "object_list": qs
+  #  }
+    return render(request, "all_recipes.html") # add context #
 
 def new_section(request):
     return render(request, "new_section.html")
@@ -52,8 +62,12 @@ def account(request):
 def login(request):
     return render(request, "registration/login.html")
 
-def individual_recipe(request):
-    return render(request, "individual_recipe.html")
+def individual_recipe(request, id=None):
+    obj = get_object_or_404(Recipe, id=id, user=request.user)
+    context = {
+        "object": obj
+    }
+    return render(request, "individual_recipe.html", context)
 
 def create_account(response):
     if response.method == "POST":

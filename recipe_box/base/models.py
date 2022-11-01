@@ -19,6 +19,7 @@ class Recipe(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length = 150)
     description = models.TextField(null=True, blank=True)
+    time_to_make = models.CharField(max_length = 25)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     section = models.ForeignKey(Section, on_delete=models.PROTECT)
