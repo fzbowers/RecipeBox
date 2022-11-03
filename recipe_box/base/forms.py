@@ -11,6 +11,11 @@ class RegisterForm(UserCreationForm):
         model = User
         fields = ["username", "email", "password1", "password2"]
 
+class SectionForm(forms.ModelForm):
+    class Meta:
+        model = Section
+        fields = ['name', 'color', 'description']
+
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
