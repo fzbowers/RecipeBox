@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Recipe, Ingredient, Instruction
+from .models import Recipe, Ingredient, Instruction, Section
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -14,9 +14,11 @@ class RegisterForm(UserCreationForm):
 class SectionForm(forms.ModelForm):
     class Meta:
         model = Section
-        fields = ['name', 'color', 'description']
+        fields = ['name', 'description']
+        #fields = ['name', 'color', 'description']
 
 class RecipeForm(forms.ModelForm):
+    recipe_title = forms.CharField()
     class Meta:
         model = Recipe
         fields = ['name', 'description', 'time_to_make']

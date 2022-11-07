@@ -33,25 +33,51 @@ class SearchResultsView(ListView):
         return object_list
 
 def home(request):
+
     return render(request, "home.html")
 
 def search(request):
     return render(request, "search.html")
   
-def new_recipe(request):
-    form = RecipeForm(request.POST or None)
-    if form.is_valid():
-        obj = form.save(commit=False)
-        obj.user = request.user
-        obj.save()
-    return render(request, "new_recipe.html")
-  
+
+def new_recipe(request, id=None):
+    context = {}
+    return render(request, "new_recipe.html", context=context)
+
+
+    #recipe_queryset = Ingredient.objects
+    # check vid 18 to write ingredient - amount
+    #recipe_queryset = Instruction.objects
+def individual_recipe(request, title=None):
+    recipe_obj = None
+    if title is not None:
+        recipe_obj = Recipe.objects.get(name=title)
+
+    context = {
+        "name": recipe_obj.name,
+        "time_to_make": recipe_obj.time_to_make,
+        "description": recipe_obj.description
+    }
+    
+    return render(request, "individual_recipe.html", context=context) 
+
 def all_recipes(request):
-  #  qs = Recipe.objects.filter(user=request.user)
-  #  context = {
-  #      "object_list": qs
-  #  }
-    return render(request, "all_recipes.html") # add context #
+    recipe_qs = Recipe.objects.filter(user=request.user)
+    #all() #qs = queryset
+    context = {
+        "recipe_list": recipe_qs,
+    }
+    return render(request, "all_recipes.html", context=context) 
+
+
+#def new_recipe(request):
+#    form = RecipeForm(request.POST or None)
+#    if form.is_valid():
+#        obj = form.save(commit=False)
+#        obj.user = request.user
+#        obj.save()
+#    return render(request, "new_recipe.html", {"form": form})
+  
 
 def new_section(request):
     return render(request, "new_section.html")
@@ -68,9 +94,6 @@ def login(request):
 #        "object": obj
 #    }
 #return render(request, "individual_recipe.html", context)
-
-def individual_recipe(request):
-    return render(request, "individual_recipe.html")
 
 
 def create_account(response):
