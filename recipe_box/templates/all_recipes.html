@@ -5,28 +5,17 @@
 <section id="all-recipes">
     <h2>All Recipes</h2>
 
-    <div class="row all-recipes-row">
-        <div class="col-sm-11 all-sections">
-            <p class="all-recipes-text">Recipe Title</p>
-            <p class="all-recipes-text">Time: ##</p>
-        </div>             
-        <div class="col-sm-11 all-sections">
-            <p class="all-recipes-text">Recipe Title</p>
-            <p class="all-recipes-text">Time: ##</p>
-        </div>
-        <div class="col-sm-11 all-sections">
-            <p class="all-recipes-text">Recipe Title</p>
-            <p class="all-recipes-text">Time: ##</p>
-        </div>
-        <div class="col-sm-11 all-sections">
-            <p class="all-recipes-text">Recipe Title</p>
-            <p class="all-recipes-text">Time: ##</p>
-        </div>       
-        <div class="col-sm-11 all-sections">
-            <p class="all-recipes-text">Recipe Title</p>
-            <p class="all-recipes-text">Time: ##</p>
-        </div>         
     
+    <div class="row all-recipes-row">
+
+        {% for x in recipe_list %}
+        <div class="col-sm-11 all-sections">
+            <a href="../{{ x.name }}/"><p class="all-recipes-text">{{ x.name }}</p></a>
+            <p class="all-recipes-text">Time: {{ x.time_to_make }}</p>
+        
+        </div>   
+        {% endfor%}
+        
     </div>
 </section>
 

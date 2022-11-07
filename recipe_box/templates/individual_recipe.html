@@ -6,11 +6,9 @@
 
     <!-- Recipe title and time section -->
     <div class="row recipe-top">
-        <p id="recipe-title">Recipe Title</p>
-        <p id="recipe-time">Time: ##</p>
-
+        <p id="recipe-title">{{ name }}</p>
+        <p id="recipe-time">Time: {{ time_to_make }}</p>
     </div>
-
     <hr>
 
     <!-- Ingredients and directions section-->
@@ -27,7 +25,7 @@
 
         <div class="col-sm-8 recipe-left">
             <p>Directions</p>
-            <div class="col-sm-12 mini-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+            <div class="col-sm-12 mini-right">{{ description }}</div>
             <hr>
             <div class="col-sm-12 mini-right">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
             <hr>
