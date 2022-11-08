@@ -16,9 +16,10 @@ from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 
-from .models import Recipe
+from .models import Recipe, Ingredient, Instruction, Section
 
 # Create your views here.
+
 
 # search function based on tutorial from https://learndjango.com/tutorials/django-search-tutorial
 class SearchResultsView(ListView):
@@ -32,26 +33,71 @@ class SearchResultsView(ListView):
         )
         return object_list
 
+
+@login_required(login_url="/login")
 def home(request):
+    section_qs = Section.objects.filter(user=request.user)
+    context = {
+        "home_section_list": section_qs,
+    }
+    return render(request, "home.html", context)
 
-    return render(request, "home.html")
-
+@login_required
 def search(request):
     return render(request, "search.html")
   
+@login_required
+def new_recipe(request):
+    section_qs = Section.objects.filter(user=request.user)
+    context = {
+        "section_list": section_qs,
+    }
+    
+    print(request.POST)
 
-def new_recipe(request, id=None):
-    context = {}
-    return render(request, "new_recipe.html", context=context)
+    '''
+    context = {
+        "form": RecipeForm()
+    }
+   
+    if request.method == "POST":
+        title = request.POST.get("Title")
+        time = request.POST.get("Time")
+        section = request.POST.get("Section")
+        print(title, time, section)
+
+        recipe_obj = Recipe.objects.create(name=title,time_to_make=time,)
+        
+        context = {
+            'recipe_obj': recipe_obj,
+            'created': True
+        }
+        '''
+
+    return render(request, "new_recipe.html", context)
+
+'''
+@login_required
+def edit_recipe(request, title=None, *args, **kwargs):
+    recipe_obj = get_object_or_404(Recipe, name=title, user=request.user)
+    form = RecipeForm(request.POST or None, instance=recipe_obj)
+    return render(request, "new_recipe.html", context)
+'''
 
 
     #recipe_queryset = Ingredient.objects
     # check vid 18 to write ingredient - amount
     #recipe_queryset = Instruction.objects
-def individual_recipe(request, title=None):
+@login_required
+def individual_recipe(request, title=None, *args, **kwargs):
     recipe_obj = None
     if title is not None:
-        recipe_obj = Recipe.objects.get(name=title)
+        try:
+            recipe_obj = Recipe.objects.get(name=title)
+        except:
+            recipe_obj = None
+        if recipe_obj is None:
+            return HttpResponse("Recipe Not found.")
 
     context = {
         "name": recipe_obj.name,
@@ -59,15 +105,16 @@ def individual_recipe(request, title=None):
         "description": recipe_obj.description
     }
     
-    return render(request, "individual_recipe.html", context=context) 
+    return render(request, "individual_recipe.html", context) 
 
+@login_required
 def all_recipes(request):
     recipe_qs = Recipe.objects.filter(user=request.user)
     #all() #qs = queryset
     context = {
         "recipe_list": recipe_qs,
     }
-    return render(request, "all_recipes.html", context=context) 
+    return render(request, "all_recipes.html", context) 
 
 
 #def new_recipe(request):
@@ -78,15 +125,15 @@ def all_recipes(request):
 #        obj.save()
 #    return render(request, "new_recipe.html", {"form": form})
   
-
+@login_required
 def new_section(request):
     return render(request, "new_section.html")
 
+@login_required
 def account(request):
     return render(request, "account.html")
 
-def login(request):
-    return render(request, "registration/login.html")
+
 
 #def individual_recipe(request, id=None):
 #    obj = get_object_or_404(Recipe, id=id, user=request.user)

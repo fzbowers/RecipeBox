@@ -6,7 +6,6 @@ from .models import Recipe, Ingredient, Instruction, Section
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField()
-
     class Meta:
         model = User
         fields = ["username", "email", "password1", "password2"]
@@ -18,7 +17,7 @@ class SectionForm(forms.ModelForm):
         #fields = ['name', 'color', 'description']
 
 class RecipeForm(forms.ModelForm):
-    recipe_title = forms.CharField()
+
     class Meta:
         model = Recipe
         fields = ['name', 'description', 'time_to_make']

@@ -15,6 +15,9 @@ class Section(models.Model):
     class Meta:
         verbose_name = ('Section')
         verbose_name_plural = ('Sections')
+    
+    def __str__(self):
+        return self.name
 
 class Recipe(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -29,6 +32,10 @@ class Recipe(models.Model):
     class Meta:
         verbose_name = ('Recipe')
         verbose_name_plural = ('Recipes')
+    
+    def __str__(self):
+        return self.name
+        
 
 class Ingredient(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
@@ -38,6 +45,9 @@ class Ingredient(models.Model):
     class Meta:
         verbose_name = ('Ingredient')
         verbose_name_plural = ('Ingredients')
+    
+    def __str__(self):
+        return self.name
 
 
 class Instruction(models.Model):
