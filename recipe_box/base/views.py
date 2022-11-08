@@ -17,6 +17,8 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.db.models import Q
 
+from django.forms.models import modelformset_factory # querysets
+
 from .models import Recipe, Ingredient, Instruction, Section
 
 # Create your views here.
@@ -46,64 +48,49 @@ def home(request):
 @login_required
 def search(request):
     return render(request, "search.html")
-  
+
 @login_required
 def new_recipe(request):
-    section_qs = Section.objects.filter(user=request.user)
+    form = RecipeForm(request.POST or None)
+
+    RecipeIngredientFormset = modelformset_factory(Ingredient, form=IngredientForm, extra=1)
+    qs = Ingredient.objects.none()
+    formset = RecipeIngredientFormset(request.POST or None, queryset=qs)
+    
     context = {
-        "section_list": section_qs,
+        "form": form,
+        "formset": formset
     }
     
-    print(request.POST)
+    if form.is_valid() and formset.is_valid():
+        print("IM IN CREATE IF")
+        recipe = form.save(commit=False)
+        recipe.user = request.user
+        recipe.save()
+        for form in formset:
+            ingredient = form.save(commit=False)
+            ingredient.recipe = recipe
+            ingredient.save()
+        return redirect(recipe.get_absolute_url())
 
-    '''
-    context = {
-        "form": RecipeForm()
-    }
-   
-    if request.method == "POST":
-        title = request.POST.get("Title")
-        time = request.POST.get("Time")
-        section = request.POST.get("Section")
-        print(title, time, section)
+    return render(request, "new_recipe.html", context) 
 
-        recipe_obj = Recipe.objects.create(name=title,time_to_make=time,)
-        
-        context = {
-            'recipe_obj': recipe_obj,
-            'created': True
-        }
-        '''
 
-    return render(request, "new_recipe.html", context)
-
-'''
+#### NOT WORKING
 @login_required
 def edit_recipe(request, title=None, *args, **kwargs):
-    recipe_obj = get_object_or_404(Recipe, name=title, user=request.user)
-    form = RecipeForm(request.POST or None, instance=recipe_obj)
-    return render(request, "new_recipe.html", context)
-'''
+    context = {}
+    return render(request, "new_recipe.html", context) 
 
 
-    #recipe_queryset = Ingredient.objects
-    # check vid 18 to write ingredient - amount
-    #recipe_queryset = Instruction.objects
 @login_required
 def individual_recipe(request, title=None, *args, **kwargs):
     recipe_obj = None
     if title is not None:
-        try:
-            recipe_obj = Recipe.objects.get(name=title)
-        except:
-            recipe_obj = None
-        if recipe_obj is None:
-            return HttpResponse("Recipe Not found.")
+        recipe_obj = get_object_or_404(Recipe, name=title, user=request.user)
 
     context = {
-        "name": recipe_obj.name,
-        "time_to_make": recipe_obj.time_to_make,
-        "description": recipe_obj.description
+        "recipe_obj": recipe_obj
     }
     
     return render(request, "individual_recipe.html", context) 
@@ -111,20 +98,11 @@ def individual_recipe(request, title=None, *args, **kwargs):
 @login_required
 def all_recipes(request):
     recipe_qs = Recipe.objects.filter(user=request.user)
-    #all() #qs = queryset
     context = {
         "recipe_list": recipe_qs,
     }
     return render(request, "all_recipes.html", context) 
 
-
-#def new_recipe(request):
-#    form = RecipeForm(request.POST or None)
-#    if form.is_valid():
-#        obj = form.save(commit=False)
-#        obj.user = request.user
-#        obj.save()
-#    return render(request, "new_recipe.html", {"form": form})
   
 @login_required
 def new_section(request):
@@ -134,14 +112,6 @@ def new_section(request):
 def account(request):
     return render(request, "account.html")
 
-
-
-#def individual_recipe(request, id=None):
-#    obj = get_object_or_404(Recipe, id=id, user=request.user)
-#    context = {
-#        "object": obj
-#    }
-#return render(request, "individual_recipe.html", context)
 
 
 def create_account(response):
