@@ -13,8 +13,8 @@ class RegisterForm(UserCreationForm):
 class SectionForm(forms.ModelForm):
     class Meta:
         model = Section
-        fields = ['name', 'description']
-        #fields = ['name', 'color', 'description']
+        #fields = ['name', 'description']
+        fields = ['name', 'color', 'description']
 
 class RecipeForm(forms.ModelForm):
 

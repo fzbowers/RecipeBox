@@ -21,6 +21,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=120, unique=True)),
                 ('description', models.TextField(blank=True, null=True)),
                 ('order_index', models.PositiveIntegerField(blank=True, null=True)),
+                #('color', models.CharField(max_length = 16, default="#ffffff")),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
             options={
