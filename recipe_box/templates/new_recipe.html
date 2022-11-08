@@ -9,6 +9,8 @@
 
         {% if not created %}
 
+        {{ form.as_p }}
+
         <form method="post">
             {% csrf_token %}
 
@@ -24,13 +26,24 @@
 
         <!--drop down menu for selecting section-->
         <label for="Section">Section</label>
+
+        <select id="section-selection" name="Section">
+        <option value="select-option-recipe">-select option-</option>
+        {% for x in section_list %}
+        <option value="Section">{{ x.name }}</option>
+        {% endfor%}
+        </select>
+
+
+
+<!--
         <select id="section-selection" name="Section">
         <option value="select-option">-select option-</option>
         <option value="Section1">All Recipes</option>
         <option value="Section2">section 1</option>
         <option value="Section3">section 2</option>
         </select>
-
+    -->
         <!--code for adding and removing text boxes based on tutorial from https://www.sanwebe.com/2013/03/addremove-input-fields-dynamically-with-jquery-->
         <!--input box for ingredients, add more boxes as needed-->
         
