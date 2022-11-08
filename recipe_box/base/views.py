@@ -78,7 +78,37 @@ def new_recipe(request):
 #### NOT WORKING
 @login_required
 def edit_recipe(request, title=None, *args, **kwargs):
+    obj = get_object_or_404(Recipe, name=title, user=request.user)
     context = {}
+
+    form = RecipeForm(request.POST or None, instance=obj)
+
+    RecipeIngredientFormset = modelformset_factory(Ingredient, form=IngredientForm, extra=0)
+    qs = obj.ingredient_set.all() # []
+    formset = RecipeIngredientFormset(request.POST or None, queryset=qs)
+    context = {
+        "form": form,
+        "formset": formset,
+        "object": obj
+    }
+
+
+        
+    if all([form.is_valid(), formset.is_valid()]):
+        parent = form.save(commit=False)
+        parent.save()
+        # formset.save()
+        for form in formset:
+            child = form.save(commit=False)
+            child.recipe = parent
+            child.save()
+        context['message'] = 'Data saved.'
+    else:
+        print('This is form errors: ', form.errors)
+        print('This is formset errors: ', formset.errors)
+    if request.htmx:
+        return render(request, "partials/forms.html", context)
+
     return render(request, "new_recipe.html", context) 
 
 
