@@ -11,7 +11,7 @@
         {% for x in recipe_list %}
         <div class="col-sm-11 all-sections">
             <a href="./{{ x.name }}/"><p class="all-recipes-text">{{ x.name }}</p></a>
-            <p class="all-recipes-text">Time: {{ x.time_to_make }}</p>
+            <p class="all-recipes-text">Time: {{ x.time_to_make }} mins</p>
         
         </div>   
         {% endfor %}
