@@ -2,8 +2,6 @@ from django.urls import path
 from . import views
 from .views import SearchResultsView
 
-  
-## ADD LOGOUT PAGE
 # All pages of the website
 urlpatterns = [
     path("", views.home, name="home"),
