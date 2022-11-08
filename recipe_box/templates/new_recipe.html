@@ -7,13 +7,18 @@
         <h2>Add New Recipe</h2>
 
 
+        {% if not created %}
+
+        <form method="post">
+            {% csrf_token %}
+
         <!--inout box for adding title-->
-        <label for="Title"> Title</label>
+        <label for="Title">Title</label>
         <input type="text" id="title" name="Title">
         <br>
 
         <!--input box for time-->
-        <label for="Time"> Time</label>
+        <label for="Time">Time</label>
         <input type="text" id="time" name="Time">
         <br>
 
@@ -21,9 +26,9 @@
         <label for="Section">Section</label>
         <select id="section-selection" name="Section">
         <option value="select-option">-select option-</option>
-        <option value="Section1">section 1</option>
-        <option value="Section2">section 2</option>
-        <option value="Section3">section 3</option>
+        <option value="Section1">All Recipes</option>
+        <option value="Section2">section 1</option>
+        <option value="Section3">section 2</option>
         </select>
 
         <!--code for adding and removing text boxes based on tutorial from https://www.sanwebe.com/2013/03/addremove-input-fields-dynamically-with-jquery-->
@@ -69,12 +74,19 @@
         <br>
 
         <!--add and cancel buttons-->
-        <input type="submit" onclick="alert('can not add')" value="Create Recipe">  
+        <button id="create-btn" type="submit">Create Recipe</button>
         
         <a href="/home">
             <button id="cancel-btn" type="Cancel" >Cancel</button>
         </a>
 
+        </form>
+
+        {% else %}
+        <p>Your recipe was created.</p>
+        <a href="../{{ recipe_obj.name }}/"><p class="all-recipes-text">{{ recipe_obj.name }}</p></a>
+
+        {% endif %}
 
 
 </section>

@@ -300,11 +300,7 @@ footer {
     color: #809bce;
 }
 
-.col-pinned-link {
-    color: #ffff;
-}
-.col-link:link,
-.col-pinned-link:link {
+.col-link:link {
     text-decoration: none;
 }
 
@@ -359,8 +355,8 @@ footer {
 }
 
 
-input[type=submit],
-#cancel-btn {
+#cancel-btn,
+#create-btn {
     cursor: pointer;
     border: none;
 
@@ -368,7 +364,7 @@ input[type=submit],
 }
 
 
-input[type=submit] {
+#create-btn {
     background-color: #809bce;
     color: #ffff;
 

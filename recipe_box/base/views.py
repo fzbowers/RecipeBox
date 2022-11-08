@@ -16,7 +16,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 
-from .models import Recipe
+from .models import Recipe, Ingredient, Instruction, Section
 
 # Create your views here.
 
@@ -32,26 +32,44 @@ class SearchResultsView(ListView):
         )
         return object_list
 
-def home(request):
 
+@login_required(login_url="/login")
+def home(request):
     return render(request, "home.html")
 
 def search(request):
     return render(request, "search.html")
   
 
-def new_recipe(request, id=None):
+def new_recipe(request):
+    #print(request.POST)
+    '''
+    if request.method == "POST":
+        title = request.POST.get("Title")
+        time = request.POST.get("Time")
+        section = request.POST.get("Section")
+        print(title, time, section)
+
+        recipe_obj = Recipe.objects.create(name=title,time_to_make=time,)
+        
+        context = {
+            'recipe_obj': recipe_obj,
+            'created': True
+        }
+        '''
     context = {}
     return render(request, "new_recipe.html", context=context)
+
 
 
     #recipe_queryset = Ingredient.objects
     # check vid 18 to write ingredient - amount
     #recipe_queryset = Instruction.objects
-def individual_recipe(request, title=None):
+def individual_recipe(request, title=None, *args, **kwargs):
     recipe_obj = None
     if title is not None:
         recipe_obj = Recipe.objects.get(name=title)
+        ## DO SOMETHING IF DOESNOTEXIST
 
     context = {
         "name": recipe_obj.name,
@@ -85,8 +103,7 @@ def new_section(request):
 def account(request):
     return render(request, "account.html")
 
-def login(request):
-    return render(request, "registration/login.html")
+
 
 #def individual_recipe(request, id=None):
 #    obj = get_object_or_404(Recipe, id=id, user=request.user)
