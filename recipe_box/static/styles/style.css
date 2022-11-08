@@ -315,10 +315,11 @@ footer {
 
 
 
-/* NEW SECTION, NEW RECIPE, AND ALL RECIPES PAGES */
+/* NEW SECTION, NEW RECIPE, SEARCH, AND ALL RECIPES PAGES */
 #new-section,
 #new-recipe,
-#all-recipes {
+#all-recipes,
+#search {
     margin: 20px;
     color: #809bce;
     font-size: 22px;
@@ -326,7 +327,8 @@ footer {
 
 #new-section h2,
 #new-recipe h2,
-#all-recipes h2 {
+#all-recipes h2,
+#search h2 {
     font-size: 36px;
 }
 
@@ -585,13 +587,15 @@ button[type=submit] {
 
 
 
-/* STYLE ALL RECIPES PAGE */
+/* STYLE ALL RECIPES AND SEARCH PAGES */
 
-.all-recipes-row {
+.all-recipes-row,
+.search-row {
     display: flex;
     justify-content: center;
 }
-.all-sections {
+.all-sections,
+.search-sections {
     border: 2px solid rgba(226, 239, 231, 0.6);
     color: #809bce;
     background-color: rgba(226, 239, 231, 0.6);
@@ -608,7 +612,8 @@ button[type=submit] {
 
 }
 
-.all-recipes-text {
+.all-recipes-text,
+.search-text {
     margin: 0;
 
 }
