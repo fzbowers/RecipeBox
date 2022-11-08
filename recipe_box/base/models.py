@@ -10,6 +10,7 @@ class Section(models.Model):
     name = models.CharField(max_length=120, unique=True,)
     description = models.TextField(null=True, blank=True)
     order_index = models.PositiveIntegerField(null=True, blank=True)
+    color = models.CharField(max_length = 16, default="#ffffff")
     
     class Meta:
         verbose_name = ('Section')
