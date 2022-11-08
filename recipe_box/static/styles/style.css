@@ -439,16 +439,7 @@ select option[value="dark-green"] {
     border: 1px solid #ffffff;
 }
 
-#ingredient-col,
-#amount-col,
-#remove-col {
-    margin: 1px;
 
-}
-
-.amount-col {
-    padding: 0;
-}
 
 #remove {
     padding-left: 10px;
@@ -469,8 +460,19 @@ select option[value="dark-green"] {
     max-width: 80vw;
 }
 
+#ingredient,
+#amount {
+    padding: 0;
+}
+
 #ingredient {
-    min-width: 50vw;
+    margin-left: 15px;
+
+}
+
+#ingredient,
+#ingredient.col-sm-6 {
+    min-width: 40vw;
 }
 
 #amount {
@@ -484,9 +486,9 @@ select option[value="dark-green"] {
     height: 46px;
 }
 
-
-
-
+#unit-title {
+    margin-left: 50px;
+}
 
 
 
