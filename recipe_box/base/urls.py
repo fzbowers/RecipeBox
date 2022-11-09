@@ -10,6 +10,7 @@ urlpatterns = [
     path("recipes/", views.all_recipes, name="all_recipes"),
     path("recipes/<str:title>/", views.individual_recipe, name="individual_recipe"),
     path("new_section/", views.new_section, name="new_section"),
+    path("<str:title>/", views.individual_section, name="individual_section"),
     path("account/", views.account, name="account"),
     path("create_account/", views.create_account, name="create_account"),
     path("password_reset/", views.password_reset_request, name="password_reset")
