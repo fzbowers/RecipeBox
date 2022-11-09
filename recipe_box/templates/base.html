@@ -57,8 +57,9 @@
       </form> -->
 
 
-      <form action="{% url 'search_results' %}" method="get" class="collapse navbar-collapse menu" id="main-navigation">
-        <input name="q" type="text" placeholder="Search...">
+      <form class="form-inline searchbar mr-auto" action="{% url 'search_results' %}" method="get" class="collapse navbar-collapse menu" id="main-navigation">
+        <input name="q" type="search" placeholder="Search..." aria-label="Search">
+        <button type="submit">Go</button>
       </form>
 
       <ul class="navbar-nav">
