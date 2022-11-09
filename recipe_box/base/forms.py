@@ -53,8 +53,8 @@ class RecipeForm(forms.ModelForm):
 
 class IngredientForm(forms.ModelForm):
     name = forms.CharField(label='', widget=forms.TextInput(attrs={'id' : "ingredient", 'class' : "col-sm-6"}))
-    quantity = forms.CharField(label='', widget=forms.TextInput(attrs={'id' : "amount", 'class' : "col-sm-3"}))
-    unit = forms.CharField(label='', widget=forms.TextInput(attrs={'id' : "amount", 'class' : "col-sm-3"}))
+    quantity = forms.CharField(label='', widget=forms.TextInput(attrs={'id' : "amount", 'class' : "col-sm-2"}))
+    unit = forms.CharField(label='', widget=forms.TextInput(attrs={'id' : "amount", 'class' : "col-sm-2"}))
     class Meta:
         model = Ingredient
         fields = ['name', 'quantity', 'unit']

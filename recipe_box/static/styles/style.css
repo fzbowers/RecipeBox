@@ -366,6 +366,9 @@ footer {
     border: none;
 
     font-size: 20px;
+
+    margin-top: 10px;
+    margin-right: 15px;
 }
 
 
@@ -373,11 +376,9 @@ footer {
     background-color: #809bce;
     color: #ffff;
 
-    margin-top: 10px;
-    margin-right: 15px;
-
     height: 50px;
     width: 150px;
+    float: left;
 
 }
 
@@ -453,9 +454,10 @@ select option[value="dark-green"] {
 
 #add-btn {
     height: 30px;
-    width: 130px;
-    margin: 8px;
-    font-size: 15px;
+    margin: 15px;
+    margin-left: 95px; /* NEEDS TO BE CENTERED PROPERLY */
+    
+    font-size: 20px;
     color: #ffff;
     background-color: #809bce;
 
@@ -475,14 +477,7 @@ select option[value="dark-green"] {
 
 }
 
-#ingredient,
-#ingredient.col-sm-6 {
-    min-width: 40vw;
-}
 
-#amount {
-    max-width: 10vw;
-}
 
 .ingredient-title,
 .amount-title {
@@ -491,9 +486,6 @@ select option[value="dark-green"] {
     height: 46px;
 }
 
-#unit-title {
-    margin-left: 50px;
-}
 
 
 

@@ -4,7 +4,7 @@
 
 <style>
     .hidden {
-        display: none
+        display: none;
     }
 </style>
 
@@ -12,6 +12,8 @@
 <section id="new-recipe">
     
     <h2>Add New Recipe</h2>
+    
+
     
     <form action='.' method="POST">
         {% csrf_token %}
@@ -32,7 +34,6 @@
         </select>
     -->
 
-        {% if formset %}
         <!-- LABELS -->
         <div class="input_ingredient_wrap">
             <div class="row">
@@ -40,13 +41,17 @@
                         <label for="Ingredient">Ingredients</label>
                 </div>
                 
-                <div class="amount-col col-sm-6 amount-title">
-                        <label for="Amount">Amounts</label>
-                        <label id="unit-title">Units</label>
-                </div>
+                <div class="amount-col col-sm-2 amount-title">
+                    <label for="Amount">Amounts</label>
+            </div>
+
+            <div class="amount-col col-sm-2 amount-title">
+                <label id="unit-title">Units</label>
+        </div>
             </div>
         </div>
-                    
+                
+        {% if formset %}
         {{ formset.management_form }}
         <div id='ingredient-form-list'>
             {% for form in formset %}
@@ -59,15 +64,21 @@
         </div>
 
         <div id='empty-form' class='hidden'>{{ formset.empty_form }}</div>
-        <button id='add-more' type='button'>Add more</button>
+        <button id='add-btn' class="col-sm-8" type='button'>Add Ingredient</button>
         {% endif %}
-        <button style='margin-top:10px;' type='submit' >Save</button>
+
+        <br>
+        <button id="create-btn" type="submit">Save Recipe</button>
 
     </form>
 
+    <a href="/">
+        <button id="cancel-btn" type="Cancel">Cancel</button>
+    </a>
+
 <script>
     
-    const addMoreBtn = document.getElementById('add-more')
+    const addMoreBtn = document.getElementById('add-btn')
     const totalNewForms = document.getElementById('id_form-TOTAL_FORMS')
     
     addMoreBtn.addEventListener('click', add_new_form)
@@ -144,7 +155,7 @@
         <br>
         <-add and cancel buttons->
         <button id="create-btn" type="submit">Create Recipe</button>
-        <a href="/home">
+        <a href="/">
             <button id="cancel-btn" type="Cancel" >Cancel</button>
         </a>
         </form>
