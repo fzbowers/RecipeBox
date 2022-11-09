@@ -29,7 +29,7 @@ class Recipe(models.Model):
     time_to_make = models.CharField(max_length = 25, default=0)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    ## section = models.ForeignKey(Section, on_delete=models.PROTECT)
+    section = models.ForeignKey(Section, on_delete=models.PROTECT)
     pinned = models.BooleanField(default=False)
 
     class Meta:
