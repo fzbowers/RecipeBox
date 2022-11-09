@@ -32,7 +32,7 @@ class SearchResultsView(ListView):
     def get_queryset(self): 
         query = self.request.GET.get("q")
         object_list = Recipe.objects.filter(
-            Q(name__icontains=query)  | Q(description__icontains=query)
+            Q(name__icontains=query)  #| Q(description__icontains=query) made obsolete by change to model
         )
         return object_list
 
@@ -123,6 +123,25 @@ def individual_recipe(request, title=None, *args, **kwargs):
     }
     
     return render(request, "individual_recipe.html", context) 
+
+@login_required
+def individual_section(request, title=None):
+    section_obj = None
+    if title is not None:
+        try:
+            section_obj = Section.objects.get(name=title)
+        except:
+            section_obj = Nones
+        if section_obj is None:
+            return HttpResponse("Recipe Not found.")
+
+    recipe_list = Recipe.objects.filter(Q(user=request.user) & Q(section=section_obj))
+    
+    context = {
+        "section_obj": section_obj,
+        "recipe_list": recipe_list,
+    }
+    return render(request, "individual_section.html", context) 
 
 @login_required
 def all_recipes(request):
