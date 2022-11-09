@@ -9,6 +9,7 @@
 
     {% if user.is_authenticated %}
       Hi {{user.username}}|
+      Email: {{user.email}}
       <p><a href="{% url 'logout' %}">Logout</a></p>
     {% endif %}
 
