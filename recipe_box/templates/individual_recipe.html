@@ -17,7 +17,7 @@
 
 
             <p>Ingredients</p>
-            <div class="row">
+            <div class="row ingredient-row">
                 {% for ingredient in recipe_obj.get_ingredients_children %}
                 <div class="col-sm-4 mini-left">{{ ingredient.quantity }}</div>
                 <div class="col-sm-4 mini-left">{{ ingredient.unit }}</div>
