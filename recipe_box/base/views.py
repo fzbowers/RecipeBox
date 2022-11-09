@@ -134,7 +134,8 @@ def individual_section(request, title=None, *args, **kwargs):
         section_obj = get_object_or_404(Section, name=title, user=request.user)
 
     context = {
-        "section_obj": section_obj
+        "section_obj": section_obj,
+        "recipe_list": section_obj.recipes.all()
     }
 
     return render(request, "individual_section.html", context) 

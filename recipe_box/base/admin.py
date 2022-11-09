@@ -20,8 +20,8 @@ class RecipesAdmin(admin.ModelAdmin):
 
     def get_form(self, request, obj=None, **kwargs):
         form = super(RecipesAdmin, self).get_form(request, obj, **kwargs)
-        form.base_fields['created_by'].initial = request.user
-        return form
+        #form.base_fields['created_by'].initial = request.user  caused issues with inputing recipes, temp. removed 
+        return form 
 
 class SectionAdmin(admin.ModelAdmin):
     list_display = ['name']
