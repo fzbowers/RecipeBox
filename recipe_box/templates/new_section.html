@@ -6,12 +6,26 @@
 
     <h2>Add New Section</h2>
 
-    <!--input box for title-->          
-    <label for="Title"> Name</label>
-    <input type="text" id="title" name="Title">
-    <br>
+    <form action='.' method="POST">
+        {% csrf_token %}
 
-    <!--color selection drop down menu-->
+        <div class='{% if field.field.required %}{{ form.required_css_class }}{%endif%}'>
+        {{ form.name.label_tag }} {{ form.name }}
+        <!--<br>
+        {{ form.color.label_tag }} {{ form.color }}-->
+        <br>
+        {{ form.description.label_tag }} {{ form.description }}
+    
+    
+        <button id="create-btn" type="submit">Create Section</button>
+        </div>
+    </form>
+
+    <a href="/">
+        <button id="cancel-btn" type="Cancel">Cancel</button>
+    </a>
+
+    <!-- PREVIOUS COLOR SELECTION DROPDOWN 
     <label for="Color">Color</label>
     <select id="color-selection" name="Color">
         <option value="select-option">-select option-</option>
@@ -22,24 +36,7 @@
         <option value="medium-green">medium green</option>
         <option value="dark-green">dark green</option> 
     </select>
-
-    <br>
-
-     <!--free form text box for description-->
-    <label for="Description">Description</label>
-    <br>
-
-    <textarea placeholder="Enter description here..." id="freeform" name="Description"></textarea>
-
-    <br>
-
-     <!--submit and cancel button-->
-    <input type="submit" onclick="alert('can not add')" value="Create Section">
-            
-    <a href="/home">
-        <button id="cancel-btn" type="Cancel" >Cancel</button>
-    </a>
-
+-->
 
   
 </section>

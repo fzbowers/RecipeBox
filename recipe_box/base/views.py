@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 #from django.contrib.auth import login, authenticate
 #from django.contrib.auth.forms import UserCreationForm
-from .forms import RegisterForm, RecipeForm, IngredientForm, InstructionForm
+from .forms import RegisterForm, RecipeForm, IngredientForm, InstructionForm, SectionForm
 from django.views.generic import TemplateView, ListView
 
 #Importing stuff for sending reset password email
@@ -11,66 +11,169 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.models import User
 from django.template.loader import render_to_string
-from django.db.models.query_utils import Q
+#from django.db.models.query_utils import Q
 from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
+from django.db.models import Q
 
-from .models import Recipe
+from django.forms.models import modelformset_factory # querysets
+
+from .models import Recipe, Ingredient, Instruction, Section
 
 # Create your views here.
+
 
 # search function based on tutorial from https://learndjango.com/tutorials/django-search-tutorial
 class SearchResultsView(ListView):
     model = Recipe
     template_name = 'search.html'
 
-    def get_queryset(self): # new
+    def get_queryset(self): 
         query = self.request.GET.get("q")
         object_list = Recipe.objects.filter(
-            Q(title__icontains=query) | Q(section__icontains=query)
+            Q(name__icontains=query)  #| Q(description__icontains=query) made obsolete by change to model
         )
         return object_list
 
-def home(request):
-    return render(request, "home.html")
 
+@login_required(login_url="/login")
+def home(request):
+    section_qs = Section.objects.filter(user=request.user)
+    pinned_qs = Recipe.objects.filter(Q(user=request.user) & Q(pinned=True))
+
+    context = {
+        "home_section_list": section_qs,
+        "pinned_recipes_list": pinned_qs,
+    }
+    return render(request, "home.html", context)
+
+@login_required
 def search(request):
     return render(request, "search.html")
-  
+
+@login_required
 def new_recipe(request):
+    context = {}
+    ''' SECTION OPTION NOT WORKING
+    section_qs = Section.objects.filter(user=request.user)
+    context = {
+        "user_section_list": section_qs,
+    }
+    '''
     form = RecipeForm(request.POST or None)
-    if form.is_valid():
-        obj = form.save(commit=False)
-        obj.user = request.user
-        obj.save()
-    return render(request, "new_recipe.html")
-  
+
+    RecipeIngredientFormset = modelformset_factory(Ingredient, form=IngredientForm, extra=1)
+    qs = Ingredient.objects.none()
+    formset = RecipeIngredientFormset(request.POST or None, queryset=qs)
+    context["form"] = form
+    context["formset"] = formset
+
+    
+    if form.is_valid() and formset.is_valid():
+        recipe = form.save(commit=False)
+        recipe.user = request.user
+        recipe.save()
+        for form in formset:
+            ingredient = form.save(commit=False)
+            ingredient.recipe = recipe
+            ingredient.save()
+        return redirect(recipe.get_absolute_url())
+
+    return render(request, "new_recipe.html", context) 
+
+
+#### NOT WORKING
+@login_required
+def edit_recipe(request, title=None, *args, **kwargs):
+   # return HttpResponse("Cannot edit this recipe.")
+    context = {}
+    obj = get_object_or_404(Recipe, name=title, user=request.user)
+    
+
+    form = RecipeForm(request.POST or None, instance=obj)
+
+    RecipeIngredientFormset = modelformset_factory(Ingredient, form=IngredientForm, extra=0)
+    qs = obj.ingredient_set.all() # []
+    formset = RecipeIngredientFormset(request.POST or None, queryset=qs)
+    context = {
+        "form": form,
+        "formset": formset,
+        "object": obj
+    }
+
+    if (form.is_valid() and formset.is_valid()):
+        recipe = form.save(commit=False)
+        recipe.save()
+        # formset.save()  
+        for form in formset:
+            ingredient = form.save(commit=False)
+            ingredient.recipe = recipe
+            ingredient.save()
+
+        context['message'] = 'Data saved.'
+    else:
+        print('This is form errors: ', form.errors)
+        print('This is formset errors: ', formset.errors)
+        
+    return render(request, "new_recipe.html", context) 
+
+
+@login_required
+def individual_recipe(request, title=None, *args, **kwargs):
+    recipe_obj = None
+    if title is not None:
+        recipe_obj = get_object_or_404(Recipe, name=title, user=request.user)
+
+    context = {
+        "recipe_obj": recipe_obj
+    }
+    
+    return render(request, "individual_recipe.html", context) 
+
+@login_required
+def individual_section(request, title=None, *args, **kwargs):
+    section_obj = None
+    if title is not None:
+        section_obj = get_object_or_404(Section, name=title, user=request.user)
+
+    context = {
+        "section_obj": section_obj,
+        "recipe_list": section_obj.recipes.all()
+    }
+
+    return render(request, "individual_section.html", context) 
+
+@login_required
 def all_recipes(request):
-  #  qs = Recipe.objects.filter(user=request.user)
-  #  context = {
-  #      "object_list": qs
-  #  }
-    return render(request, "all_recipes.html") # add context #
+    recipe_qs = Recipe.objects.filter(user=request.user)
+    context = {
+        "recipe_list": recipe_qs,
+    }
+    return render(request, "all_recipes.html", context) 
 
+
+
+@login_required
 def new_section(request):
-    return render(request, "new_section.html")
+    form = SectionForm(request.POST or None)
+    
+    context = {
+        "form": form,
+    }
 
+    if form.is_valid():
+        section = form.save(commit=False)
+        section.user = request.user
+        section.save()
+        return redirect(section.get_absolute_url())
+
+    return render(request, "new_section.html", context)
+
+@login_required
 def account(request):
     return render(request, "account.html")
 
-def login(request):
-    return render(request, "registration/login.html")
-
-#def individual_recipe(request, id=None):
-#    obj = get_object_or_404(Recipe, id=id, user=request.user)
-#    context = {
-#        "object": obj
-#    }
-#return render(request, "individual_recipe.html", context)
-
-def individual_recipe(request):
-    return render(request, "individual_recipe.html")
 
 
 def create_account(response):

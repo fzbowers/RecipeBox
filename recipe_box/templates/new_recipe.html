@@ -1,34 +1,127 @@
 {% extends "base.html" %}
 {% block page_content %}
 
+
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+
 <title>New Recipe</title>
 <section id="new-recipe">
+    
+    <h2>Add New Recipe</h2>
+    
 
-        <h2>Add New Recipe</h2>
+    
+    <form action='.' method="POST">
+        {% csrf_token %}
+       {% for field in form %}
+       <div class='{% if field.field.required %}{{ form.required_css_class }}{%endif%}'>
+        {{ field.errors }}   
+        {{ field.label_tag }} {{ field }}
+        </div>
+        {% endfor %}
 
-
-        <!--inout box for adding title-->
-        <label for="Title"> Title</label>
-        <input type="text" id="title" name="Title">
-        <br>
-
-        <!--input box for time-->
-        <label for="Time"> Time</label>
-        <input type="text" id="time" name="Time">
-        <br>
-
-        <!--drop down menu for selecting section-->
+        <!--  SECTION OPTION NOT WORKING
         <label for="Section">Section</label>
         <select id="section-selection" name="Section">
         <option value="select-option">-select option-</option>
-        <option value="Section1">section 1</option>
-        <option value="Section2">section 2</option>
-        <option value="Section3">section 3</option>
+        {% for x in user_section_list %}
+        <option value="Section">{{ x.name }}</option>
+        {% endfor %}
         </select>
+    -->
 
-        <!--code for adding and removing text boxes based on tutorial from https://www.sanwebe.com/2013/03/addremove-input-fields-dynamically-with-jquery-->
-        <!--input box for ingredients, add more boxes as needed-->
-        
+        <!-- LABELS -->
+        <div class="input_ingredient_wrap">
+            <div class="row">
+                <div class="ingredient-col col-sm-6 ingredient-title">
+                        <label for="Ingredient">Ingredients</label>
+                </div>
+                
+                <div class="amount-col col-sm-2 amount-title">
+                    <label for="Amount">Amounts</label>
+            </div>
+
+            <div class="amount-col col-sm-2 amount-title">
+                <label id="unit-title">Units</label>
+        </div>
+            </div>
+        </div>
+                
+        {% if formset %}
+        {{ formset.management_form }}
+        <div id='ingredient-form-list'>
+            {% for form in formset %}
+            <div class='ingredient-form row'>
+                {{ form.name }}
+                {{ form.quantity }}
+                {{ form.unit }}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div id='empty-form' class='hidden'>{{ formset.empty_form }}</div>
+        <button id='add-btn' class="col-sm-8" type='button'>Add Ingredient</button>
+        {% endif %}
+
+        <br>
+        <button id="create-btn" type="submit">Save Recipe</button>
+
+    </form>
+
+    <a href="/">
+        <button id="cancel-btn" type="Cancel">Cancel</button>
+    </a>
+
+<script>
+    
+    const addMoreBtn = document.getElementById('add-btn')
+    const totalNewForms = document.getElementById('id_form-TOTAL_FORMS')
+    
+    addMoreBtn.addEventListener('click', add_new_form)
+    function add_new_form(event) {
+        if (event) {
+            event.preventDefault()
+        }
+        const currentIngredientForms = document.getElementsByClassName('ingredient-form row')
+        const currentFormCount = currentIngredientForms.length // + 1
+        const formCopyTarget = document.getElementById('ingredient-form-list')
+        const copyEmptyFormEl = document.getElementById('empty-form').cloneNode(true)
+        copyEmptyFormEl.setAttribute('class', 'ingredient-form row')
+        copyEmptyFormEl.setAttribute('id', `form-${currentFormCount}`)
+        const regex = new RegExp('__prefix__', 'g')
+        copyEmptyFormEl.innerHTML = copyEmptyFormEl.innerHTML.replace(regex, currentFormCount)
+        totalNewForms.setAttribute('value', currentFormCount + 1)
+        // now add new empty form element to our html form
+        formCopyTarget.append(copyEmptyFormEl)
+    }
+    
+</script>
+</section>
+{% endblock %}
+
+        <!-- PREVIOUS CODE FOR UPDATING CSS CLASSES AND IDS
+        <--inout box for adding title->
+        <label for="Title">Title</label>
+        <input type="text" id="title" name="Title">
+        <br>
+        <--input box for time->
+        <label for="Time">Time</label>
+        <input type="text" id="time" name="Time">
+        <br>
+        <-drop down menu for selecting section->
+        <label for="Section">Section</label>
+        <select id="section-selection" name="Section">
+        <option value="select-option">-select option-</option>
+        {% for x in section_list %}
+        <option value="Section">{{ x.name }}</option>
+        {% endfor %}
+        </select>
+        <--code for adding and removing text boxes based on tutorial from https://www.sanwebe.com/2013/03/addremove-input-fields-dynamically-with-jquery>
+        <--input box for ingredients, add more boxes as needed->
         <div class="input_ingredient_wrap">
             <div class="row">
                 <div class="ingredient-col col-sm-7">
@@ -38,7 +131,6 @@
                     </div>
                     <input type="text" id="ingredient" name="Ingredient">
                 </div>
-
                 <div class="amount-col col-sm-4">
                     <div class="amount-title">
                         <label for="Amount">Amounts</label>
@@ -47,36 +139,25 @@
                 </div>
             </div>
         </div>
-
-        
-     
-                
         <br>
-
-        <!--input box for directions, add more boxes as needed-->
+        <--input box for directions, add more boxes as needed->
         <div class="input_direction_wrap">
             <div class="col">
                 <div class="row">
                     <label for="Direction"> Directions</label>
                     <button id="add-btn" class="add_direction_button">Add Direction</button>
                 </div>
-
                 <div class="row">   
                     <input type="text" id="direction" name="Direction" size="150">
                 </div>
             </div>
         </div>
         <br>
-
-        <!--add and cancel buttons-->
-        <input type="submit" onclick="alert('can not add')" value="Create Recipe">  
-        
-        <a href="/home">
+        <-add and cancel buttons->
+        <button id="create-btn" type="submit">Create Recipe</button>
+        <a href="/">
             <button id="cancel-btn" type="Cancel" >Cancel</button>
         </a>
+        </form>
 
-
-
-</section>
-
-{% endblock %}
+    -->

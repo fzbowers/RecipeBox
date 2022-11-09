@@ -3,7 +3,22 @@
 
 <title>Search</title>
 <section id="search">
-    <p>THIS IS THE SEARCH PAGE</p>
+    <h2>Search Results:</h2>
+
+    <div class="row search-row"></div>
+
+    {% for x in recipe_list %}
+      <ul>
+        <div class="col-sm-11 search-sections">
+            <a href="./{{ x.name }}/"><p class="search-text">{{ x.name }}</p></a>
+            <p class="search-text">Time: {{ x.time_to_make }} mins</p>
+        
+        </div>  
+      </ul>
+    {% endfor %}
+
+</div>
+  
 </section>
 
 {% endblock %}

@@ -285,6 +285,10 @@ footer {
 .mini-pinned {
     border: 2px solid #7995a9;
     color: #ffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
 }
 
 .mini-section,
@@ -298,15 +302,19 @@ footer {
 
 .col-link {
     color: #809bce;
+
 }
 
-.col-pinned-link {
-    color: #ffff;
-}
 .col-link:link,
-.col-pinned-link:link {
+.pinned-link:link {
     text-decoration: none;
 }
+
+.pinned-link {
+    color: #ffffff;
+
+}
+
 
 #home .row {
     justify-content: space-evenly;
@@ -319,10 +327,12 @@ footer {
 
 
 
-/* NEW SECTION, NEW RECIPE, AND ALL RECIPES PAGES */
+/* NEW SECTION, NEW RECIPE, SEARCH, INDIVIDUAL SECTION, AND ALL RECIPES PAGES */
 #new-section,
 #new-recipe,
-#all-recipes {
+#all-recipes,
+#search,
+#individual-section {
     margin: 20px;
     color: #809bce;
     font-size: 22px;
@@ -330,7 +340,9 @@ footer {
 
 #new-section h2,
 #new-recipe h2,
-#all-recipes h2 {
+#all-recipes h2,
+#search h2,
+#individual-section h2 {
     font-size: 36px;
 }
 
@@ -359,24 +371,25 @@ footer {
 }
 
 
-input[type=submit],
-#cancel-btn {
+#cancel-btn,
+#create-btn {
     cursor: pointer;
     border: none;
 
     font-size: 20px;
-}
-
-
-input[type=submit] {
-    background-color: #809bce;
-    color: #ffff;
 
     margin-top: 10px;
     margin-right: 15px;
+}
+
+
+#create-btn {
+    background-color: #809bce;
+    color: #ffff;
 
     height: 50px;
     width: 150px;
+    float: left;
 
 }
 
@@ -443,16 +456,7 @@ select option[value="dark-green"] {
     border: 1px solid #ffffff;
 }
 
-#ingredient-col,
-#amount-col,
-#remove-col {
-    margin: 1px;
 
-}
-
-.amount-col {
-    padding: 0;
-}
 
 #remove {
     padding-left: 10px;
@@ -461,9 +465,10 @@ select option[value="dark-green"] {
 
 #add-btn {
     height: 30px;
-    width: 130px;
-    margin: 8px;
-    font-size: 15px;
+    margin: 15px;
+    margin-left: 95px; /* NEEDS TO BE CENTERED PROPERLY */
+    
+    font-size: 20px;
     color: #ffff;
     background-color: #809bce;
 
@@ -473,13 +478,17 @@ select option[value="dark-green"] {
     max-width: 80vw;
 }
 
-#ingredient {
-    min-width: 50vw;
+#ingredient,
+#amount {
+    padding: 0;
 }
 
-#amount {
-    max-width: 10vw;
+#ingredient {
+    margin-left: 15px;
+
 }
+
+
 
 .ingredient-title,
 .amount-title {
@@ -487,9 +496,6 @@ select option[value="dark-green"] {
     align-items: center;
     height: 46px;
 }
-
-
-
 
 
 
@@ -557,6 +563,8 @@ hr {
 }
 
 
+
+
 /* set for all buttons */
 button,
 button[type=submit] {
@@ -587,13 +595,17 @@ button[type=submit] {
 
 
 
-/* STYLE ALL RECIPES PAGE */
+/* STYLE ALL RECIPES, INDIVIDUAL SECTION, AND SEARCH PAGES */
 
-.all-recipes-row {
+.all-recipes-row,
+.search-row,
+.individual-section-row {
     display: flex;
     justify-content: center;
 }
-.all-sections {
+.all-sections,
+.search-sections,
+.individual-sections {
     border: 2px solid rgba(226, 239, 231, 0.6);
     color: #809bce;
     background-color: rgba(226, 239, 231, 0.6);
@@ -610,9 +622,82 @@ button[type=submit] {
 
 }
 
-.all-recipes-text {
+.all-recipes-text,
+.search-text,
+.individual-section-text {
     margin: 0;
 
 }
 
 
+
+
+
+/* STYLE ALL RECIPES AND SEARCH PAGES */
+
+.all-recipes-row,
+.search-row {
+    display: flex;
+    justify-content: center;
+}
+.all-sections,
+.search-sections {
+    border: 2px solid rgba(226, 239, 231, 0.6);
+    color: #809bce;
+    background-color: rgba(226, 239, 231, 0.6);
+
+
+    font-size: 25px;
+    margin: 12px;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+}
+
+.all-recipes-text,
+.search-text,
+.individual-section-text {
+    margin: 0;
+
+}
+
+
+/* STYLE INDIVIDUAL SECTION PAGE */
+.individual-section-top {
+    border: 2px solid rgba(226, 239, 231, 0.6);
+    color: #809bce;
+    background-color: rgba(226, 239, 231, 0.6);
+
+    min-height: 10vw;
+
+}
+
+.individual-section-recipe {
+    border: 2px solid rgba(200, 220, 235, 0.6);
+    color: #809bce;
+    background-color: rgba(200, 220, 235, 0.6);
+
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.individual-section-top,
+.individual-section-recipe {
+    font-size: 25px;
+    margin: 12px;
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
+.section-all-cols {
+    display: flex;
+    justify-content: center;
+}
