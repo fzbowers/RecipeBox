@@ -40,8 +40,12 @@ class SearchResultsView(ListView):
 @login_required(login_url="/login")
 def home(request):
     section_qs = Section.objects.filter(user=request.user)
+
+    pinned_qs = Recipe.objects.filter(Q(user=request.user) & Q(pinned=True))
+
     context = {
         "home_section_list": section_qs,
+        "pinned_recipes_list": pinned_qs,
     }
     return render(request, "home.html", context)
 
