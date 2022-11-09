@@ -86,10 +86,10 @@ def new_recipe(request):
 #### NOT WORKING
 @login_required
 def edit_recipe(request, title=None, *args, **kwargs):
-    return HttpResponse("Cannot edit this recipe.")
-    '''
-    obj = get_object_or_404(Recipe, name=title, user=request.user)
+   # return HttpResponse("Cannot edit this recipe.")
     context = {}
+    obj = get_object_or_404(Recipe, name=title, user=request.user)
+    
 
     form = RecipeForm(request.POST or None, instance=obj)
 
@@ -101,20 +101,21 @@ def edit_recipe(request, title=None, *args, **kwargs):
         "formset": formset,
         "object": obj
     }
-        
-    if all([form.is_valid(), formset.is_valid()]):
+
+    if (form.is_valid() and formset.is_valid()):
         recipe = form.save(commit=False)
         recipe.save()
-        # formset.save()
+        # formset.save()  
         for form in formset:
             ingredient = form.save(commit=False)
             ingredient.recipe = recipe
             ingredient.save()
+
         context['message'] = 'Data saved.'
     else:
         print('This is form errors: ', form.errors)
         print('This is formset errors: ', formset.errors)
-        '''
+        
     return render(request, "new_recipe.html", context) 
 
 
