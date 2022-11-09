@@ -22,7 +22,10 @@ class Section(models.Model):
         return self.name
 
     def get_recipes_children(self):
-        return self.recipe.set_all()
+        return self.recipe_set.all()
+
+    def get_absolute_url(self):
+        return reverse("individual_section", kwargs={"title": self.name})
     
 
 class Recipe(models.Model):
@@ -33,7 +36,7 @@ class Recipe(models.Model):
     time_to_make = models.CharField(max_length = 25, default=0)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    section = models.ForeignKey(Section, on_delete=models.PROTECT)
+    section = models.ForeignKey(Section, on_delete=models.PROTECT, null=True)
     pinned = models.BooleanField(default=False)
 
     class Meta:
@@ -58,6 +61,7 @@ class Recipe(models.Model):
         
     def get_edit_url(self):
         return reverse("edit_recipe", kwargs={"title": self.name})
+    
 
 
 class Ingredient(models.Model):

@@ -32,6 +32,9 @@ class SectionForm(forms.ModelForm):
 class RecipeForm(forms.ModelForm):
     error_css_class = 'error-field'
     required_css_class = 'required-field'
+
+    #SECTION_CHOICES = [tuple([x,x]) for x in user_section_list range(1,32)]
+
     name = forms.CharField(label="Title", widget=forms.TextInput(attrs={'id' : "title"}))
     time_to_make = forms.CharField(label="Time", widget=forms.TextInput(attrs={'id' : "time"}))
     class Meta:

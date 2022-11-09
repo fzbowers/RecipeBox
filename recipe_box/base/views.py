@@ -51,16 +51,21 @@ def search(request):
 
 @login_required
 def new_recipe(request):
+    context = {}
+    ''' SECTION OPTION NOT WORKING
+    section_qs = Section.objects.filter(user=request.user)
+    context = {
+        "user_section_list": section_qs,
+    }
+    '''
     form = RecipeForm(request.POST or None)
 
     RecipeIngredientFormset = modelformset_factory(Ingredient, form=IngredientForm, extra=1)
     qs = Ingredient.objects.none()
     formset = RecipeIngredientFormset(request.POST or None, queryset=qs)
-    
-    context = {
-        "form": form,
-        "formset": formset
-    }
+    context["form"] = form
+    context["formset"] = formset
+
     
     if form.is_valid() and formset.is_valid():
         recipe = form.save(commit=False)
@@ -78,6 +83,8 @@ def new_recipe(request):
 #### NOT WORKING
 @login_required
 def edit_recipe(request, title=None, *args, **kwargs):
+    return HttpResponse("Cannot edit this recipe.")
+    '''
     obj = get_object_or_404(Recipe, name=title, user=request.user)
     context = {}
 
@@ -91,24 +98,20 @@ def edit_recipe(request, title=None, *args, **kwargs):
         "formset": formset,
         "object": obj
     }
-
-
         
     if all([form.is_valid(), formset.is_valid()]):
-        parent = form.save(commit=False)
-        parent.save()
+        recipe = form.save(commit=False)
+        recipe.save()
         # formset.save()
         for form in formset:
-            child = form.save(commit=False)
-            child.recipe = parent
-            child.save()
+            ingredient = form.save(commit=False)
+            ingredient.recipe = recipe
+            ingredient.save()
         context['message'] = 'Data saved.'
     else:
         print('This is form errors: ', form.errors)
         print('This is formset errors: ', formset.errors)
-    if request.htmx:
-        return render(request, "partials/forms.html", context)
-
+        '''
     return render(request, "new_recipe.html", context) 
 
 
@@ -125,22 +128,15 @@ def individual_recipe(request, title=None, *args, **kwargs):
     return render(request, "individual_recipe.html", context) 
 
 @login_required
-def individual_section(request, title=None):
+def individual_section(request, title=None, *args, **kwargs):
     section_obj = None
     if title is not None:
-        try:
-            section_obj = Section.objects.get(name=title)
-        except:
-            section_obj = Nones
-        if section_obj is None:
-            return HttpResponse("Recipe Not found.")
+        section_obj = get_object_or_404(Section, name=title, user=request.user)
 
-    recipe_list = Recipe.objects.filter(Q(user=request.user) & Q(section=section_obj))
-    
     context = {
-        "section_obj": section_obj,
-        "recipe_list": recipe_list,
+        "section_obj": section_obj
     }
+
     return render(request, "individual_section.html", context) 
 
 @login_required
@@ -165,6 +161,7 @@ def new_section(request):
         section = form.save(commit=False)
         section.user = request.user
         section.save()
+        return redirect(section.get_absolute_url())
 
     return render(request, "new_section.html", context)
 

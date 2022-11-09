@@ -10,9 +10,9 @@
 
 <title>New Recipe</title>
 <section id="new-recipe">
-
-        <h2>Add New Recipe</h2>
-
+    
+    <h2>Add New Recipe</h2>
+    
     <form action='.' method="POST">
         {% csrf_token %}
        {% for field in form %}
@@ -20,11 +20,19 @@
         {{ field.errors }}   
         {{ field.label_tag }} {{ field }}
         </div>
-       {% endfor %}
+        {% endfor %}
 
+        <!--  SECTION OPTION NOT WORKING
+        <label for="Section">Section</label>
+        <select id="section-selection" name="Section">
+        <option value="select-option">-select option-</option>
+        {% for x in user_section_list %}
+        <option value="Section">{{ x.name }}</option>
+        {% endfor %}
+        </select>
+    -->
 
         {% if formset %}
-
         <!-- LABELS -->
         <div class="input_ingredient_wrap">
             <div class="row">
@@ -46,28 +54,16 @@
                 {{ form.name }}
                 {{ form.quantity }}
                 {{ form.unit }}
-
-                <!--
-                <div id="ingredient" class="col-sm-6">{{ form.name }}</div>
-                <div id="amount" class="col-sm-3">{{ form.quantity }}</div>
-                <div id="amount" class="col-sm-3">{{ form.unit }}</div>
-                -->
-                <!--{{ form.name }}{{ form.quantity }}{{ form.unit }}-->
             </div>
             {% endfor %}
         </div>
-
-
 
         <div id='empty-form' class='hidden'>{{ formset.empty_form }}</div>
         <button id='add-more' type='button'>Add more</button>
         {% endif %}
         <button style='margin-top:10px;' type='submit' >Save</button>
 
-
-
     </form>
-
 
 <script>
     
@@ -92,87 +88,29 @@
         formCopyTarget.append(copyEmptyFormEl)
     }
     
-
-
 </script>
-
 </section>
-
-
-
 {% endblock %}
 
-
-
-
-
-
-
-
-
-
-<!--
-
-        
-
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-
-
-           
-    
-            {% if formset %}
-            <p>Ingredients</p>
-            {{ formset.management_form }}
-            
-            <div id="ingredient-form-list">
-            {% for form in formset %}
-                <div class='ingredient-form'>
-                    {{ formset.as_p }}
-                </div>
-            {% endfor %}
-        </div>
-
-            <div id="empty-form" class="">{{ formset.empty_form }}</div>
-            <button type="button" id="add-btn" class="add_ingredient_button">Add Ingredient</button>
-            {% endif %}
-            
-            <button type="submit">Save</button>   
-            
-            </form>
-            
-        -->
-
-
-             <!--
+        <!-- PREVIOUS CODE FOR UPDATING CSS CLASSES AND IDS
         <--inout box for adding title->
         <label for="Title">Title</label>
         <input type="text" id="title" name="Title">
         <br>
-
         <--input box for time->
         <label for="Time">Time</label>
         <input type="text" id="time" name="Time">
         <br>
-
-            
-
-
         <-drop down menu for selecting section->
         <label for="Section">Section</label>
-
         <select id="section-selection" name="Section">
         <option value="select-option">-select option-</option>
         {% for x in section_list %}
         <option value="Section">{{ x.name }}</option>
         {% endfor %}
         </select>
-
-
         <--code for adding and removing text boxes based on tutorial from https://www.sanwebe.com/2013/03/addremove-input-fields-dynamically-with-jquery>
         <--input box for ingredients, add more boxes as needed->
-        
         <div class="input_ingredient_wrap">
             <div class="row">
                 <div class="ingredient-col col-sm-7">
@@ -182,7 +120,6 @@
                     </div>
                     <input type="text" id="ingredient" name="Ingredient">
                 </div>
-
                 <div class="amount-col col-sm-4">
                     <div class="amount-title">
                         <label for="Amount">Amounts</label>
@@ -191,12 +128,7 @@
                 </div>
             </div>
         </div>
-
-        
-     
-                
         <br>
-
         <--input box for directions, add more boxes as needed->
         <div class="input_direction_wrap">
             <div class="col">
@@ -204,54 +136,17 @@
                     <label for="Direction"> Directions</label>
                     <button id="add-btn" class="add_direction_button">Add Direction</button>
                 </div>
-
                 <div class="row">   
                     <input type="text" id="direction" name="Direction" size="150">
                 </div>
             </div>
         </div>
         <br>
-
         <-add and cancel buttons->
         <button id="create-btn" type="submit">Create Recipe</button>
-        
         <a href="/home">
             <button id="cancel-btn" type="Cancel" >Cancel</button>
         </a>
-
         </form>
 
     -->
-
-
-    <!--
-</section>
-
-
-<script>
-
-    const addMoreBtn = document.getElementById(add-btn)
-    addMoreBtn.addEventListener('click', add_new_form)
-
-    function add_new_form(event) {
-        if(event) {
-            event.preventDefault()
-        }
-
-        const formCopyTarget = document.getElementById('ingredient-form-list')
-        const emptyFormEl = document.getElementById('empty-form').cloneNode(true)
-        emptyFormEl.setAttribute('class', 'ingredient-form')
-
-        formCopyTarget.append(emptyFormEl)
-    }
-
-    // add new emoty form element to our html form
-</script>
-
-
-
-
-
-
-
--->

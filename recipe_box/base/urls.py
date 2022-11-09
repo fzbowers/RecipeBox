@@ -13,5 +13,6 @@ urlpatterns = [
     path("new_section/", views.new_section, name="new_section"),
     path("account/", views.account, name="account"),
     path("create_account/", views.create_account, name="create_account"),
-    path("password_reset/", views.password_reset_request, name="password_reset")
+    path("password_reset/", views.password_reset_request, name="password_reset"),
+    path("<str:title>/", views.individual_section, name="individual_section"),
 ]
