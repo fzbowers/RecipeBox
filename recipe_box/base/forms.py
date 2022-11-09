@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Recipe, Ingredient, Instruction, Section
 
+
 class RegisterForm(UserCreationForm):
     email = forms.EmailField()
     class Meta:
@@ -11,9 +12,21 @@ class RegisterForm(UserCreationForm):
         fields = ["username", "email", "password1", "password2"]
 
 class SectionForm(forms.ModelForm):
+    error_css_class = 'error-field'
+    required_css_class = 'required-field'
+    name = forms.CharField(label="Name", widget=forms.TextInput(attrs={'id' : "title"}))
+    description = forms.CharField(label="Description", widget=forms.Textarea(attrs={'placeholder' : "Enter description here...", 'id' : "freeform"}))
+    #color = 
     class Meta:
         model = Section
-        fields = ['name', 'color', 'description']
+        fields = ['name', 'description']
+        ##fields = ['name', 'color', 'description']
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # self.fields['name'].label = ''
+        # self.fields['name'].widget.attrs.update({'class': 'form-control-2'}
+        self.label_suffix = "" # Removes colon
 
 
 class RecipeForm(forms.ModelForm):
