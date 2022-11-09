@@ -6,12 +6,34 @@
 
     <h2>Add New Section</h2>
 
-    <!--input box for title-->          
+    <form action='.' method="POST">
+        {% csrf_token %}
+
+        <div class='{% if field.field.required %}{{ form.required_css_class }}{%endif%}'>
+        {{ form.name.label_tag }} {{ form.name }}
+        <br>
+        <!--{{ form.color.label_tag }} {{ form.color }}-->
+        <br>
+        {{ form.description.label_tag }} {{ form.description }}
+    
+    
+        <button id="create-btn" type="submit">Create Section</button>
+    </div>
+    </form>
+
+        
+    <a href="/">
+        <button id="cancel-btn" type="Cancel">Cancel</button>
+    </a>
+
+    
+    <!--
+    <!-input box for title-         
     <label for="Title"> Name</label>
     <input type="text" id="title" name="Title">
     <br>
 
-    <!--color selection drop down menu-->
+    <!-color selection drop down menu->
     <label for="Color">Color</label>
     <select id="color-selection" name="Color">
         <option value="select-option">-select option-</option>
@@ -25,7 +47,7 @@
 
     <br>
 
-     <!--free form text box for description-->
+     <!-free form text box for description->
     <label for="Description">Description</label>
     <br>
 
@@ -33,13 +55,14 @@
 
     <br>
 
-     <!--submit and cancel button-->
+     <!-submit and cancel button->
      <button id="create-btn" type="submit">Create Section</button>
             
     <a href="/home">
         <button id="cancel-btn" type="Cancel">Cancel</button>
     </a>
 
+-->
 
   
 </section>

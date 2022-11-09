@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 #from django.contrib.auth import login, authenticate
 #from django.contrib.auth.forms import UserCreationForm
-from .forms import RegisterForm, RecipeForm, IngredientForm, InstructionForm
+from .forms import RegisterForm, RecipeForm, IngredientForm, InstructionForm, SectionForm
 from django.views.generic import TemplateView, ListView
 
 #Importing stuff for sending reset password email
@@ -63,7 +63,6 @@ def new_recipe(request):
     }
     
     if form.is_valid() and formset.is_valid():
-        print("IM IN CREATE IF")
         recipe = form.save(commit=False)
         recipe.user = request.user
         recipe.save()
@@ -133,10 +132,22 @@ def all_recipes(request):
     }
     return render(request, "all_recipes.html", context) 
 
-  
+
+
 @login_required
 def new_section(request):
-    return render(request, "new_section.html")
+    form = SectionForm(request.POST or None)
+    
+    context = {
+        "form": form,
+    }
+
+    if form.is_valid():
+        section = form.save(commit=False)
+        section.user = request.user
+        section.save()
+
+    return render(request, "new_section.html", context)
 
 @login_required
 def account(request):
