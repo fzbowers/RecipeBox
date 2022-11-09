@@ -125,6 +125,24 @@ def individual_recipe(request, title=None, *args, **kwargs):
     return render(request, "individual_recipe.html", context) 
 
 @login_required
+def individual_section(request, title=None):
+    recipe_obj = None
+    if title is not None:
+        try:
+            recipe_obj = Recipe.objects.get(name=title)
+        except:
+            recipe_obj = None
+        if recipe_obj is None:
+            return HttpResponse("Recipe Not found.")
+
+    recipe_qs = Section.objects.filter(user=request.user)
+    #all() #qs = queryset
+    context = {
+        "section_list": recipe_qs,
+    }
+    return render(request, "individual_section.html", context) 
+
+@login_required
 def all_recipes(request):
     recipe_qs = Recipe.objects.filter(user=request.user)
     context = {
