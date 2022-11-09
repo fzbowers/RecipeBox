@@ -27,7 +27,7 @@
 
                         {% for x in pinned_recipes_list %}
                         <div class="col-sm-10 mini-pinned">
-                            <p class="all-recipes-text"><a class="col-link" href="{{ x.get_absolute_url }}">{{ x.name }}</a></p>
+                            <p class="all-recipes-text"><a class="pinned-link" href="{{ x.get_absolute_url }}">{{ x.name }}</a></p>
                             <p class="all-recipes-text">Time: {{ x.time_to_make }} mins</p>
 
                         </div>
