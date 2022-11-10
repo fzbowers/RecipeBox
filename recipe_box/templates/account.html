@@ -4,12 +4,17 @@
 <title>Account</title>
 <section id="account">    
     {% block content %}
+
+    {% if user.is_authenticated %}
+      <p>Hi {{user.username}}</p>
+      <p>Email: {{user.email}}</p>
+      <p>Change password <a href="../change_password/">here!</a></p>
+      <p><a href="{% url 'logout' %}">Logout</a></p>
+
+    {% else %}
     <p>Login <a href="../login/">Here!</a></p>
     <p>No account? Create one <a href="../create_account/">here!</a></p>
 
-    {% if user.is_authenticated %}
-      Hi {{user.username}}|
-      <p><a href="{% url 'logout' %}">Logout</a></p>
     {% endif %}
 
     {% endblock %}

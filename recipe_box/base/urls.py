@@ -15,4 +15,5 @@ urlpatterns = [
     path("account/", views.account, name="account"),
     path("create_account/", views.create_account, name="create_account"),
     path("password_reset/", views.password_reset_request, name="password_reset"),
+    path("change_password/", views.change_password, name='change_password'),
 ]
