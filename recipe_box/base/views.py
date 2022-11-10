@@ -8,7 +8,9 @@ from django.views.generic import TemplateView, ListView
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import PasswordResetForm
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordResetForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.template.loader import render_to_string
 #from django.db.models.query_utils import Q
@@ -217,5 +219,20 @@ def password_reset_request(request):
                     return redirect ("/password_reset/done/")
     password_reset_form = PasswordResetForm()
     return render(request=request, template_name="registration/password_reset.html", context={"password_reset_form":password_reset_form})
+
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save();
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Password successfully updated :)')
+            return redirect('change_password')
+        else:
+            messages.error(request, 'Error :(')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'accounts/change_password.html', {'form': form})
+
 
 
