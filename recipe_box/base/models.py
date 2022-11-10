@@ -87,3 +87,9 @@ class Instruction(models.Model):
     class Meta:
         verbose_name = ('Instruction')
         verbose_name_plural = ('Instructions')
+
+#class EmailChangeAuth(models.Model):
+   # auth_key = models.CharField(max_length=42)
+# auth_key = models.UUIDField(default=uuid.uuid4, unique=True)
+    #user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    #new_email = models.CharField(max_length=256)
