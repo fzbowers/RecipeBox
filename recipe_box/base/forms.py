@@ -21,7 +21,6 @@ class SectionForm(forms.ModelForm):
     required_css_class = 'required-field'
     name = forms.CharField(label="Name",label_suffix="", widget=forms.TextInput(attrs={'id' : "title"}))
     description = forms.CharField(label="Description", label_suffix="", widget=forms.Textarea(attrs={'placeholder' : "Enter description here...", 'id' : "freeform"}))
-    #color = 
     class Meta:
         model = Section
         fields = ['name', 'description']
@@ -32,8 +31,6 @@ class SectionForm(forms.ModelForm):
 class RecipeForm(forms.ModelForm):
     error_css_class = 'error-field'
     required_css_class = 'required-field'
-
-    #SECTION_CHOICES = [tuple([x,x]) for x in user_section_list range(1,32)]
 
     name = forms.CharField(label="Title", label_suffix="", widget=forms.TextInput(attrs={'id' : "title"}))
     time_to_make = forms.CharField(label="Time", label_suffix="", widget=forms.TextInput(attrs={'id' : "time"}))
