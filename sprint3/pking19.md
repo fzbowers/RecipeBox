@@ -7,7 +7,7 @@
 ### What you planned to do
  - view for new recipe #49
  - view for individual recipe page #50
-  - view for all recipes #51
+ - view for all recipes #51
 
 ### What you did not do
 
