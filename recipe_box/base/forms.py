@@ -14,7 +14,7 @@ class RegisterForm(UserCreationForm):
 class EditProfileForm(UserChangeForm):
     class Meta:
         model = User
-        fields = ["email", "password"]
+        fields = ["email"]
 
 class SectionForm(forms.ModelForm):
     error_css_class = 'error-field'
