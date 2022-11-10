@@ -266,6 +266,7 @@ footer {
     margin: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+    min-height: 65vh;
 }
 
 /* All columns */
