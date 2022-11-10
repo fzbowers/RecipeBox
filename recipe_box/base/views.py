@@ -232,7 +232,7 @@ def change_password(request):
             messages.error(request, 'Error :(')
     else:
         form = PasswordChangeForm(request.user)
-    return render(request, 'accounts/change_password.html', {'form': form})
+    return render(request, 'change_password.html', {'form': form})
 
 
 
