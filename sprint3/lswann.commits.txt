@@ -1,0 +1,140 @@
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500  6)     <h2>Search Results:</h2>
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500  7) 
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500  8)     <div class="row search-row"></div>
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500  9) 
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500 10)     {% for x in recipe_list %}
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500 11)       <ul>
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500 12)         <div class="col-sm-11 search-sections">
+869768de (Lili Swann    2022-11-10 08:03:11 -0500 13)             <a href="../recipe/{{ x.name }}/"><p class="search-text">{{ x.name }}</p></a>
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500 14)             <p class="search-text">Time: {{ x.time_to_make }} mins</p>
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500 15)         
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500 16)         </div>  
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500 17)       </ul>
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500 18)     {% endfor %}
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500 19) 
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500 20) </div>
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500 21)   
+500780e5 (Lili Swann    2022-11-09 16:18:27 -0500 245)     background: #d6eadf;
+8c70564f (Lili Swann    2022-11-10 07:59:22 -0500 269)     min-height: 65vh;
+87063b63 (Lili Swann    2022-11-09 11:50:48 -0500 289)     display: flex;
+87063b63 (Lili Swann    2022-11-09 11:50:48 -0500 290)     justify-content: space-between;
+87063b63 (Lili Swann    2022-11-09 11:50:48 -0500 291)     align-items: center;
+87063b63 (Lili Swann    2022-11-09 11:50:48 -0500 292)     padding: 10px;
+87063b63 (Lili Swann    2022-11-09 11:50:48 -0500 309) .col-link:link,
+87063b63 (Lili Swann    2022-11-09 11:50:48 -0500 310) .pinned-link:link {
+87063b63 (Lili Swann    2022-11-09 11:50:48 -0500 314) .pinned-link {
+87063b63 (Lili Swann    2022-11-09 11:50:48 -0500 315)     color: #ffffff;
+87063b63 (Lili Swann    2022-11-09 11:50:48 -0500 316) 
+87063b63 (Lili Swann    2022-11-09 11:50:48 -0500 317) }
+87063b63 (Lili Swann    2022-11-09 11:50:48 -0500 318) 
+87063b63 (Lili Swann    2022-11-09 11:50:48 -0500 319) 
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 331) /* NEW SECTION, NEW RECIPE, SEARCH, INDIVIDUAL SECTION, AND ALL RECIPES PAGES */
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500 334) #all-recipes,
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500 344) #all-recipes h2,
+53159af3 (Lili Swann    2022-11-08 19:33:43 -0500 482) #ingredient,
+53159af3 (Lili Swann    2022-11-08 19:33:43 -0500 483) #amount {
+53159af3 (Lili Swann    2022-11-08 19:33:43 -0500 484)     padding: 0;
+53159af3 (Lili Swann    2022-11-08 19:33:43 -0500 485) }
+53159af3 (Lili Swann    2022-11-08 19:33:43 -0500 486) 
+53159af3 (Lili Swann    2022-11-08 19:33:43 -0500 488)     margin-left: 15px;
+53159af3 (Lili Swann    2022-11-08 19:33:43 -0500 489) 
+53159af3 (Lili Swann    2022-11-08 19:33:43 -0500 490) }
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 599) /* STYLE ALL RECIPES, INDIVIDUAL SECTION, AND SEARCH PAGES */
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500 601) .all-recipes-row,
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 602) .search-row,
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 603) .individual-section-row {
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500 607) .all-sections,
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 608) .search-sections,
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 609) .individual-sections {
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500 626) .all-recipes-text,
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 627) .search-text,
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 628) .individual-section-text {
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 664) .individual-section-text {
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 676)     min-height: 10vw;
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500  54)       <!--<form class="form-inline searchbar mr-auto">
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500  56)         <button type="submit">Go</button> 
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500  57)       </form> -->
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500  58) 
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500  59) 
+e5f594a1 (Lili Swann    2022-11-09 15:44:36 -0500  60)       <form class="form-inline searchbar mr-auto" action="{% url 'search_results' %}" method="get" class="collapse navbar-collapse menu" id="main-navigation">
+e5f594a1 (Lili Swann    2022-11-09 15:44:36 -0500  61)         <input name="q" type="search" placeholder="Search..." aria-label="Search">
+e5f594a1 (Lili Swann    2022-11-09 15:44:36 -0500  62)         <button type="submit">Go</button>
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500  63)       </form>
+31f4d36d (Lili Swann    2022-11-08 14:31:15 -0500  64) 
+dcbf282c (Lili Swann    2022-11-09 15:44:21 -0500 15) 
+dcbf282c (Lili Swann    2022-11-09 15:44:21 -0500 16)                         <div class="col-sm-10 mini-section" id="section-block"><a class="col-link" href="/section/{{ x.name }}">{{ x.name }}</a></div>
+5125f95a (Lili Swann    2022-11-09 11:45:18 -0500 30)                         {% for x in pinned_recipes_list %}
+5125f95a (Lili Swann    2022-11-09 11:45:18 -0500 31)                         <div class="col-sm-10 mini-pinned">
+87063b63 (Lili Swann    2022-11-09 11:50:48 -0500 32)                             <p class="all-recipes-text"><a class="pinned-link" href="{{ x.get_absolute_url }}">{{ x.name }}</a></p>
+5125f95a (Lili Swann    2022-11-09 11:45:18 -0500 33)                             <p class="all-recipes-text">Time: {{ x.time_to_make }} mins</p>
+5125f95a (Lili Swann    2022-11-09 11:45:18 -0500 34) 
+5125f95a (Lili Swann    2022-11-09 11:45:18 -0500 35)                         </div>
+5125f95a (Lili Swann    2022-11-09 11:45:18 -0500 36)                         {% endfor %}    
+5125f95a (Lili Swann    2022-11-09 11:45:18 -0500 37) 
+af244c3a (Lili Swann    2022-11-08 19:31:13 -0500  1) {% extends "base.html" %}
+af244c3a (Lili Swann    2022-11-08 19:31:13 -0500  2) {% block page_content %}
+af244c3a (Lili Swann    2022-11-08 19:31:13 -0500  3) 
+af244c3a (Lili Swann    2022-11-08 19:31:13 -0500  4) <title>Section</title>
+af244c3a (Lili Swann    2022-11-08 19:31:13 -0500  5) <section id="individual-section">
+205c4df1 (Lili Swann    2022-11-08 20:05:10 -0500  6) 
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 10)         <div class="col-sm-11 individual-section-top">
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 11)             <p id="individual-section-description">{{ section_obj.description }}</p>
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 12)         </div>
+205c4df1 (Lili Swann    2022-11-08 20:05:10 -0500 15)     <div class="row individual-section-row">
+205c4df1 (Lili Swann    2022-11-08 20:05:10 -0500 16) 
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 17)         {% for x in recipe_list %}
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 18)         <div class="col-sm-11 individual-section-recipe">
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 19)             <a class="col-link" href="{{ x.get_absolute_url }}"><p class="individual-section-text">{{ x.name }}</p></a>
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 20)             <p class="individual-section-text">Time: {{ x.time_to_make }} mins</p>
+205c4df1 (Lili Swann    2022-11-08 20:05:10 -0500 21)         
+205c4df1 (Lili Swann    2022-11-08 20:05:10 -0500 22)         </div>   
+205c4df1 (Lili Swann    2022-11-08 20:05:10 -0500 23)         {% endfor %}
+205c4df1 (Lili Swann    2022-11-08 20:05:10 -0500 24)         
+205c4df1 (Lili Swann    2022-11-08 20:05:10 -0500 25)     </div>
+205c4df1 (Lili Swann    2022-11-08 20:05:10 -0500 26) 
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 27)   
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 28) </div>
+af244c3a (Lili Swann    2022-11-08 19:31:13 -0500 29)    
+af244c3a (Lili Swann    2022-11-08 19:31:13 -0500 30) </section>
+af244c3a (Lili Swann    2022-11-08 19:31:13 -0500 31) 
+af244c3a (Lili Swann    2022-11-08 19:31:13 -0500 32) {% endblock %}
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500  11) from django.contrib import messages
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500  12) from django.contrib.auth import update_session_auth_hash
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500  13) from django.contrib.auth.forms import PasswordResetForm, PasswordChangeForm
+31f4d36d (Lili Swann        2022-11-08 14:31:15 -0500  16) #from django.db.models.query_utils import Q
+31f4d36d (Lili Swann        2022-11-08 14:31:15 -0500  20) from django.db.models import Q
+31f4d36d (Lili Swann        2022-11-08 14:31:15 -0500  32)     def get_queryset(self): 
+5125f95a (Lili Swann        2022-11-09 11:45:18 -0500  43)     pinned_qs = Recipe.objects.filter(Q(user=request.user) & Q(pinned=True))
+5125f95a (Lili Swann        2022-11-09 11:45:18 -0500  44) 
+5125f95a (Lili Swann        2022-11-09 11:45:18 -0500  47)         "pinned_recipes_list": pinned_qs,
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 128)         if "pinnedbtn" in request.POST:
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 129)             recipe_obj.pinned = True
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 130)             recipe_obj.save(update_fields=["pinned"])
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 131) 
+903b7a11 (Lili Swann        2022-11-08 19:30:49 -0500 138) @login_required
+205c4df1 (Lili Swann        2022-11-08 20:05:10 -0500 140)     section_obj = None
+903b7a11 (Lili Swann        2022-11-08 19:30:49 -0500 141)     if title is not None:
+903b7a11 (Lili Swann        2022-11-08 19:30:49 -0500 144)     context = {
+36f2a766 (Lili Swann        2022-11-09 11:32:29 -0500 145)         "section_obj": section_obj,
+36f2a766 (Lili Swann        2022-11-09 11:32:29 -0500 146)         "recipe_list": section_obj.recipes.all()
+903b7a11 (Lili Swann        2022-11-08 19:30:49 -0500 147)     }
+903b7a11 (Lili Swann        2022-11-08 19:30:49 -0500 149)     return render(request, "individual_section.html", context) 
+903b7a11 (Lili Swann        2022-11-08 19:30:49 -0500 150) 
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 221) def change_password(request):
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 222)     if request.method == 'POST':
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 223)         form = PasswordChangeForm(request.user, request.POST)
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 224)         if form.is_valid():
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 225)             user = form.save();
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 226)             update_session_auth_hash(request, user)
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 227)             messages.success(request, 'Password successfully updated :)')
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 228)             return redirect('change_password')
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 229)         else:
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 230)             messages.error(request, 'Error :(')
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 231)     else:
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 232)         form = PasswordChangeForm(request.user)
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 233)     return render(request, 'change_password.html', {'form': form})
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 234) 
+8c70564f (Lili Swann        2022-11-10 07:59:22 -0500 235) 
+8c70564f (Lili Swann    2022-11-10 07:59:22 -0500 18)     path("change_password/", views.change_password, name='change_password'),
+f7c9c38c (Lili Swann    2022-11-08 12:14:58 -0500 15)     color = models.CharField(max_length = 16, default="#ffffff")
+36f2a766 (Lili Swann    2022-11-09 11:32:29 -0500 39)     section = models.ForeignKey(Section, related_name='recipes', on_delete=models.PROTECT, null=True)
