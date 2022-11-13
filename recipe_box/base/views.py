@@ -23,19 +23,26 @@ from django.db.models import Q
 from django.forms.models import modelformset_factory # querysets
 
 from .models import Recipe, Ingredient, Instruction, Section
+        
 
-
-# search function based on tutorial from https://learndjango.com/tutorials/django-search-tutorial
-class SearchResultsView(ListView):
-    model = Recipe
-    template_name = 'search.html'
-
-    def get_queryset(self): 
-        query = self.request.GET.get("q")
-        object_list = Recipe.objects.filter(
-            Q(name__icontains=query) #| Q(description__icontains=query) made obsolete by change to model
+@login_required
+def search(request):
+    recipe_list = []
+    if request.method == "GET":
+        query = request.GET.get('search')
+        #if query == '':
+        #    query = ''
+        recipe_list = Recipe.objects.filter(
+            Q(name__icontains=query) & Q(user=request.user) #| Q(description__icontains=query) made obsolete by change to model
         )
-        return object_list
+
+    context = {
+    "recipe_list": recipe_list,
+    "query": query,
+    }
+
+    return render(request, "search.html", context)
+
 
 
 @login_required(login_url="/login")
@@ -48,10 +55,6 @@ def home(request):
         "pinned_recipes_list": pinned_qs,
     }
     return render(request, "home.html", context)
-
-@login_required
-def search(request):
-    return render(request, "search.html")
 
 @login_required
 def new_recipe(request):

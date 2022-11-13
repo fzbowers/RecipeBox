@@ -51,16 +51,11 @@
 
     <!-- Navigation Menu -->
     <div class="collapse navbar-collapse menu" id="main-navigation"> 
-      <!--<form class="form-inline searchbar mr-auto">
-        <input type="search" placeholder="Search" aria-label="Search">
+      <form class="form-inline searchbar mr-auto" method="get" action="{% url 'search_results' %}" >
+        <input name="search" type="search" placeholder="Search..." aria-label="Search">
         <button type="submit">Go</button> 
-      </form> -->
-
-
-      <form class="form-inline searchbar mr-auto" action="{% url 'search_results' %}" method="get" class="collapse navbar-collapse menu" id="main-navigation">
-        <input name="q" type="search" placeholder="Search..." aria-label="Search">
-        <button type="submit">Go</button>
       </form>
+
 
       <ul class="navbar-nav">
             <li class="nav-item py-md-2">

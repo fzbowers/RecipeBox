@@ -3,19 +3,37 @@
 
 <title>Search</title>
 <section id="search">
-    <h2>Search Results:</h2>
+    <!--<h2>Search Results:</h2>-->
 
     <div class="row search-row"></div>
 
-    {% for x in recipe_list %}
-      <ul>
-        <div class="col-sm-11 search-sections">
-            <a href="../recipe/{{ x.name }}/"><p class="search-text">{{ x.name }}</p></a>
-            <p class="search-text">Time: {{ x.time_to_make }} mins</p>
-        
-        </div>  
-      </ul>
-    {% endfor %}
+    {% if query %}
+
+           <h2>
+
+           {% with recipe_list.count as total_results %}
+
+           {{ total_results }} Result{{ total_results|pluralize }} Found
+
+           {% endwith %}
+
+           </h2>
+
+   {% for x in recipe_list %}
+
+   <ul>
+    <div class="col-sm-11 search-sections">
+        <a href="../recipe/{{ x.name }}/"><p class="search-text">{{ x.name }}</p></a>
+        <p class="search-text">Time: {{ x.time_to_make }} mins</p>
+    
+    </div>  
+  </ul>
+
+
+  {% endfor %}
+
+ {% endif %}
+
 
 </div>
   

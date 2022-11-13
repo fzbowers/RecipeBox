@@ -1,13 +1,13 @@
 from django.urls import path
 from . import views
-from .views import SearchResultsView
+#from .views import SearchResultsView
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView
 #from django.contrib.auth import views as auth_views
 
 # All pages of the website
 urlpatterns = [
     path("", views.home, name="home"),
-    path("search/",  SearchResultsView.as_view(), name="search_results"),
+    path("search/",  views.search, name="search_results"),
     path("recipe/<str:title>/edit", views.edit_recipe, name="edit_recipe"),
     path("recipe/<str:title>/", views.individual_recipe, name="individual_recipe"),
     path("recipe/", views.new_recipe, name="new_recipe"),
