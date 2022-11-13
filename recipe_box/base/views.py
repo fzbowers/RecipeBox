@@ -23,8 +23,6 @@ from django.forms.models import modelformset_factory # querysets
 
 from .models import Recipe, Ingredient, Instruction, Section
 
-# Create your views here.
-
 
 # search function based on tutorial from https://learndjango.com/tutorials/django-search-tutorial
 class SearchResultsView(ListView):
@@ -34,7 +32,7 @@ class SearchResultsView(ListView):
     def get_queryset(self): 
         query = self.request.GET.get("q")
         object_list = Recipe.objects.filter(
-            Q(name__icontains=query)  #| Q(description__icontains=query) made obsolete by change to model
+            Q(name__icontains=query) #| Q(description__icontains=query) made obsolete by change to model
         )
         return object_list
 
