@@ -129,12 +129,24 @@ def individual_recipe(request, title=None, *args, **kwargs):
     if title is not None:
         recipe_obj = get_object_or_404(Recipe, name=title, user=request.user)
 
+        if recipe_obj.pinned == True:
+            is_pinned = True
+        else:
+            is_pinned = ''
+
         if "pinnedbtn" in request.POST:
             recipe_obj.pinned = True
             recipe_obj.save(update_fields=["pinned"])
+            is_pinned = True
+
+        if "unpinnedbtn" in request.POST:
+            recipe_obj.pinned = False
+            recipe_obj.save(update_fields=["pinned"])
+            is_pinned = ''
 
     context = {
-        "recipe_obj": recipe_obj
+        "recipe_obj": recipe_obj,
+        "is_pinned" : is_pinned
     }
     
     return render(request, "individual_recipe.html", context) 

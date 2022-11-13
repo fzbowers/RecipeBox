@@ -40,10 +40,19 @@
     <!-- Buttons section-->
     <div class="row recipe-bottom">
         <button type="submit" class="blue-btn">{% if recipe_obj.get_edit_url %}<a href="{{ recipe_obj.get_edit_url }}">Edit</a>{% endif %}</button>
-        <form method="post">
-            {% csrf_token %}
-            <button type="submit" class="green-btn" name="pinnedbtn">Add to Pinned</button>
-        </form>
+        {% if is_pinned %}
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="green-btn" name="unpinnedbtn">Unpin</button>
+            </form>
+
+        {% else %}
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="green-btn" name="pinnedbtn">Add to Pinned</button>
+            </form>
+        {% endif %}
+
         <button type="submit" class="green-btn">Add to Section</button>
 
     </div>
