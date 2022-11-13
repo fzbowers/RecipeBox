@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 from .views import SearchResultsView
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView
+#from django.contrib.auth import views as auth_views
 
 # All pages of the website
 urlpatterns = [
@@ -16,4 +18,6 @@ urlpatterns = [
     path("create_account/", views.create_account, name="create_account"),
     path("password_reset/", views.password_reset_request, name="password_reset"),
     path("change_password/", views.change_password, name='change_password'),
+    path("edit_profile/", views.edit_profile, name="edit_profile"),
+    path("password_reset/", PasswordResetView.as_view(), name="password_reset")
 ]

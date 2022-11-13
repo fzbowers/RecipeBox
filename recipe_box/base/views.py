@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 #from django.contrib.auth import login, authenticate
-#from django.contrib.auth.forms import UserCreationForm
-from .forms import RegisterForm, RecipeForm, IngredientForm, InstructionForm, SectionForm
+from django.contrib.auth.forms import UserChangeForm
+from .forms import RegisterForm, EditProfileForm, RecipeForm, IngredientForm, InstructionForm, SectionForm
 from django.views.generic import TemplateView, ListView
 
 #Importing stuff for sending reset password email
+from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -225,12 +226,20 @@ def change_password(request):
             user = form.save();
             update_session_auth_hash(request, user)
             messages.success(request, 'Password successfully updated :)')
-            return redirect('change_password')
+            return redirect('account')
         else:
             messages.error(request, 'Error :(')
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'change_password.html', {'form': form})
 
-
-
+def edit_profile(request):
+   if request.method == "POST":
+      form = EditProfileForm(request.POST, instance=request.user)
+      if form.is_valid():
+        form.save()
+        return redirect('account')
+   else:
+        form = EditProfileForm(instance=request.user)
+        args = {'form': form}
+        return render(request, 'registration/edit_profile.html', args)
