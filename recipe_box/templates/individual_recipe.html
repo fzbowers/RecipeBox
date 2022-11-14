@@ -36,10 +36,10 @@
             <div class="col-sm-12 mini-right">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </div>
         </div>
     </div>
-
+  
     <!-- Buttons section-->
     <div class="row recipe-bottom">
-        <button type="submit" class="blue-btn">{% if recipe_obj.get_edit_url %}<a href="{{ recipe_obj.get_edit_url }}">Edit</a>{% endif %}</button>
+        <button type="submit" class="blue-btn">{% if recipe_obj.get_edit_url %}<a class="edit-link" href="{{ recipe_obj.get_edit_url }}">Edit</a>{% endif %}</button>
 
         <!--If a recipe is not pinned, show button to pin. If recipe is pinned, show button to remove from pinned-->
         {% if is_pinned %}

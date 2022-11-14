@@ -20,7 +20,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.db.models import Q
 
-from django.forms.models import modelformset_factory # querysets
+from django.forms.models import inlineformset_factory
 
 from .models import Recipe, Ingredient, Instruction, Section
         
@@ -56,70 +56,63 @@ def home(request):
     }
     return render(request, "home.html", context)
 
+
+
 @login_required
 def new_recipe(request):
-    context = {}
-    ''' SECTION OPTION NOT WORKING
-    section_qs = Section.objects.filter(user=request.user)
-    context = {
-        "user_section_list": section_qs,
-    }
-    '''
-    form = RecipeForm(request.POST or None)
-
-    RecipeIngredientFormset = modelformset_factory(Ingredient, form=IngredientForm, extra=1)
-    qs = Ingredient.objects.none()
-    formset = RecipeIngredientFormset(request.POST or None, queryset=qs)
-    context["form"] = form
-    context["formset"] = formset
-
+    user = request.user
     
-    if form.is_valid() and formset.is_valid():
-        recipe = form.save(commit=False)
-        recipe.user = request.user
-        recipe.save()
-        for form in formset:
-            ingredient = form.save(commit=False)
-            ingredient.recipe = recipe
-            ingredient.save()
-        return redirect(recipe.get_absolute_url())
+    # for get request
+    form = RecipeForm(user)
+    IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm)
+    formset = IngredientFormset()
 
+    if request.method == 'POST':
+        form = RecipeForm(user, request.POST)
+
+        if form.is_valid():
+            recipe = form.save(commit=False)
+            recipe.user = request.user # not sure if needed
+            recipe.save()
+
+            formset = IngredientFormset(request.POST or None, instance=recipe)
+            if formset.is_valid():
+                formset.save()
+                return redirect(recipe.get_absolute_url())
+    
+    context = {
+        'form': form,
+        'formset': formset,
+    }
     return render(request, "new_recipe.html", context) 
 
 
-#### NOT WORKING
 @login_required
 def edit_recipe(request, title=None, *args, **kwargs):
-   # return HttpResponse("Cannot edit this recipe.")
-    context = {}
-    obj = get_object_or_404(Recipe, name=title, user=request.user)
-    
+    user = request.user
+    recipe_obj = Recipe.objects.get(name=title)
 
-    form = RecipeForm(request.POST or None, instance=obj)
+    form = RecipeForm(user, instance=recipe_obj)
+    IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm)
+    formset = IngredientFormset(instance=recipe_obj)
 
-    RecipeIngredientFormset = modelformset_factory(Ingredient, form=IngredientForm, extra=0)
-    qs = obj.ingredient_set.all() # []
-    formset = RecipeIngredientFormset(request.POST or None, queryset=qs)
+    if request.method == 'POST':
+        form = RecipeForm(user, request.POST, instance=recipe_obj)
+
+        if form.is_valid():
+            recipe = form.save(commit=False)
+            recipe.user = request.user # not sure if needed
+            recipe.save()
+            
+            formset = IngredientFormset(request.POST or None, instance=recipe)
+            if formset.is_valid():
+                formset.save()
+            return redirect(recipe.get_absolute_url())
+
     context = {
-        "form": form,
-        "formset": formset,
-        "object": obj
+        'form': form,
+        'formset': formset,
     }
-
-    if (form.is_valid() and formset.is_valid()):
-        recipe = form.save(commit=False)
-        recipe.save()
-        # formset.save()  
-        for form in formset:
-            ingredient = form.save(commit=False)
-            ingredient.recipe = recipe
-            ingredient.save()
-
-        context['message'] = 'Data saved.'
-    else:
-        print('This is form errors: ', form.errors)
-        print('This is formset errors: ', formset.errors)
-        
     return render(request, "new_recipe.html", context) 
 
 

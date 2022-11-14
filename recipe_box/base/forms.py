@@ -19,13 +19,13 @@ class EditProfileForm(UserChangeForm):
 class SectionForm(forms.ModelForm):
     error_css_class = 'error-field'
     required_css_class = 'required-field'
-    name = forms.CharField(label="Name",label_suffix="", widget=forms.TextInput(attrs={'id' : "title"}))
+
+    name = forms.CharField(label="Name", label_suffix="", widget=forms.TextInput(attrs={'id' : "title"}))
     description = forms.CharField(label="Description", label_suffix="", widget=forms.Textarea(attrs={'placeholder' : "Enter description here...", 'id' : "freeform"}))
     class Meta:
         model = Section
         fields = ['name', 'description']
         ##fields = ['name', 'color', 'description']
-
 
 
 class RecipeForm(forms.ModelForm):
@@ -37,8 +37,13 @@ class RecipeForm(forms.ModelForm):
     
     class Meta:
         model = Recipe
-        fields = ['name', 'time_to_make']
-   
+        fields = ['name', 'time_to_make', 'section']
+
+    # getting user sections
+    def __init__(self, user, *args, **kwargs):
+        super(RecipeForm, self).__init__(*args, **kwargs)
+        self.fields['section'].queryset = Section.objects.filter(user=user)
+
 
 class IngredientForm(forms.ModelForm):
     name = forms.CharField(label='', widget=forms.TextInput(attrs={'id' : "ingredient", 'class' : "col-sm-6"}))

@@ -702,3 +702,12 @@ button[type=submit] {
     display: flex;
     justify-content: center;
 }
+
+
+.edit-link {
+    color: #ffffff;
+}
+.edit-link:link {
+    text-decoration: none;
+}
+

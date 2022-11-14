@@ -12,27 +12,16 @@
 <section id="new-recipe">
     
     <h2>Add New Recipe</h2>
-    
 
-    
-    <form action='.' method="POST">
+    <form action="" method="POST">
         {% csrf_token %}
-       {% for field in form %}
-       <div class='{% if field.field.required %}{{ form.required_css_class }}{%endif%}'>
-        {{ field.errors }}   
-        {{ field.label_tag }} {{ field }}
+        
+        {% for field in form %}
+        <div class='{% if field.field.required %}{{ form.required_css_class }}{%endif%}'>
+            {{ field.errors }}   
+            {{ field.label_tag }} {{ field }}
         </div>
         {% endfor %}
-
-        <!--  SECTION OPTION NOT WORKING
-        <label for="Section">Section</label>
-        <select id="section-selection" name="Section">
-        <option value="select-option">-select option-</option>
-        {% for x in user_section_list %}
-        <option value="Section">{{ x.name }}</option>
-        {% endfor %}
-        </select>
-    -->
 
         <!-- LABELS -->
         <div class="input_ingredient_wrap">
@@ -50,7 +39,21 @@
         </div>
             </div>
         </div>
-                
+
+        {{ formset }}
+        
+        <button id="create-btn" type="submit">Save Recipe</button>
+    </form>
+
+    <a href="/">
+        <button id="cancel-btn" type="Cancel">Cancel</button>
+    </a>
+
+</section>
+{% endblock %}
+
+
+<!-- OLD FORMSET                 
         {% if formset %}
         {{ formset.management_form }}
         <div id='ingredient-form-list'>
@@ -101,7 +104,8 @@
     
 </script>
 </section>
-{% endblock %}
+-->
+
 
         <!-- PREVIOUS CODE FOR UPDATING CSS CLASSES AND IDS
         <--inout box for adding title->
