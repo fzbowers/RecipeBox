@@ -64,7 +64,7 @@ def new_recipe(request):
     
     # for get request
     form = RecipeForm(user)
-    IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm)
+    IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm, extra=1)
     formset = IngredientFormset()
 
     if request.method == 'POST':
@@ -93,7 +93,7 @@ def edit_recipe(request, title=None, *args, **kwargs):
     recipe_obj = Recipe.objects.get(slug=title)
 
     form = RecipeForm(user, instance=recipe_obj)
-    IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm)
+    IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm, extra=0)
     formset = IngredientFormset(instance=recipe_obj)
 
     if request.method == 'POST':
