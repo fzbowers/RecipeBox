@@ -2,14 +2,15 @@ from django.conf import settings
 from tabnanny import verbose
 from unittest.util import _MAX_LENGTH
 from django.db import models
-from django.utils.text import slugify
+from django.db.models.signals import pre_save, post_save
 from django.urls import reverse
-
+from .utils import slugify_instance_name, model_post_save, model_pre_save
 # Create your models here.
 
 class Section(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    name = models.CharField(max_length=120, unique=True,)
+    name = models.CharField(max_length=120, unique=True)
+    slug = models.SlugField(unique=True, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
     order_index = models.PositiveIntegerField(null=True, blank=True)
     color = models.CharField(max_length = 16, default="#ffffff")
@@ -17,6 +18,9 @@ class Section(models.Model):
     class Meta:
         verbose_name = ('Section')
         verbose_name_plural = ('Sections')
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'name'], name='unique name for each user')
+        ]
     
     def __str__(self):
         return self.name
@@ -25,13 +29,16 @@ class Section(models.Model):
         return self.recipe_set.all()
 
     def get_absolute_url(self):
-        return reverse("individual_section", kwargs={"title": self.name})
+        return reverse("individual_section", kwargs={"title": self.slug})
     
+pre_save.connect(model_pre_save, sender=Section)
+post_save.connect(model_post_save, sender=Section)
+
 
 class Recipe(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    name = models.CharField(max_length = 150)
-    slug = models.SlugField(blank=True, null=True)
+    name = models.CharField(max_length = 150, unique=True)
+    slug = models.SlugField(unique=True, blank=True, null=True)
     ## description = models.TextField(null=True, blank=True) ## DON"T NEED
     time_to_make = models.CharField(max_length = 25, default=0)
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -46,22 +53,17 @@ class Recipe(models.Model):
     def get_ingredients_children(self):
         return self.ingredient_set.all()
 
-    '''
     def __str__(self):
         return self.name
 
-    def save(self, *args, **kwargs):
-        if self.slug is None:
-            self.slug = slugify(self.name)
-        super().save(*args, **kwargs)
-    '''
-
     def get_absolute_url(self):
-        return reverse("individual_recipe", kwargs={"title": self.name})
+        return reverse("individual_recipe", kwargs={"title": self.slug})
         
     def get_edit_url(self):
-        return reverse("edit_recipe", kwargs={"title": self.name})
+        return reverse("edit_recipe", kwargs={"title": self.slug})
     
+pre_save.connect(model_pre_save, sender=Recipe)
+post_save.connect(model_post_save, sender=Recipe)
 
 
 class Ingredient(models.Model):
@@ -73,10 +75,9 @@ class Ingredient(models.Model):
         verbose_name = ('Ingredient')
         verbose_name_plural = ('Ingredients')
     
-    '''
+    
     def __str__(self):
         return self.name
-    '''
 
     def get_absolute_url(self):
         return self.recipe.get_absolute_url()

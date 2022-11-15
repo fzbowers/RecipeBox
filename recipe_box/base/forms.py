@@ -21,7 +21,7 @@ class SectionForm(forms.ModelForm):
     required_css_class = 'required-field'
 
     name = forms.CharField(label="Name", label_suffix="", widget=forms.TextInput(attrs={'id' : "title"}))
-    description = forms.CharField(label="Description", label_suffix="", widget=forms.Textarea(attrs={'placeholder' : "Enter description here...", 'id' : "freeform"}))
+    description = forms.CharField(label="Description", label_suffix="", required=False, widget=forms.Textarea(attrs={'placeholder' : "Enter description here...", 'id' : "freeform"}))
     class Meta:
         model = Section
         fields = ['name', 'description']
