@@ -55,6 +55,7 @@ class IngredientForm(forms.ModelForm):
 
 
 class InstructionForm(forms.ModelForm):
+    text = forms.CharField(label='', widget=forms.TextInput(attrs={'id' : "instruction", 'class' : "col-sm-6"}))
     class Meta:
         model = Instruction
         fields = ['text']

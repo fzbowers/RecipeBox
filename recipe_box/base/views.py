@@ -66,6 +66,8 @@ def new_recipe(request):
     form = RecipeForm(user)
     IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm, extra=1)
     formset = IngredientFormset()
+    InstructionFormset = inlineformset_factory(Recipe, Instruction, form=InstructionForm, extra=1)
+    formset2 = InstructionFormset()
 
     if request.method == 'POST':
         form = RecipeForm(user, request.POST)
@@ -78,11 +80,17 @@ def new_recipe(request):
             formset = IngredientFormset(request.POST or None, instance=recipe)
             if formset.is_valid():
                 formset.save()
+                ##return redirect(recipe.get_absolute_url())
+
+            formset2 = InstructionFormset(request.POST or None, instance=recipe)
+            if formset2.is_valid():
+                formset2.save()
                 return redirect(recipe.get_absolute_url())
     
     context = {
         'form': form,
         'formset': formset,
+        'formset2': formset2,
     }
     return render(request, "new_recipe.html", context) 
 
@@ -95,6 +103,8 @@ def edit_recipe(request, title=None, *args, **kwargs):
     form = RecipeForm(user, instance=recipe_obj)
     IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm, extra=0)
     formset = IngredientFormset(instance=recipe_obj)
+    InstructionFormset = inlineformset_factory(Recipe, Instruction, form=InstructionForm, extra=0)
+    formset2 = InstructionFormset(instance=recipe_obj)
 
     if request.method == 'POST':
         form = RecipeForm(user, request.POST, instance=recipe_obj)
@@ -107,11 +117,17 @@ def edit_recipe(request, title=None, *args, **kwargs):
             formset = IngredientFormset(request.POST or None, instance=recipe)
             if formset.is_valid():
                 formset.save()
+            ##return redirect(recipe.get_absolute_url())
+
+            formset2 = InstructionFormset(request.POST or None, instance=recipe)
+            if formset2.is_valid():
+                formset2.save()
             return redirect(recipe.get_absolute_url())
 
     context = {
         'form': form,
         'formset': formset,
+        'formset2': formset2,
     }
     return render(request, "new_recipe.html", context) 
 
