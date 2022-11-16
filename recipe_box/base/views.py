@@ -64,7 +64,7 @@ def new_recipe(request):
     
     # for get request
     form = RecipeForm(user)
-    IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm)
+    IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm, extra=1)
     formset = IngredientFormset()
 
     if request.method == 'POST':
@@ -90,10 +90,10 @@ def new_recipe(request):
 @login_required
 def edit_recipe(request, title=None, *args, **kwargs):
     user = request.user
-    recipe_obj = Recipe.objects.get(name=title)
+    recipe_obj = Recipe.objects.get(slug=title)
 
     form = RecipeForm(user, instance=recipe_obj)
-    IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm)
+    IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm, extra=0)
     formset = IngredientFormset(instance=recipe_obj)
 
     if request.method == 'POST':
@@ -120,7 +120,7 @@ def edit_recipe(request, title=None, *args, **kwargs):
 def individual_recipe(request, title=None, *args, **kwargs):
     recipe_obj = None
     if title is not None:
-        recipe_obj = get_object_or_404(Recipe, name=title, user=request.user)
+        recipe_obj = get_object_or_404(Recipe, slug=title, user=request.user)
 
         if recipe_obj.pinned == True:
             is_pinned = True
@@ -148,7 +148,7 @@ def individual_recipe(request, title=None, *args, **kwargs):
 def individual_section(request, title=None, *args, **kwargs):
     section_obj = None
     if title is not None:
-        section_obj = get_object_or_404(Section, name=title, user=request.user)
+        section_obj = get_object_or_404(Section, slug=title, user=request.user)
 
     context = {
         "section_obj": section_obj,
