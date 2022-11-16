@@ -154,6 +154,11 @@ def individual_section(request, title=None, *args, **kwargs):
     if title is not None:
         section_obj = get_object_or_404(Section, slug=title, user=request.user)
 
+        if "delete" in request.POST:
+            section_obj.delete()
+            return render(request, "home.html")
+
+
     context = {
         "section_obj": section_obj,
         "recipe_list": section_obj.recipes.all()
