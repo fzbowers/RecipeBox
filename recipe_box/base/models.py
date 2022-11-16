@@ -9,7 +9,7 @@ from .utils import slugify_instance_name, model_post_save, model_pre_save
 
 class Section(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    name = models.CharField(max_length=120, unique=True)
+    name = models.CharField(max_length=120)
     slug = models.SlugField(unique=True, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
     order_index = models.PositiveIntegerField(null=True, blank=True)
@@ -18,9 +18,6 @@ class Section(models.Model):
     class Meta:
         verbose_name = ('Section')
         verbose_name_plural = ('Sections')
-        constraints = [
-            models.UniqueConstraint(fields=['user', 'name'], name='unique name for each user')
-        ]
     
     def __str__(self):
         return self.name
@@ -37,7 +34,7 @@ post_save.connect(model_post_save, sender=Section)
 
 class Recipe(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    name = models.CharField(max_length = 150, unique=True)
+    name = models.CharField(max_length = 150)
     slug = models.SlugField(unique=True, blank=True, null=True)
     ## description = models.TextField(null=True, blank=True) ## DON"T NEED
     time_to_make = models.CharField(max_length = 25, default=0)
