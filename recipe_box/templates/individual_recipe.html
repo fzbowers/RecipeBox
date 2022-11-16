@@ -56,6 +56,11 @@
 
         <button type="submit" class="green-btn">Add to Section</button>
 
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="green-btn">Delete Recipe</button>
+        </form>
+
     </div>
 
 
