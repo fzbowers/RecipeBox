@@ -153,6 +153,10 @@ def individual_recipe(request, title=None, *args, **kwargs):
             recipe_obj.save(update_fields=["pinned"])
             is_pinned = ''
 
+        if "delete" in request.POST:
+            recipe_obj.delete()
+            return redirect("../../all_recipes/")
+
     context = {
         "recipe_obj": recipe_obj,
         "is_pinned" : is_pinned
@@ -165,6 +169,11 @@ def individual_section(request, title=None, *args, **kwargs):
     section_obj = None
     if title is not None:
         section_obj = get_object_or_404(Section, slug=title, user=request.user)
+
+        if "delete" in request.POST:
+            section_obj.delete()
+            return render(request, "home.html")
+
 
     context = {
         "section_obj": section_obj,
@@ -247,7 +256,7 @@ def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
-            user = form.save();
+            user = form.save()
             update_session_auth_hash(request, user)
             messages.success(request, 'Password successfully updated :)')
             return redirect('account')
