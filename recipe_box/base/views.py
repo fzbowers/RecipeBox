@@ -137,6 +137,10 @@ def individual_recipe(request, title=None, *args, **kwargs):
             recipe_obj.save(update_fields=["pinned"])
             is_pinned = ''
 
+        if "delete" in request.POST:
+            recipe_obj.delete()
+            return render(request, "all_recipes.html")
+
     context = {
         "recipe_obj": recipe_obj,
         "is_pinned" : is_pinned
