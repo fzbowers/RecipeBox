@@ -175,10 +175,13 @@ def individual_section(request, title=None, *args, **kwargs):
             section_obj.delete()
             return render(request, "home.html")
 
+        description = ""
+        description = section_obj.description
 
     context = {
         "section_obj": section_obj,
-        "recipe_list": section_obj.recipes.all()
+        "recipe_list": section_obj.recipes.all(),
+        "description": description
     }
 
     return render(request, "individual_section.html", context) 
