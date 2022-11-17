@@ -6,11 +6,15 @@
 
     <h2>{{ section_obj.name }}</h2>
 
+    {% if description %}
+
     <div class="row section-all-cols">
         <div class="col-sm-11 individual-section-top">
             <p id="individual-section-description">{{ section_obj.description }}</p>
         </div>
     </div>
+
+    {% endif %}
 
     <div class="row individual-section-row">
 
