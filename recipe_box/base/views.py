@@ -208,7 +208,7 @@ def new_section(request):
         section = form.save(commit=False)
         section.user = request.user
         section.save()
-        return redirect(section.get_absolute_url())
+        return redirect("../")
 
     return render(request, "new_section.html", context)
 

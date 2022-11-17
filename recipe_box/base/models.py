@@ -94,7 +94,9 @@ class Instruction(models.Model):
         return self.recipe.get_absolute_url()
 
 #class FoodToBuy(models.Model):
- #   user = models.ForeignKey(settings)
+ #   user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delte=models.CASCADE)
+ #   name = models.CharField(max_length = 100)
+  #  quantity = models.CharField(max_length = 50)
 
 #class EmailChangeAuth(models.Model):
    # auth_key = models.CharField(max_length=42)
