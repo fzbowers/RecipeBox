@@ -25,6 +25,7 @@ from django.forms.models import inlineformset_factory
 from .models import Recipe, Ingredient, Instruction, Section
         
 
+#seach based on tutorial from https://linuxhint.com/build-a-basic-search-for-a-django/
 @login_required
 def search(request):
     recipe_list = []
@@ -174,10 +175,13 @@ def individual_section(request, title=None, *args, **kwargs):
             section_obj.delete()
             return redirect("../../")
 
+        description = ""
+        description = section_obj.description
 
     context = {
         "section_obj": section_obj,
-        "recipe_list": section_obj.recipes.all()
+        "recipe_list": section_obj.recipes.all(),
+        "description": description
     }
 
     return render(request, "individual_section.html", context) 

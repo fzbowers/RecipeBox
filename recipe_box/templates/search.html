@@ -9,30 +9,30 @@
 
     {% if query %}
 
-           <h2>
+        <h2>
 
-           {% with recipe_list.count as total_results %}
+        {% with recipe_list.count as total_results %}
 
-           {{ total_results }} Result{{ total_results|pluralize }} Found
+            {{ total_results }} Result{{ total_results|pluralize }} Found
 
-           {% endwith %}
+        {% endwith %}
 
-           </h2>
+        </h2>
 
-   {% for x in recipe_list %}
+        {% for x in recipe_list %}
 
-   <ul>
-    <div class="col-sm-11 search-sections">
-        <a class="col-link" href="../recipe/{{ x.name }}/"><p class="search-text">{{ x.name }}</p></a>
-        <p class="search-text">Time: {{ x.time_to_make }} mins</p>
-    
-    </div>  
-  </ul>
+        <ul>
+            <div class="col-sm-11 search-sections">
+                <a class="col-link" href="../recipe/{{ x.name }}/"><p class="search-text">{{ x.name }}</p></a>
+                <p class="search-text">Time: {{ x.time_to_make }} mins</p>
+            
+            </div>  
+        </ul>
 
 
-  {% endfor %}
+        {% endfor %}
 
- {% endif %}
+    {% endif %}
 
 
 </div>
