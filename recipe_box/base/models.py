@@ -93,6 +93,9 @@ class Instruction(models.Model):
     def get_absolute_url(self):
         return self.recipe.get_absolute_url()
 
+#class FoodToBuy(models.Model):
+ #   user = models.ForeignKey(settings)
+
 #class EmailChangeAuth(models.Model):
    # auth_key = models.CharField(max_length=42)
 # auth_key = models.UUIDField(default=uuid.uuid4, unique=True)

@@ -9,11 +9,10 @@
     <div class="row all-recipes-row">
 
         {% for x in recipe_list %}
-        <div class="col-sm-11 all-sections">
-            <p class="all-recipes-text"><a class="col-link" href="{{ x.get_absolute_url }}">{{ x.name }}</a></p>
+        <a class=" col-sm-11 all-sections col-link" href="{{ x.get_absolute_url }}">
+            <p class="all-recipes-text">{{ x.name }}</p>
             <p class="all-recipes-text">Time: {{ x.time_to_make }} mins</p>
-        
-        </div>   
+        </a>
         {% endfor %}
         
     </div>

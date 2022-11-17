@@ -173,12 +173,15 @@ def individual_section(request, title=None, *args, **kwargs):
 
         if "delete" in request.POST:
             section_obj.delete()
-            return render(request, "home.html")
+            return redirect("../../")
 
+        description = ""
+        description = section_obj.description
 
     context = {
         "section_obj": section_obj,
-        "recipe_list": section_obj.recipes.all()
+        "recipe_list": section_obj.recipes.all(),
+        "description": description
     }
 
     return render(request, "individual_section.html", context) 
@@ -208,6 +211,10 @@ def new_section(request):
         return redirect(section.get_absolute_url())
 
     return render(request, "new_section.html", context)
+
+
+
+# All of the acccount related views #
 
 @login_required
 def account(request):
