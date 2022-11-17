@@ -171,14 +171,7 @@ def individual_section(request, title=None, *args, **kwargs):
         section_obj = get_object_or_404(Section, slug=title, user=request.user)
 
         if "delete" in request.POST:
-            #for x in section_obj.recipes.all():
-             #   recipe_obj = get_object_or_404(Recipe, slug=x, user=request.user)
-              #  recipe_obj.section = None
-            #try:
             section_obj.delete()
-            #    return render(request, "home.html")
-            #except:
-             #   return HttpResponse('Please go back and remove your recipes from the section before deleting the section.')
             return render(request, "home.html")
 
 
