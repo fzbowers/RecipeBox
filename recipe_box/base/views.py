@@ -172,7 +172,7 @@ def individual_section(request, title=None, *args, **kwargs):
 
         if "delete" in request.POST:
             section_obj.delete()
-            return render(request, "home.html")
+            return redirect("../../")
 
 
     context = {

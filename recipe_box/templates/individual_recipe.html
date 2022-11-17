@@ -19,27 +19,22 @@
             <p>Ingredients</p>
             <div class="row ingredient-row">
                 {% for ingredient in recipe_obj.get_ingredients_children %}
-                <div class="col-sm-4 mini-left">{{ ingredient.quantity }}</div>
-                <div class="col-sm-4 mini-left">{{ ingredient.unit }}</div>
-                <div class="col-sm-4 mini-left">{{ ingredient.name }}</div>
+                <div class="col-sm-12 mini-left">{{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}</div>
                 {% endfor %}
             </div>
 
         </div>
 
-        <div class="col-sm-8 recipe-left">
+        <div class="col-sm-8 recipe-right">
             <p>Directions</p>
-            <div class="row instruction-row">
-                {% for instruction in recipe_obj.get_instructions_children %}
-                <div class="col-sm-12 mini-right">{{ instruction.text }}</div>
-                {% endfor %}
-            </div>
-           <!-- <div class="col-sm-12 mini-right">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-            <hr>
-            <div class="col-sm-12 mini-right">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
-            <hr>
-            <div class="col-sm-12 mini-right">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </div>
-            --->
+            {% for instruction in recipe_obj.get_instructions_children %}
+            <div class="col-sm-12 mini-right">{{ instruction.text }}</div>
+            
+            {% if forloop.last %}
+            {% else %} <hr>
+            {% endif %}
+            
+            {% endfor %}
         </div>
     </div>
   
