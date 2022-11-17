@@ -139,7 +139,7 @@ def individual_recipe(request, title=None, *args, **kwargs):
 
         if "delete" in request.POST:
             recipe_obj.delete()
-            return redirect("../../all_recipes/")
+            return redirect("all_recipes.html")
 
     context = {
         "recipe_obj": recipe_obj,
@@ -155,8 +155,14 @@ def individual_section(request, title=None, *args, **kwargs):
         section_obj = get_object_or_404(Section, slug=title, user=request.user)
 
         if "delete" in request.POST:
-            section_obj.delete()
-            return render(request, "home.html")
+            #for title in section_obj.recipes.all():
+             #   recipe_obj = get_object_or_404(Recipe, slug=title, user=request.user)
+              #  recipe_obj.section = None
+            #try:
+           section_obj.delete()
+            #except:
+             #   return HttpResponse('Please remove your recipes from the section before deleting section.')
+           return render(request, "home.html")
 
 
     context = {
