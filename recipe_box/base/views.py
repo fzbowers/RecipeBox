@@ -174,11 +174,12 @@ def individual_section(request, title=None, *args, **kwargs):
             #for title in section_obj.recipes.all():
              #   recipe_obj = get_object_or_404(Recipe, slug=title, user=request.user)
               #  recipe_obj.section = None
-            #try:
-           section_obj.delete()
-            #except:
-             #   return HttpResponse('Please remove your recipes from the section before deleting section.')
-           return render(request, "home.html")
+            try:
+                section_obj.delete()
+                return render(request, "home.html")
+            except:
+                return HttpResponse('Please remove your recipes from the section before deleting section.')
+           #return render(request, "home.html")
 
 
     context = {
