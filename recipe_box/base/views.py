@@ -25,6 +25,7 @@ from django.forms.models import modelformset_factory # querysets
 from .models import Recipe, Ingredient, Instruction, Section
         
 
+#seach based on tutorial from https://linuxhint.com/build-a-basic-search-for-a-django/
 @login_required
 def search(request):
     recipe_list = []
