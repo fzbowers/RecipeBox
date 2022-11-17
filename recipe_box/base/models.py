@@ -50,6 +50,9 @@ class Recipe(models.Model):
     def get_ingredients_children(self):
         return self.ingredient_set.all()
 
+    def get_instructions_children(self):
+        return self.instruction_set.all()
+
     def __str__(self):
         return self.name
 
@@ -71,8 +74,7 @@ class Ingredient(models.Model):
     class Meta:
         verbose_name = ('Ingredient')
         verbose_name_plural = ('Ingredients')
-    
-    
+        
     def __str__(self):
         return self.name
 
@@ -85,6 +87,11 @@ class Instruction(models.Model):
     class Meta:
         verbose_name = ('Instruction')
         verbose_name_plural = ('Instructions')
+    def __str__(self):
+        return self.text
+
+    def get_absolute_url(self):
+        return self.recipe.get_absolute_url()
 
 #class EmailChangeAuth(models.Model):
    # auth_key = models.CharField(max_length=42)

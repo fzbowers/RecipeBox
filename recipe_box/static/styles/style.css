@@ -448,7 +448,8 @@ select option[value="dark-green"] {
 }
 #direction,
 #ingredient,
-#amount {
+#amount,
+#instruction {
     color: #809bce;
     font-size: 20px;
     background-color: rgba(226, 239, 231, .6);
@@ -464,7 +465,7 @@ select option[value="dark-green"] {
     color: #809bce;
 }
 
-#add-btn {
+.recipe-btn {
     height: 30px;
     margin: 15px;
     margin-left: 95px; /* NEEDS TO BE CENTERED PROPERLY */
@@ -480,11 +481,13 @@ select option[value="dark-green"] {
 }
 
 #ingredient,
-#amount {
+#amount,
+#instruction {
     padding: 0;
 }
 
-#ingredient {
+#ingredient,
+#instruction {
     margin-left: 15px;
 
 }
@@ -546,7 +549,7 @@ hr {
     background-color: #b8d8cd;
     height: 2px;
     border: none;
-}
+}  
 
 
 .recipe-left,

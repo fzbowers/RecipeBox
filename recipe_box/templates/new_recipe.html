@@ -44,7 +44,30 @@
         </div>
         
         <div id='empty-form' style="display: none">{{ formset.empty_form }}</div>
-        <button id='add-btn' class="col-sm-8" type='button'>Add Ingredient</button>
+        <button id='add-btn' class="col-sm-8 recipe-btn" type='button'>Add Ingredient</button>
+        {% endif %}
+
+        <!--LABELS-->
+        <div class="input_instruction_wrap">
+            <div class="row">
+                <div class="instruction-col col-sm-6 instruction-text">
+                        <label for="Instruction">Directions</label>
+                </div>
+            </div>
+        </div>
+
+
+
+        {% if formset2 %}
+        {{ formset2.management_form }}
+        <div id='instruction-form-list' class='row'>
+            {% for form in formset2 %}
+                {{ form }}
+            {% endfor %}
+        </div>
+
+        <div id='empty-form2' style="display: none">{{ formset2.empty_form }}</div>
+        <button id='add-btn2' class="col-sm-8 recipe-btn" type='button'>Add Direction</button>
         {% endif %}
 
         <br>
@@ -60,6 +83,14 @@
       
           $('#ingredient-form-list').append($('#empty-form').html().replace(/__prefix__/g, form_idx));
           total_form.val(parseInt(form_idx)+1);
+        });
+
+        $('#add-btn2').click(function () {
+          let total_form = $('#id_instruction_set-TOTAL_FORMS');
+          let form_ind = total_form.val();
+
+          $('#instruction-form-list').append($('#empty-form2').html().replace(/__prefix__/g, form_ind));
+          total_form.val(parseInt(form_ind)+1);
         });
       </script>
 
