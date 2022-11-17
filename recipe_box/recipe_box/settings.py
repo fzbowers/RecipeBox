@@ -142,11 +142,5 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/login"
 # PASSWORD_RESET_REDIRECT_URL = "/done" this doesn't work yet
 
-# We will store sent emails in a folder called sent_emails
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-#EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'RecipeBoxCodingGorls@gmail.com'
-EMAIL_HOST_PASSWORD = 'ccbr4321!'
+# The password reset link will just be sent to the terminal, not actually emailed!
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

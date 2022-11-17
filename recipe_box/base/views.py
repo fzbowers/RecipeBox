@@ -20,7 +20,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.db.models import Q
 
-from django.forms.models import modelformset_factory # querysets
+from django.forms.models import inlineformset_factory
 
 from .models import Recipe, Ingredient, Instruction, Section
         
@@ -57,70 +57,79 @@ def home(request):
     }
     return render(request, "home.html", context)
 
+
+
 @login_required
 def new_recipe(request):
-    context = {}
-    ''' SECTION OPTION NOT WORKING
-    section_qs = Section.objects.filter(user=request.user)
-    context = {
-        "user_section_list": section_qs,
-    }
-    '''
-    form = RecipeForm(request.POST or None)
-
-    RecipeIngredientFormset = modelformset_factory(Ingredient, form=IngredientForm, extra=1)
-    qs = Ingredient.objects.none()
-    formset = RecipeIngredientFormset(request.POST or None, queryset=qs)
-    context["form"] = form
-    context["formset"] = formset
-
+    user = request.user
     
-    if form.is_valid() and formset.is_valid():
-        recipe = form.save(commit=False)
-        recipe.user = request.user
-        recipe.save()
-        for form in formset:
-            ingredient = form.save(commit=False)
-            ingredient.recipe = recipe
-            ingredient.save()
-        return redirect(recipe.get_absolute_url())
+    # for get request
+    form = RecipeForm(user)
+    IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm, extra=1)
+    formset = IngredientFormset()
+    InstructionFormset = inlineformset_factory(Recipe, Instruction, form=InstructionForm, extra=1)
+    formset2 = InstructionFormset()
 
+    if request.method == 'POST':
+        form = RecipeForm(user, request.POST)
+
+        if form.is_valid():
+            recipe = form.save(commit=False)
+            recipe.user = request.user # not sure if needed
+            recipe.save()
+
+            formset = IngredientFormset(request.POST or None, instance=recipe)
+            if formset.is_valid():
+                formset.save()
+                ##return redirect(recipe.get_absolute_url())
+
+            formset2 = InstructionFormset(request.POST or None, instance=recipe)
+            if formset2.is_valid():
+                formset2.save()
+                return redirect(recipe.get_absolute_url())
+    
+    context = {
+        'form': form,
+        'formset': formset,
+        'formset2': formset2,
+    }
     return render(request, "new_recipe.html", context) 
 
 
-#### NOT WORKING
 @login_required
 def edit_recipe(request, title=None, *args, **kwargs):
-   # return HttpResponse("Cannot edit this recipe.")
-    context = {}
-    obj = get_object_or_404(Recipe, name=title, user=request.user)
-    
+    user = request.user
+    recipe_obj = Recipe.objects.get(slug=title)
 
-    form = RecipeForm(request.POST or None, instance=obj)
+    form = RecipeForm(user, instance=recipe_obj)
+    IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm, extra=0)
+    formset = IngredientFormset(instance=recipe_obj)
+    InstructionFormset = inlineformset_factory(Recipe, Instruction, form=InstructionForm, extra=0)
+    formset2 = InstructionFormset(instance=recipe_obj)
 
-    RecipeIngredientFormset = modelformset_factory(Ingredient, form=IngredientForm, extra=0)
-    qs = obj.ingredient_set.all() # []
-    formset = RecipeIngredientFormset(request.POST or None, queryset=qs)
+    if request.method == 'POST':
+        form = RecipeForm(user, request.POST, instance=recipe_obj)
+
+        if form.is_valid():
+            recipe = form.save(commit=False)
+            recipe.user = request.user # not sure if needed
+            recipe.save()
+            
+            formset = IngredientFormset(request.POST or None, instance=recipe)
+            if formset.is_valid():
+                formset.save()
+            ##return redirect(recipe.get_absolute_url())
+
+            formset2 = InstructionFormset(request.POST or None, instance=recipe)
+            if formset2.is_valid():
+                formset2.save()
+            return redirect(recipe.get_absolute_url())
+
     context = {
-        "form": form,
-        "formset": formset,
-        "object": obj
+        'form': form,
+        'formset': formset,
+        'formset2': formset2,
     }
-
-    if (form.is_valid() and formset.is_valid()):
-        recipe = form.save(commit=False)
-        recipe.save()
-        # formset.save()  
-        for form in formset:
-            ingredient = form.save(commit=False)
-            ingredient.recipe = recipe
-            ingredient.save()
-
-        context['message'] = 'Data saved.'
-    else:
-        print('This is form errors: ', form.errors)
-        print('This is formset errors: ', formset.errors)
-        
     return render(request, "new_recipe.html", context) 
 
 
@@ -128,7 +137,7 @@ def edit_recipe(request, title=None, *args, **kwargs):
 def individual_recipe(request, title=None, *args, **kwargs):
     recipe_obj = None
     if title is not None:
-        recipe_obj = get_object_or_404(Recipe, name=title, user=request.user)
+        recipe_obj = get_object_or_404(Recipe, slug=title, user=request.user)
 
         if recipe_obj.pinned == True:
             is_pinned = True
@@ -145,6 +154,10 @@ def individual_recipe(request, title=None, *args, **kwargs):
             recipe_obj.save(update_fields=["pinned"])
             is_pinned = ''
 
+        if "delete" in request.POST:
+            recipe_obj.delete()
+            return redirect("../../all_recipes")
+
     context = {
         "recipe_obj": recipe_obj,
         "is_pinned" : is_pinned
@@ -156,7 +169,12 @@ def individual_recipe(request, title=None, *args, **kwargs):
 def individual_section(request, title=None, *args, **kwargs):
     section_obj = None
     if title is not None:
-        section_obj = get_object_or_404(Section, name=title, user=request.user)
+        section_obj = get_object_or_404(Section, slug=title, user=request.user)
+
+        if "delete" in request.POST:
+            section_obj.delete()
+            return render(request, "home.html")
+
 
     context = {
         "section_obj": section_obj,
@@ -231,7 +249,7 @@ def password_reset_request(request):
                         send_mail(subject, email, 'admin@example.com', [user.email], fail_silently=False)
                     except BadHeaderError:
                         return HttpResponse('Invalid header found.')
-                    return redirect ("/password_reset/done/")
+                    return redirect ("/password-reset/done/")
     password_reset_form = PasswordResetForm()
     return render(request=request, template_name="registration/password_reset.html", context={"password_reset_form":password_reset_form})
 
@@ -239,7 +257,7 @@ def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
-            user = form.save();
+            user = form.save()
             update_session_auth_hash(request, user)
             messages.success(request, 'Password successfully updated :)')
             return redirect('account')
