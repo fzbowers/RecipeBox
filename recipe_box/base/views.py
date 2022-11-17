@@ -25,6 +25,7 @@ from django.forms.models import inlineformset_factory
 from .models import Recipe, Ingredient, Instruction, Section
         
 
+#seach based on tutorial from https://linuxhint.com/build-a-basic-search-for-a-django/
 @login_required
 def search(request):
     recipe_list = []
@@ -155,7 +156,7 @@ def individual_recipe(request, title=None, *args, **kwargs):
 
         if "delete" in request.POST:
             recipe_obj.delete()
-            return redirect("../../all_recipes/")
+            return redirect("../../all_recipes")
 
     context = {
         "recipe_obj": recipe_obj,
