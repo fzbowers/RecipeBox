@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block page_content %}
+
+<title>Shopping List</title>
+
+    <h2>Shopping List</h2>
+
+    <div class="row all-list-row">
+
+        {% for x in FoodToBuy %}
+            <p class="all-list-text">{{ x.food }}</p>
+            <p class="all-list-text">Quantity: {{ x.quantity }}</p>
+        {% endfor %}
+
+    </div>
+    
+
+    {% load crispy_forms_tags %}
+    
+    <form methods="POST">
+        {% csrf_token %}
+        {{ ShoppingForm|crispy }}
+        <button type="submit">Add to list</button>
+    </form>
+
+{% endblock %}

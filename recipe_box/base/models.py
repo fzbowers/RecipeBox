@@ -93,10 +93,17 @@ class Instruction(models.Model):
     def get_absolute_url(self):
         return self.recipe.get_absolute_url()
 
-#class FoodToBuy(models.Model):
- #   user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delte=models.CASCADE)
- #   name = models.CharField(max_length = 100)
-  #  quantity = models.CharField(max_length = 50)
+class FoodToBuy(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    food = models.CharField(max_length = 100)
+    quantity = models.CharField(max_length = 50)
+    class Meta:
+        verbose_name = ('FoodToBuy')
+        verbose_name_plural = ('FoodsToBuy')
+    def __str__(self):
+        return self.food
+    def get_absolute_url(self):
+        return self.food.get_absolute_url()
 
 #class EmailChangeAuth(models.Model):
    # auth_key = models.CharField(max_length=42)

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 #from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserChangeForm
-from .forms import RegisterForm, EditProfileForm, RecipeForm, IngredientForm, InstructionForm, SectionForm
+from .forms import RegisterForm, EditProfileForm, RecipeForm, IngredientForm, InstructionForm, SectionForm, ShoppingForm
 from django.views.generic import TemplateView, ListView
 
 #Importing stuff for sending reset password email
@@ -22,7 +22,7 @@ from django.db.models import Q
 
 from django.forms.models import inlineformset_factory
 
-from .models import Recipe, Ingredient, Instruction, Section
+from .models import Recipe, Ingredient, Instruction, Section, FoodToBuy
         
 
 #seach based on tutorial from https://linuxhint.com/build-a-basic-search-for-a-django/
@@ -211,6 +211,24 @@ def new_section(request):
         return redirect("../")
 
     return render(request, "new_section.html", context)
+
+@login_required
+def shopping_list(request):
+    form = ShoppingForm(request.POST or None)
+
+    context = {
+        "ShoppingForm": ShoppingForm
+    }
+
+    if form.is_valid():
+        FoodToBuy = form.save(commmit=False)
+        FoodToBuy.user = request.user
+        FoodToBuy.save()
+        return redirect(".")
+  #context = {
+     #   "shopping_list": FoodToBuy
+    #}
+    return render(request, "shopping_list.html", context)
 
 
 

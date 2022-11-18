@@ -14,6 +14,7 @@ urlpatterns = [
     path("all_recipes/", views.all_recipes, name="all_recipes"),
     path("section/<str:title>/", views.individual_section, name="individual_section"),
     path("section/", views.new_section, name="new_section"),
+    path("shopping_list/", views.shopping_list, name="shopping_list"),
     path("account/", views.account, name="account"),
     path("create_account/", views.create_account, name="create_account"),
     path("change_password/", views.change_password, name='change_password'),
