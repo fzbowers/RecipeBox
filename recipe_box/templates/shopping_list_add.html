@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block page_content %}
+
+<title>Shopping List</title>
+
+    <h2>Shopping List</h2>
+    
+    {% load crispy_forms_tags %}
+    
+    <form methods="POST">
+        {% csrf_token %}
+        {{ ShoppingForm|crispy }}
+        <button type="submit">Add to list</button>
+    </form>
+
+{% endblock %}

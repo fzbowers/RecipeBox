@@ -5,22 +5,12 @@
 
     <h2>Shopping List</h2>
 
-    <div class="row all-list-row">
 
-        {% for x in FoodToBuy %}
-            <p class="all-list-text">{{ x.food }}</p>
-            <p class="all-list-text">Quantity: {{ x.quantity }}</p>
-        {% endfor %}
+    {% for x in food_list %}
+         <p>{{ x.name }}</p>
+         <p>Quantity: {{ x.quantity }}</p>
+    {% endfor %}
 
-    </div>
-    
-
-    {% load crispy_forms_tags %}
-    
-    <form methods="POST">
-        {% csrf_token %}
-        {{ ShoppingForm|crispy }}
-        <button type="submit">Add to list</button>
-    </form>
+    <p>Click <a href="./add/">here</a> to add to shopping list!</p>
 
 {% endblock %}

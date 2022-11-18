@@ -22,7 +22,7 @@ from django.db.models import Q
 
 from django.forms.models import inlineformset_factory
 
-from .models import Recipe, Ingredient, Instruction, Section, FoodToBuy
+from .models import Recipe, Ingredient, Instruction, Section, Food
         
 
 #seach based on tutorial from https://linuxhint.com/build-a-basic-search-for-a-django/
@@ -214,21 +214,36 @@ def new_section(request):
 
 @login_required
 def shopping_list(request):
+    food_qs = Food.objects.filter(user=request.user)
+    context = {
+        "food_list": food_qs,
+    }
+    return render(request, "shopping_list.html", context)
+
+@login_required
+def shopping_list_add(request):
+    #FoodToBuy_obj = None
+    #FoodToBuy_obj = get_object_or_404(FoodToBuy, user=request.user)
+    #return render(request, "shopping_list.html", {"FoodToBuy": FoodToBuy.objects.all()})
     form = ShoppingForm(request.POST or None)
 
     context = {
+      #  "FoodToBuy": FoodToBuy.objects.all(),
+#        "FoodToBuy_obj": FoodToBuy_obj.all(),
         "ShoppingForm": ShoppingForm
     }
 
     if form.is_valid():
-        FoodToBuy = form.save(commmit=False)
-        FoodToBuy.user = request.user
-        FoodToBuy.save()
-        return redirect(".")
+        food = form.save(commmit=False)
+        food.user = request.user
+        food.save()
+        return redirect("../")
   #context = {
      #   "shopping_list": FoodToBuy
     #}
-    return render(request, "shopping_list.html", context)
+    #if Food != None:
+       # return render(request, "shopping_list.html", context, {"Food": Food.objects.filter(user=request.user)})
+    return render(request, "shopping_list_add.html", context)
 
 
 

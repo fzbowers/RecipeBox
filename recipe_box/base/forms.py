@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
-from .models import Recipe, Ingredient, Instruction, Section, FoodToBuy
+from .models import Recipe, Ingredient, Instruction, Section, Food
 
 
 class RegisterForm(UserCreationForm):
@@ -61,8 +61,10 @@ class InstructionForm(forms.ModelForm):
         fields = ['text']
 
 class ShoppingForm(forms.ModelForm):
+    text = forms.CharField(label='Name', label_suffix="", widget=forms.TextInput())
+    text = forms.CharField(label='Quantity', label_suffix="", widget=forms.TextInput())
     class Meta:
-        model = FoodToBuy
-        fields = ['food', 'quantity']
+        model = Food
+        fields = ['name', 'quantity']
 
 
