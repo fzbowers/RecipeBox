@@ -19,11 +19,10 @@
     <div class="row individual-section-row">
 
         {% for x in recipe_list %}
-        <div class="col-sm-11 individual-section-recipe">
-            <a class="col-link" href="{{ x.get_absolute_url }}"><p class="individual-section-text">{{ x.name }}</p></a>
+        <a class=" col-sm-11 individual-section-recipe col-link" href="{{ x.get_absolute_url }}">
+            <p class="individual-section-text">{{ x.name }}</p>
             <p class="individual-section-text">Time: {{ x.time_to_make }} mins</p>
-        
-        </div>   
+        </a> 
         {% endfor %}
         
     </div>

@@ -93,8 +93,17 @@ class Instruction(models.Model):
     def get_absolute_url(self):
         return self.recipe.get_absolute_url()
 
-#class EmailChangeAuth(models.Model):
-   # auth_key = models.CharField(max_length=42)
-# auth_key = models.UUIDField(default=uuid.uuid4, unique=True)
-    #user = models.ForeignKey(settings.AUTH_USER_MODEL)
-    #new_email = models.CharField(max_length=256)
+class Food(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    slug = models.SlugField(unique=True, blank=True, null=True)
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length = 100)
+    quantity = models.CharField(max_length = 50)
+    class Meta:
+        verbose_name = ('Food')
+        verbose_name_plural = ('Foods')
+    def __str__(self):
+        return self.name
+    def get_absolute_url(self):
+        return reverse('shopping_list', kwargs=[self.slug])
+        #return self.food.get_absolute_url()

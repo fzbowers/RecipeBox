@@ -10,13 +10,14 @@
                     <h2>Sections</h2>
   
                     <div class="row">
+                        <a class="col-link col-sm-10 mini-section"" href="/all_recipes">All Recipes</a>
 
                         {% for x in home_section_list %}
 
-                        <div class="col-sm-10 mini-section" id="section-block"><a class="col-link" href="/section/{{ x.slug }}">{{ x.name }}</a></div>
+                        <a class="col-link col-sm-10 mini-section" id="section-block" href="/section/{{ x.slug }}">{{ x.name }}</a>
 
                         {% endfor %}             
-                        <div class="col-sm-10 mini-section"><a class="col-link" href="/section">Add New Section</a></div>
+                        <a class="col-link col-sm-10 mini-section"" href="/section">Add New Section</a>
                     
                     </div>
                 </div>

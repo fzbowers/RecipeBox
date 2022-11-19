@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block page_content %}
+
+<title>Shopping List</title>
+
+    <body>
+    <h1>Shopping List</h1>
+
+    <u1>
+    {% for x in food_list %}
+         <li>{{ x.name }}    x{{ x.quantity }}
+            <form action="/delete/{{x.id}}/" method="post">
+                {% csrf_token %}
+                <button type="submit" class="green-btn" name="delete">Remove</button>
+            </form>
+         </li>
+
+    {% endfor %}
+    </u1>
+
+    <form action="/add/" method="post">
+        {% csrf_token %}
+
+        {% for field in ShoppingForm %}
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+        {% endfor %}
+
+        <button id="create-btn type="submit">Add to list</button>
+    </form>
+    </body>
+    </html>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 #from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserChangeForm
-from .forms import RegisterForm, EditProfileForm, RecipeForm, IngredientForm, InstructionForm, SectionForm
+from .forms import RegisterForm, EditProfileForm, RecipeForm, IngredientForm, InstructionForm, SectionForm, ShoppingForm
 from django.views.generic import TemplateView, ListView
 
 #Importing stuff for sending reset password email
@@ -19,10 +19,11 @@ from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.db.models import Q
+from django.http import HttpResponseRedirect
 
 from django.forms.models import inlineformset_factory
 
-from .models import Recipe, Ingredient, Instruction, Section
+from .models import Recipe, Ingredient, Instruction, Section, Food
         
 
 #seach based on tutorial from https://linuxhint.com/build-a-basic-search-for-a-django/
@@ -177,7 +178,7 @@ def individual_section(request, title=None, *args, **kwargs):
 
         if "delete" in request.POST:
             section_obj.delete()
-            return render(request, "home.html")
+            return redirect("../../")
 
         description = ""
         description = section_obj.description
@@ -212,9 +213,53 @@ def new_section(request):
         section = form.save(commit=False)
         section.user = request.user
         section.save()
-        return redirect(section.get_absolute_url())
+        return redirect("../")
 
     return render(request, "new_section.html", context)
+
+@login_required
+def shopping_list(request):
+    food_qs = Food.objects.filter(user=request.user)
+    form = ShoppingForm(request.POST)
+    context = {
+        "food_list": food_qs,
+        "ShoppingForm": ShoppingForm
+    }
+    return render(request, "shopping_list.html", context)
+
+@login_required
+def shopping_list_add(request):
+    #FoodToBuy_obj = None
+    #FoodToBuy_obj = get_object_or_404(FoodToBuy, user=request.user)
+    #return render(request, "shopping_list.html", {"FoodToBuy": FoodToBuy.objects.all()})
+    form = ShoppingForm(request.POST)
+
+    context = {
+       "ShoppingForm": ShoppingForm
+    }
+
+    if form.is_valid():
+        food = form.save(commit=False)
+        food.user = request.user
+        food.save()
+        return HttpResponseRedirect('/shopping_list/')
+
+  #context = {
+     #   "shopping_list": FoodToBuy
+    #}
+    #if Food != None:
+       # return render(request, "shopping_list.html", context, {"Food": Food.objects.filter(user=request.user)})
+    return render(request, "shopping_list.html", context)
+
+@login_required
+def shopping_list_delete(request, Food_id):
+    Food.objects.get(id=Food_id).delete()
+    return HttpResponseRedirect('/shopping_list/')
+
+
+
+
+# All of the acccount related views #
 
 @login_required
 def account(request):

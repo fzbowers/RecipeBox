@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model() ## MIGHT NOT NEED
 
 #display recipies in admin page 
-from .models import Recipe, Section, Ingredient, Instruction
+from .models import Recipe, Section, Ingredient, Instruction, Food
 
 class IngredientsInline(admin.StackedInline):
     model = Ingredient
@@ -29,4 +29,4 @@ class SectionAdmin(admin.ModelAdmin):
 admin.site.register(Recipe, RecipesAdmin)
 admin.site.register(Section, SectionAdmin)
 admin.site.register(Instruction)
-
+admin.site.register(Food)
