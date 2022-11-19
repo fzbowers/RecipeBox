@@ -29,4 +29,4 @@ class SectionAdmin(admin.ModelAdmin):
 admin.site.register(Recipe, RecipesAdmin)
 admin.site.register(Section, SectionAdmin)
 admin.site.register(Instruction)
-
+admin.site.register(Food)

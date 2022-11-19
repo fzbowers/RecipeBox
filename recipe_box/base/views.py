@@ -19,6 +19,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.db.models import Q
+from django.http import HttpResponseRedirect
 
 from django.forms.models import inlineformset_factory
 
@@ -225,7 +226,7 @@ def shopping_list_add(request):
     #FoodToBuy_obj = None
     #FoodToBuy_obj = get_object_or_404(FoodToBuy, user=request.user)
     #return render(request, "shopping_list.html", {"FoodToBuy": FoodToBuy.objects.all()})
-    form = ShoppingForm(request.POST or None)
+    form = ShoppingForm(request.POST)
 
     context = {
       #  "FoodToBuy": FoodToBuy.objects.all(),
@@ -234,16 +235,17 @@ def shopping_list_add(request):
     }
 
     if form.is_valid():
-        food = form.save(commmit=False)
+        food = form.save(commit=False)
         food.user = request.user
         food.save()
-        return redirect("../")
+        return HttpResponseRedirect('/shopping_list/')
+
   #context = {
      #   "shopping_list": FoodToBuy
     #}
     #if Food != None:
        # return render(request, "shopping_list.html", context, {"Food": Food.objects.filter(user=request.user)})
-    return render(request, "shopping_list_add.html", context)
+    return render(request, "shopping_list.html", context)
 
 
 

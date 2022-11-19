@@ -3,14 +3,25 @@
 
 <title>Shopping List</title>
 
+    <body>
     <h2>Shopping List</h2>
 
-
+    <u1>
     {% for x in food_list %}
-         <p>{{ x.name }}</p>
-         <p>Quantity: {{ x.quantity }}</p>
+         <p>{{ x.name }} _____quantity: {{ x.quantity }}</p>
     {% endfor %}
+    </u1>
 
-    <p>Click <a href="./add/">here</a> to add to shopping list!</p>
+    <form action="/add/" method="post">
+        {% csrf_token %}
+
+        {% for field in ShoppingForm %}
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+        {% endfor %}
+
+        <button id="create-btn type="submit">Add to list</button>
+    </form>
+    </body>
 
 {% endblock %}
