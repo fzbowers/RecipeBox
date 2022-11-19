@@ -34,11 +34,15 @@ def search(request):
         #if query == '':
         #    query = ''
         recipe_list = Recipe.objects.filter(
-            Q(name__icontains=query) & Q(user=request.user) #| Q(description__icontains=query) made obsolete by change to model
+            Q(name__icontains=query) & Q(user=request.user) 
         )
+
+
+
 
     context = {
     "recipe_list": recipe_list,
+ #   "ingredient_list": ingredient_list,
     "query": query,
     }
 
