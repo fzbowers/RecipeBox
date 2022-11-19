@@ -96,7 +96,7 @@ class Instruction(models.Model):
 class Food(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True, blank=True, null=True)
-  #  id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length = 100)
     quantity = models.CharField(max_length = 50)
     class Meta:

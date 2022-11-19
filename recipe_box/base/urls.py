@@ -16,6 +16,7 @@ urlpatterns = [
     path("section/", views.new_section, name="new_section"),
     path("shopping_list/", views.shopping_list, name="shopping_list"),
     path("add/", views.shopping_list_add), # name="shopping_list"),
+    path("delete/<int:Food_id>/", views.shopping_list_delete),
     path("account/", views.account, name="account"),
     path("create_account/", views.create_account, name="create_account"),
     path("change_password/", views.change_password, name='change_password'),

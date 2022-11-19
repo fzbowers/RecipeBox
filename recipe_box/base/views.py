@@ -216,8 +216,10 @@ def new_section(request):
 @login_required
 def shopping_list(request):
     food_qs = Food.objects.filter(user=request.user)
+    form = ShoppingForm(request.POST)
     context = {
         "food_list": food_qs,
+        "ShoppingForm": ShoppingForm
     }
     return render(request, "shopping_list.html", context)
 
@@ -229,9 +231,7 @@ def shopping_list_add(request):
     form = ShoppingForm(request.POST)
 
     context = {
-      #  "FoodToBuy": FoodToBuy.objects.all(),
-#        "FoodToBuy_obj": FoodToBuy_obj.all(),
-        "ShoppingForm": ShoppingForm
+       "ShoppingForm": ShoppingForm
     }
 
     if form.is_valid():
@@ -246,6 +246,12 @@ def shopping_list_add(request):
     #if Food != None:
        # return render(request, "shopping_list.html", context, {"Food": Food.objects.filter(user=request.user)})
     return render(request, "shopping_list.html", context)
+
+@login_required
+def shopping_list_delete(request, Food_id):
+    Food.objects.get(id=Food_id).delete()
+    return HttpResponseRedirect('/shopping_list/')
+
 
 
 
