@@ -61,8 +61,8 @@ class InstructionForm(forms.ModelForm):
         fields = ['text']
 
 class ShoppingForm(forms.ModelForm):
-    name = forms.CharField(label='Food', label_suffix="", widget=forms.TextInput())
-    quantity = forms.CharField(label='Quantity', label_suffix="", widget=forms.TextInput())
+    name = forms.CharField(label='Food', label_suffix="", widget=forms.TextInput(attrs={'id' : "shopping", 'class' : "col-sm-6"}))
+    quantity = forms.CharField(label='Quantity', label_suffix="", widget=forms.TextInput(attrs={'id' : "shopping", 'class' : "col-sm-2"}))
     class Meta:
         model = Food
         fields = ['name', 'quantity']
