@@ -2,11 +2,13 @@
 {% block page_content %}
 
 <title>Account</title>
-<section id="account">    
+<section id="account">
+  
+    <h1>Account</h1>
     {% block content %}
 
     {% if user.is_authenticated %}
-      <p>Hi {{user.username}}</p>
+      <p class="account-name col-sm-6">Hi {{user.username}}</p>
       <p>Email: {{user.email}}</p>
       <p>Change password <a href="../change_password/">here!</a></p>
       <p>Change email <a href="../edit_profile/">here!</a></p>

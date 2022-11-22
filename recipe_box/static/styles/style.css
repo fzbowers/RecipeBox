@@ -457,6 +457,7 @@ select option[value="dark-green"] {
 #ingredient,
 #amount,
 #instruction,
+#account,
 #shopping {
     color: #809bce;
     font-size: 20px;
@@ -750,4 +751,9 @@ button[type=submit] {
 
 #shopping {
     padding-left: 5px;
+}
+
+/* Style account page */
+.account-name {
+    margin: 10px
 }
