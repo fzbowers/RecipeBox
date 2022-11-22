@@ -12,6 +12,7 @@ urlpatterns = [
     path("recipe/<str:title>/", views.individual_recipe, name="individual_recipe"),
     path("recipe/", views.new_recipe, name="new_recipe"),
     path("all_recipes/", views.all_recipes, name="all_recipes"),
+    path("section/<str:title>/edit", views.edit_section, name="edit_section"),
     path("section/<str:title>/", views.individual_section, name="individual_section"),
     path("section/", views.new_section, name="new_section"),
     path("shopping_list/", views.shopping_list, name="shopping_list"),

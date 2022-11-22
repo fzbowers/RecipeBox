@@ -25,6 +25,9 @@ class Section(models.Model):
     def get_absolute_url(self):
         return reverse("individual_section", kwargs={"title": self.slug})
     
+    def get_edit_url(self):
+        return reverse("edit_section", kwargs={"title": self.slug})
+    
 pre_save.connect(model_pre_save, sender=Section)
 post_save.connect(model_post_save, sender=Section)
 
