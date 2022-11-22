@@ -5,16 +5,15 @@
 <section id="new-recipe">
     
     <h2>Add New Recipe</h2>
-
+ 
     <form action="" method="POST">
         {% csrf_token %}
-        
-        {% for field in form %}
+
         <div class='{% if field.field.required %}{{ form.required_css_class }}{%endif%}'>
-            {{ field.errors }}   
-            {{ field.label_tag }} {{ field }}
+            {{ form.errors }}
+            {{ form.name.label_tag }} {{ form.name }}              
         </div>
-        {% endfor %}
+        <div>{{ form.time_to_make.label_tag }} {{ form.time_to_make }}</div>
 
         <!-- LABELS -->
         <div class="input_ingredient_wrap">
@@ -69,6 +68,10 @@
         <div id='empty-form2' style="display: none">{{ formset2.empty_form }}</div>
         <button id='add-btn2' class="col-sm-8 recipe-btn" type='button'>Add Direction</button>
         {% endif %}
+
+        <div class='{% if field.field.required %}{{ form.required_css_class }}{%endif%}'>
+            {{ form.section.label_tag }} {{ form.section }}              
+        </div>
 
         <br>
         <button id="create-btn" type="submit">Save Recipe</button>
