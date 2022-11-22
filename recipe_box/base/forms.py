@@ -35,10 +35,12 @@ class RecipeForm(forms.ModelForm):
 
     name = forms.CharField(label="Title", label_suffix="", widget=forms.TextInput(attrs={'id' : "title"}))
     time_to_make = forms.CharField(label="Time", label_suffix="", widget=forms.TextInput(attrs={'id' : "time"}))
-    
+    time_unit = forms.BooleanField(label="Time_Unit", label_suffix="", widget=forms.TextInput(attrs={'id' : "time_unit"}))
+
+
     class Meta:
         model = Recipe
-        fields = ['name', 'time_to_make', 'section']
+        fields = ['name', 'time_to_make', 'time_unit', 'section']
 
     # getting user sections
     def __init__(self, user, *args, **kwargs):
@@ -65,7 +67,7 @@ class InstructionForm(forms.ModelForm):
         fields = ['text']
 
 class ShoppingForm(forms.ModelForm):
-    name = forms.CharField(label='Food', label_suffix="", widget=forms.TextInput(attrs={'id' : "shopping", 'class' : "col-sm-6"}))
+    name = forms.CharField(label='Item', label_suffix="", widget=forms.TextInput(attrs={'id' : "shopping", 'class' : "col-sm-6"}))
     quantity = forms.CharField(label='Quantity', label_suffix="", widget=forms.TextInput(attrs={'id' : "shopping", 'class' : "col-sm-2"}))
     class Meta:
         model = Food

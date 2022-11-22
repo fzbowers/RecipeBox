@@ -25,6 +25,9 @@ class Section(models.Model):
     def get_absolute_url(self):
         return reverse("individual_section", kwargs={"title": self.slug})
     
+    def get_edit_url(self):
+        return reverse("edit_section", kwargs={"title": self.slug})
+    
 pre_save.connect(model_pre_save, sender=Section)
 post_save.connect(model_post_save, sender=Section)
 
@@ -35,6 +38,7 @@ class Recipe(models.Model):
     slug = models.SlugField(unique=True, blank=True, null=True)
     ## description = models.TextField(null=True, blank=True) ## DON"T NEED
     time_to_make = models.CharField(max_length = 25, default=0)
+    time_unit = models.BooleanField(default=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     section = models.ManyToManyField(Section)
