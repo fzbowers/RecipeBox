@@ -119,6 +119,7 @@ def edit_recipe(request, title=None, *args, **kwargs):
             recipe = form.save(commit=False)
             recipe.user = request.user # not sure if needed
             recipe.save()
+            form.save_m2m()
             
             formset = IngredientFormset(request.POST or None, instance=recipe)
             if formset.is_valid():
@@ -183,9 +184,12 @@ def individual_section(request, title=None, *args, **kwargs):
         description = ""
         description = section_obj.description
 
+        print(title)
+        recipe_list = Recipe.objects.filter(section__slug=title)
+
     context = {
         "section_obj": section_obj,
-        "recipe_list": section_obj.recipes.all(),
+        "recipe_list": recipe_list,
         "description": description
     }
 

@@ -14,7 +14,7 @@ class IngredientsInline(admin.StackedInline):
 
 class RecipesAdmin(admin.ModelAdmin):
     inlines = [IngredientsInline]
-    list_display = ['user', 'name', 'slug', 'section']
+    list_display = ['user', 'name', 'slug']
     raw_id_fields = ['user']
 
     def get_form(self, request, obj=None, **kwargs):

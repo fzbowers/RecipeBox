@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from .models import Recipe, Ingredient, Instruction, Section, Food
+from django.forms.widgets import CheckboxSelectMultiple
 
 
 class RegisterForm(UserCreationForm):
@@ -42,7 +43,10 @@ class RecipeForm(forms.ModelForm):
     # getting user sections
     def __init__(self, user, *args, **kwargs):
         super(RecipeForm, self).__init__(*args, **kwargs)
+        self.fields['section'].label_suffix = ""
+        self.fields['section'].widget = CheckboxSelectMultiple(attrs={'id' : "section-select"})
         self.fields['section'].queryset = Section.objects.filter(user=user)
+
 
 
 class IngredientForm(forms.ModelForm):

@@ -348,6 +348,10 @@ footer {
     font-size: 36px;
 }
 
+#section-select {
+    margin-left: 55px;
+}
+
 /* STYLE NEW SECTION PAGE */
 
 #title,
@@ -364,6 +368,7 @@ footer {
 #title {
     min-width: 80vw;
     margin: 8px;
+    margin-left: 14px;
 }
 
 #freeform{
