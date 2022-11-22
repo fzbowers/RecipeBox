@@ -333,7 +333,8 @@ footer {
 #new-recipe,
 #all-recipes,
 #search,
-#individual-section {
+#individual-section,
+#shopping-list {
     margin: 20px;
     color: #809bce;
     font-size: 22px;
@@ -345,6 +346,10 @@ footer {
 #search h2,
 #individual-section h2 {
     font-size: 36px;
+}
+
+#section-select {
+    margin-left: 55px;
 }
 
 /* STYLE NEW SECTION PAGE */
@@ -363,6 +368,7 @@ footer {
 #title {
     min-width: 80vw;
     margin: 8px;
+    margin-left: 14px;
 }
 
 #freeform{
@@ -393,6 +399,7 @@ footer {
     float: left;
 
 }
+
 
 #cancel-btn {
     outline: none;
@@ -449,7 +456,8 @@ select option[value="dark-green"] {
 #direction,
 #ingredient,
 #amount,
-#instruction {
+#instruction,
+#shopping {
     color: #809bce;
     font-size: 20px;
     background-color: rgba(226, 239, 231, .6);
@@ -714,3 +722,32 @@ button[type=submit] {
     text-decoration: none;
 }
 
+
+
+
+#shopping-add-btn,
+#shopping-remove-btn {
+    cursor: pointer;
+    border: none;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#shopping-add-btn {
+    background-color: #809bce;
+    color: #ffff;
+}
+
+#shopping-remove-btn {
+    background-color: #e2efe7;
+    color: #809bce;
+    float: right;
+}
+
+.shopping-items {
+    margin: 10px;
+}
+
+#shopping {
+    padding-left: 5px;
+}

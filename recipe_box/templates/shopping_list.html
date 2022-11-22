@@ -2,22 +2,24 @@
 {% block page_content %}
 
 <title>Shopping List</title>
+<section id="shopping-list">
 
-    <body>
     <h1>Shopping List</h1>
 
     <u1>
     {% for x in food_list %}
-         <li>{{ x.name }}    x{{ x.quantity }}
+         
             <form action="/delete/{{x.id}}/" method="post">
                 {% csrf_token %}
-                <button type="submit" class="green-btn" name="delete">Remove</button>
+                <li class="shopping-items col-sm-6">{{ x.name }} - {{ x.quantity }}
+                <button type="submit" id="shopping-remove-btn" name="delete">Remove</button></li>
             </form>
-         </li>
+         
 
     {% endfor %}
     </u1>
 
+    <br>
     <form action="/add/" method="post">
         {% csrf_token %}
 
@@ -26,9 +28,8 @@
             {{ field.label_tag }} {{ field }}
         {% endfor %}
 
-        <button id="create-btn type="submit">Add to list</button>
+        <button id="shopping-add-btn" type="submit">Add to list</button>
     </form>
-    </body>
-    </html>
 
+</section>
 {% endblock %}
