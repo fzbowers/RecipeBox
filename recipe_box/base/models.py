@@ -38,6 +38,7 @@ class Recipe(models.Model):
     slug = models.SlugField(unique=True, blank=True, null=True)
     ## description = models.TextField(null=True, blank=True) ## DON"T NEED
     time_to_make = models.CharField(max_length = 25, default=0)
+    time_unit = models.BooleanField(default=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     section = models.ForeignKey(Section, related_name='recipes', on_delete=models.SET_NULL, null=True, blank=True)
