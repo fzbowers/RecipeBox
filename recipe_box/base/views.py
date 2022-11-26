@@ -222,6 +222,23 @@ def new_section(request):
     return render(request, "new_section.html", context)
 
 @login_required
+def edit_section(request, title=None, *args, **kwargs):
+    section_obj = Section.objects.get(slug=title)
+    form = SectionForm(request.POST or None, instance=section_obj)
+
+    if form.is_valid():
+        section = form.save(commit=False)
+        section.user = request.user
+        section.save()
+        return redirect(section.get_absolute_url())
+
+    context = {
+        "form": form,
+    }
+
+    return render(request, "new_section.html", context)
+
+@login_required
 def shopping_list(request):
     food_qs = Food.objects.filter(user=request.user)
     form = ShoppingForm(request.POST)

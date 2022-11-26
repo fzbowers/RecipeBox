@@ -334,6 +334,7 @@ footer {
 #all-recipes,
 #search,
 #individual-section,
+#account,
 #shopping-list {
     margin: 20px;
     color: #809bce;
@@ -457,6 +458,7 @@ select option[value="dark-green"] {
 #ingredient,
 #amount,
 #instruction,
+#account,
 #shopping {
     color: #809bce;
     font-size: 20px;
@@ -671,6 +673,7 @@ button[type=submit] {
 }
 
 .all-recipes-text,
+.account-text,
 .search-text,
 .individual-section-text {
     margin: 0;
@@ -750,4 +753,28 @@ button[type=submit] {
 
 #shopping {
     padding-left: 5px;
+}
+
+/* Style account page */
+.account-name,
+.account-email {
+    font-size: 30px;
+    margin: 10px
+}
+
+.account-section {
+    border: 2px solid rgb(226, 229, 239);
+    color: #809bce;
+    background-color: rgb(226, 229, 239);
+
+
+    font-size: 25px;
+    margin: 12px;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
 }

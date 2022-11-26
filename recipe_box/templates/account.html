@@ -2,15 +2,25 @@
 {% block page_content %}
 
 <title>Account</title>
-<section id="account">    
+<section id="account">
+  
+    <h1>Account</h1>
     {% block content %}
 
+
     {% if user.is_authenticated %}
-      <p>Hi {{user.username}}</p>
-      <p>Email: {{user.email}}</p>
-      <p>Change password <a href="../change_password/">here!</a></p>
-      <p>Change email <a href="../edit_profile/">here!</a></p>
-      <p><a href="{% url 'logout' %}">Logout</a></p>
+      <p class="account-name col-sm-11">Username: {{user.username}}</p>
+      <p class="account-email col-sm-11">Email: {{user.email}}</p>
+
+      <a class=" col-sm-11 account-section col-link" href="../change_password/">
+        <p class="account-text">Change Password Here</p>
+      </a>
+      <a class=" col-sm-11 account-section col-link" href="../edit_profile/">
+        <p class="account-text">Change Email Here</p>
+      </a>
+      <a class=" col-sm-11 account-section col-link" href="{% url 'logout' %}">
+        <p class="account text">Logout</p>
+      </a>
 
     {% else %}
     <p>Login <a href="../login/">Here!</a></p>
@@ -19,6 +29,7 @@
     {% endif %}
 
     {% endblock %}
+
 </section>
 
 {% endblock %}
