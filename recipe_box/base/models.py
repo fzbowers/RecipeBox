@@ -38,7 +38,7 @@ class Recipe(models.Model):
     slug = models.SlugField(unique=True, blank=True, null=True)
     ## description = models.TextField(null=True, blank=True) ## DON"T NEED
     time_to_make = models.CharField(max_length = 25, default=0)
-    time_unit = models.CharField(default=True)
+    #time_unit = models.CharField(default=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     section = models.ManyToManyField(Section)
