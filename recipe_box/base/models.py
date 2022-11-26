@@ -32,13 +32,17 @@ pre_save.connect(model_pre_save, sender=Section)
 post_save.connect(model_post_save, sender=Section)
 
 
+UNIT_CHOICES = (
+    ('minutes','MINUTES'),
+    ('hours', 'HOURS'),
+)
+
 class Recipe(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length = 150)
     slug = models.SlugField(unique=True, blank=True, null=True)
-    ## description = models.TextField(null=True, blank=True) ## DON"T NEED
     time_to_make = models.CharField(max_length = 25, default=0)
-    #time_unit = models.CharField(default=True)
+    time_unit = models.CharField(max_length=10, choices=UNIT_CHOICES, default='minutes')
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     section = models.ManyToManyField(Section)
