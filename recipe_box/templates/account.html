@@ -5,9 +5,10 @@
 <section id="account">
   
     <h1>Account</h1>
+
     {% block content %}
 
-
+    <!-- Show users information, give options to edit, give option to log out -->
     {% if user.is_authenticated %}
       <p class="account-name col-sm-11">Username: {{user.username}}</p>
       <p class="account-email col-sm-11">Email: {{user.email}}</p>
@@ -15,14 +16,18 @@
       <a class=" col-sm-11 account-section col-link" href="../change_password/">
         <p class="account-text">Change Password Here</p>
       </a>
+
       <a class=" col-sm-11 account-section col-link" href="../edit_profile/">
         <p class="account-text">Change Email Here</p>
       </a>
+
       <a class=" col-sm-11 account-section col-link" href="{% url 'logout' %}">
         <p class="account text">Logout</p>
       </a>
 
+    <!-- If the user is not logged int, give the option to log in or create an account -->
     {% else %}
+
     <p>Login <a href="../login/">Here!</a></p>
     <p>No account? Create one <a href="../create_account/">here!</a></p>
 

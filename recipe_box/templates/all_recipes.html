@@ -5,14 +5,16 @@
 <section id="all-recipes">
     <h2>All Recipes</h2>
 
-    
+    <!-- Show all of user's recipes -->
     <div class="row all-recipes-row">
 
         {% for x in recipe_list %}
+
         <a class=" col-sm-11 all-sections col-link" href="{{ x.get_absolute_url }}">
             <p class="all-recipes-text">{{ x.name }}</p>
             <p class="all-recipes-text">Time: {{ x.time_to_make }} mins</p>
         </a>
+
         {% endfor %}
         
     </div>

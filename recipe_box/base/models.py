@@ -5,7 +5,9 @@ from django.db import models
 from django.db.models.signals import pre_save, post_save
 from django.urls import reverse
 from .utils import slugify_instance_name, model_post_save, model_pre_save
-# Create your models here.
+
+
+## Recipe Modles ##
 
 class Section(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -76,6 +78,7 @@ class Ingredient(models.Model):
     name = models.CharField(max_length = 100)
     quantity = models.CharField(max_length = 50)
     unit = models.CharField(max_length = 50)
+
     class Meta:
         verbose_name = ('Ingredient')
         verbose_name_plural = ('Ingredients')
@@ -86,17 +89,24 @@ class Ingredient(models.Model):
     def get_absolute_url(self):
         return self.recipe.get_absolute_url()
 
+
 class Instruction(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     text = models.TextField(blank=False)
+
     class Meta:
         verbose_name = ('Instruction')
         verbose_name_plural = ('Instructions')
+
     def __str__(self):
         return self.text
 
     def get_absolute_url(self):
         return self.recipe.get_absolute_url()
+
+
+
+## Shopping list modles ##
 
 class Food(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -104,11 +114,13 @@ class Food(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length = 100)
     quantity = models.CharField(max_length = 50)
+
     class Meta:
         verbose_name = ('Food')
         verbose_name_plural = ('Foods')
+
     def __str__(self):
         return self.name
+
     def get_absolute_url(self):
         return reverse('shopping_list', kwargs=[self.slug])
-        #return self.food.get_absolute_url()
