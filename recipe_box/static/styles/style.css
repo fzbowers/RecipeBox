@@ -448,7 +448,6 @@ select {
 .ingredient-title,
 .amount-title {
     display: flex;
-    align-items: center;
     height: 46px;
 }
 
