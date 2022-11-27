@@ -26,7 +26,6 @@ class SectionForm(forms.ModelForm):
     class Meta:
         model = Section
         fields = ['name', 'description']
-        ##fields = ['name', 'color', 'description']
 
 
 class RecipeForm(forms.ModelForm):
@@ -35,13 +34,13 @@ class RecipeForm(forms.ModelForm):
 
     name = forms.CharField(label="Title", label_suffix="", widget=forms.TextInput(attrs={'id' : "title"}))
     time_to_make = forms.CharField(label="Time", label_suffix="", widget=forms.TextInput(attrs={'id' : "time"}))
-   # time_unit = forms.CharField(label="Time_Unit", label_suffix="", widget=forms.TextInput(attrs={'id' : "time_unit"}))
+    time_unit = forms.CharField(label="Time_Unit", label_suffix="", widget=forms.TextInput(attrs={'id' : "time_unit"}))
 
 
     class Meta:
         model = Recipe
-        #fields = ['name', 'time_to_make', 'time_unit', 'section']
-        fields = ['name', 'time_to_make', 'section']
+        fields = ['name', 'time_to_make', 'time_unit', 'section']
+        #fields = ['name', 'time_to_make', 'section']
 
 
     # getting user sections
