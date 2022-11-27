@@ -32,10 +32,8 @@ button:focus {
 }
 
 .landing-box {
-    display: grid;
-    justify-content: space-around;
-    width: 45vw;
-    height: 80vh;
+    width: 43vw;
+    max-height: 90vh;
     background-color: white;
     border: 2px solid #809bce;
 }
@@ -43,24 +41,24 @@ button:focus {
 .landing-logo,
 .landing-text {
     display: flex;
-    justify-content: center;
-    justify-self: center;
-    padding: 10px;
-
 }
 
-.landing-logo {
-    max-width: 100%;
-    max-height: 80%;
+.landing-top {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    padding-top: 20px;
 }
-
+.landing-logo,
 .logo-img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 20vw;
+    height: 25vh;
 }
 
 .landing-form {
     font-size: 15px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .landing-text,
@@ -93,15 +91,7 @@ button:focus {
 }
 
 
-.text-box {
-    position: relative;
-    top: -50px;
-}
-.forgot-pass,
-.landing-btn {
-    position: relative;
-    top: -15px;
-}
+
 
 
 
