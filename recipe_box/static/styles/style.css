@@ -360,7 +360,7 @@ footer {
     float: left;
 }
 
-.create-btn:hover{
+#create-btn:hover{
     color: #d6eadf;
 }
 
@@ -372,7 +372,7 @@ footer {
     width: 130px;
 }
 
-.cancel-btn:hover{
+#cancel-btn:hover{
     color: #95b8d1;
 }
 
@@ -424,6 +424,10 @@ select {
     font-size: 20px;
     color: #ffff;
     background-color: #809bce;
+}
+
+.recipe-btn:hover{
+    color: #d6eadf;
 }
 
 #direction {
