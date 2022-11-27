@@ -9,16 +9,10 @@
     <!-- Add name and description -->
     <form action="" method="POST">
         {% csrf_token %}
-        {% for field in form %}
 
+        {{ form.name.label_tag }} {{ form.name }}
         <br>
-
-        <div class='{% if field.field.required %}{{ form.required_css_class }}{%endif%}'>
-            {{ field.errors }}   
-            {{ field.label_tag }} {{ field }}
-        </div>
-
-        {% endfor %}
+        {{ form.description.label_tag }} {{ form.description }}
 
         <button id="create-btn" type="submit">Create Section</button>
 
