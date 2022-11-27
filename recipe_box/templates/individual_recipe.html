@@ -7,7 +7,7 @@
     <!-- Recipe title and time section -->
     <div class="row recipe-top">
         <p id="recipe-title">{{ recipe_obj.name }}</p>
-        <p id="recipe-time">Time: {{ recipe_obj.time_to_make }} mins</p>
+        <p id="recipe-time">Time: {{ recipe_obj.time_to_make }} {{ recipe_obj.time_unit }}</p>
     </div>
 
     <hr>
@@ -74,7 +74,7 @@
             {% csrf_token %}
             <button type="submit" class="green-btn" name="delete">Delete Recipe</button>
         </form>
-        
+
     </div>
 </section>
 

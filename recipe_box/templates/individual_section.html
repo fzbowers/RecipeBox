@@ -24,7 +24,7 @@
 
         <a class=" col-sm-11 individual-section-recipe col-link" href="{{ x.get_absolute_url }}">
             <p class="individual-section-text">{{ x.name }}</p>
-            <p class="individual-section-text">Time: {{ x.time_to_make }} mins</p>
+            <p class="individual-section-text">Time: {{ x.time_to_make }} {{ x.time_unit }} </p>
         </a> 
 
         {% endfor %}

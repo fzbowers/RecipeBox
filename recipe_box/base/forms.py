@@ -27,7 +27,7 @@ class RecipeForm(forms.ModelForm):
 
     name = forms.CharField(label="Title", label_suffix="", widget=forms.TextInput(attrs={'id' : "title"}))
     time_to_make = forms.CharField(label="Time", label_suffix="", widget=forms.TextInput(attrs={'id' : "time"}))
-    time_unit = forms.CharField(label="Time_Unit", label_suffix="", widget=forms.TextInput(attrs={'id' : "time_unit"}))
+    time_unit = forms.CharField(label="Unit", label_suffix="", widget=forms.TextInput(attrs={'id' : "time_unit"}))
 
     class Meta:
         model = Recipe
@@ -82,7 +82,7 @@ class EditProfileForm(UserChangeForm):
 class ShoppingForm(forms.ModelForm):
     name = forms.CharField(label='Item', label_suffix="", widget=forms.TextInput(attrs={'id' : "shopping", 'class' : "col-sm-6"}))
     quantity = forms.CharField(label='Quantity', label_suffix="", widget=forms.TextInput(attrs={'id' : "shopping", 'class' : "col-sm-2"}))
-    
+
     class Meta:
         model = Food
         fields = ['name', 'quantity']

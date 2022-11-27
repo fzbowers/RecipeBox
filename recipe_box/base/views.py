@@ -24,7 +24,6 @@ from .models import Recipe, Ingredient, Instruction, Section, Food
 
 ## Recipe Views ##
 
-
 #search page
 #seach based on tutorial from https://linuxhint.com/build-a-basic-search-for-a-django/
 @login_required
@@ -62,8 +61,6 @@ def home(request):
 @login_required
 def new_recipe(request):
     user = request.user
-    
-    # for get request
     form = RecipeForm(user)
     IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm, extra=1)
     formset = IngredientFormset()
@@ -72,7 +69,7 @@ def new_recipe(request):
 
     if request.method == 'POST':
         form = RecipeForm(user, request.POST)
-        
+
         if form.is_valid():
             recipe = form.save(commit=False)
             recipe.user = request.user # not sure if needed
@@ -296,8 +293,6 @@ def shopping_list_delete(request, Food_id):
 @login_required
 def account(request):
     return render(request, "account.html")
-
-
 
 def create_account(response):
     if response.method == "POST":

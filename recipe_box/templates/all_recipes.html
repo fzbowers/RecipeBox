@@ -12,7 +12,7 @@
 
         <a class=" col-sm-11 all-sections col-link" href="{{ x.get_absolute_url }}">
             <p class="all-recipes-text">{{ x.name }}</p>
-            <p class="all-recipes-text">Time: {{ x.time_to_make }} mins</p>
+            <p class="all-recipes-text">Time: {{ x.time_to_make }} {{ x.time_unit }}</p>
         </a>
 
         {% endfor %}

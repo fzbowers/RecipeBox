@@ -309,7 +309,8 @@ footer {
 
 #title,
 #freeform,
-#time {
+#time,
+#time_unit {
     color: #809bce;
     font-size: 20px;
     background-color: rgba(226, 239, 231, .6);
@@ -368,7 +369,8 @@ select {
 
 /* NEW RECIPE PAGE */
 
-#time {
+#time,
+#time_unit {
     max-width: 10vw;
     margin: 8px;
 }
