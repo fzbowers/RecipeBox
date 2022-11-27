@@ -39,12 +39,6 @@ button:focus {
 .landing-logo,
 .landing-text {
     display: flex;
-<<<<<<< HEAD
-    justify-content: center;
-    justify-self: center;
-    padding: 10px;
-=======
->>>>>>> 3ed95cdbbe99847951085d9b7164d44648d10c3f
 }
 
 .landing-top {
@@ -95,22 +89,6 @@ button:focus {
     display: none;
 }
 
-<<<<<<< HEAD
-.text-box {
-    position: relative;
-    top: -50px;
-}
-
-.forgot-pass,
-.landing-btn {
-    position: relative;
-    top: -15px;
-}
-=======
-
-
->>>>>>> 3ed95cdbbe99847951085d9b7164d44648d10c3f
-
 
 
 /* STYLE NAVIGATION BAR */
@@ -120,6 +98,8 @@ button:focus {
     margin: 0;
     padding: 8;
 }
+
+
 
 /* LOGO */
 
@@ -669,12 +649,7 @@ button[type=submit] {
 .account-section {
     border: 2px solid rgba(226, 239, 231, 0.6);
     color: #809bce;
-<<<<<<< HEAD
-    background-color: rgb(226, 229, 239);
-=======
     background-color: rgba(226, 239, 231, 0.6);
-
->>>>>>> 3ed95cdbbe99847951085d9b7164d44648d10c3f
     font-size: 25px;
     margin: 12px;
     border-radius: 10px;
