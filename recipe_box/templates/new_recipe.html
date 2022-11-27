@@ -15,9 +15,22 @@
             {{ form.errors }}
             {{ form.name.label_tag }} {{ form.name }}     
 
-            <div>{{ form.time_to_make.label_tag }} {{ form.time_unit.label_tag }}</div>
+            <div class="input_ingredient_wrap">
 
-            <div id='ingredient-form-list' class='row'> {{ form.time_to_make }} {{ form.time_unit }} </div>
+            <div class="row">
+            <div class="amount-col col-sm-2 amount-title">{{ form.time_to_make.label_tag }} </div>           
+
+            <div class="amount-col col-sm-2 amount-title"> {{ form.time_unit.label_tag }}  </div>
+            </div>
+        </div>
+
+            <div id='ingredient-form-list' class='row'>
+
+                 {{ form.time_to_make }} {{ form.time_unit }} 
+ 
+            
+            </div> 
+ 
             
         </div>  
 
@@ -86,6 +99,7 @@
         </div>
 
         <br>
+        
         <button id="create-btn" type="submit">Save Recipe</button>
 
     </form>
