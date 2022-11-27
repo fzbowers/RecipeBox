@@ -6,7 +6,7 @@
 
     <h2>Add New Section</h2>
 
-    <form action='.' method="POST">
+    <form action="" method="POST">
         {% csrf_token %}
         {% for field in form %}
         <div class='{% if field.field.required %}{{ form.required_css_class }}{%endif%}'>
@@ -14,7 +14,7 @@
             {{ field.label_tag }} {{ field }}
         </div>
         {% endfor %}
- 
+
         <button id="create-btn" type="submit">Create Section</button>
     </form>
 
