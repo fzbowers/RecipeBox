@@ -30,10 +30,8 @@ button:focus {
 }
 
 .landing-box {
-    display: grid;
-    justify-content: space-around;
-    width: 45vw;
-    height: 80vh;
+    width: 43vw;
+    max-height: 90vh;
     background-color: white;
     border: 2px solid #809bce;
 }
@@ -41,23 +39,30 @@ button:focus {
 .landing-logo,
 .landing-text {
     display: flex;
+<<<<<<< HEAD
     justify-content: center;
     justify-self: center;
     padding: 10px;
+=======
+>>>>>>> 3ed95cdbbe99847951085d9b7164d44648d10c3f
 }
 
-.landing-logo {
-    max-width: 100%;
-    max-height: 80%;
+.landing-top {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    padding-top: 20px;
 }
-
+.landing-logo,
 .logo-img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 20vw;
+    height: 25vh;
 }
 
 .landing-form {
     font-size: 15px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .landing-text,
@@ -90,6 +95,7 @@ button:focus {
     display: none;
 }
 
+<<<<<<< HEAD
 .text-box {
     position: relative;
     top: -50px;
@@ -100,6 +106,10 @@ button:focus {
     position: relative;
     top: -15px;
 }
+=======
+
+
+>>>>>>> 3ed95cdbbe99847951085d9b7164d44648d10c3f
 
 
 
@@ -392,7 +402,6 @@ select {
 #ingredient,
 #amount,
 #instruction,
-#account,
 #shopping {
     color: #809bce;
     font-size: 20px;
@@ -658,9 +667,14 @@ button[type=submit] {
 }
 
 .account-section {
-    border: 2px solid rgb(226, 229, 239);
+    border: 2px solid rgba(226, 239, 231, 0.6);
     color: #809bce;
+<<<<<<< HEAD
     background-color: rgb(226, 229, 239);
+=======
+    background-color: rgba(226, 239, 231, 0.6);
+
+>>>>>>> 3ed95cdbbe99847951085d9b7164d44648d10c3f
     font-size: 25px;
     margin: 12px;
     border-radius: 10px;

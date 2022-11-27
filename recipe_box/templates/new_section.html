@@ -6,7 +6,7 @@
 
     <h2>Add New Section</h2>
 
-    <form action='.' method="POST">
+    <form action="" method="POST">
         {% csrf_token %}
         {% for field in form %}
 
@@ -18,7 +18,7 @@
         </div>
 
         {% endfor %}
- 
+
         <button id="create-btn" type="submit">Create Section</button>
 
     </form>
