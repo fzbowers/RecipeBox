@@ -12,7 +12,7 @@
                     <h2>Sections</h2>
   
                     <div class="row">
-                        <a class="col-link col-sm-10 mini-section"" href="/all_recipes">All Recipes</a>
+                        <a class="col-link col-sm-10 mini-section" href="/all_recipes">All Recipes</a>
 
                         {% for x in home_section_list %}
 
@@ -20,7 +20,7 @@
 
                         {% endfor %}    
 
-                        <a class="col-link col-sm-10 mini-section"" href="/section">Add New Section</a>
+                        <a class="col-link col-sm-10 mini-section" href="/section">Add New Section</a>
                     </div>
                 </div>
 
@@ -33,11 +33,11 @@
 
                         {% for x in pinned_recipes_list %}
 
-                        <div class="col-sm-10 mini-pinned">
-                            <p class="all-recipes-text"><a class="pinned-link" href="{{ x.get_absolute_url }}">{{ x.name }}</a></p>
-                            <p class="all-recipes-text">Time: {{ x.time_to_make }} {{ x.time_unit }}</p>
-                        </div>
-
+                        <a class="col-sm-10 mini-pinned pinned-link" href="{{ x.get_absolute_url }}">
+                            <p class="pinned-recipes-text">{{ x.name }}</p>
+                            <p class="pinned-recipes-text">Time: {{ x.time_to_make }} {{ x.time_unit }}</p>
+                        </a>
+                        
                         {% endfor %}    
 
                     </div>

@@ -124,6 +124,10 @@ button:focus {
     color: #809bce;
 }
 
+.nav-link:hover{
+    color: #95b8d1;
+}
+
 .navbar button{
     height: 50px;
     font-size: 20px;
@@ -243,7 +247,7 @@ footer {
 
 .mini-pinned {
     border: 2px solid #7995a9;
-    color: #ffff;
+    color: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -262,6 +266,10 @@ footer {
     color: #809bce;
 }
 
+.col-link:hover{
+    color: #95b8d1;
+}
+
 .col-link:link,
 .pinned-link:link {
     text-decoration: none;
@@ -269,6 +277,10 @@ footer {
 
 .pinned-link {
     color: #ffffff;
+}
+
+.pinned-link:hover{
+    color: #d6eadf;
 }
 
 #home .row {
@@ -348,12 +360,20 @@ footer {
     float: left;
 }
 
+.create-btn:hover{
+    color: #d6eadf;
+}
+
 #cancel-btn {
     outline: none;
     background-color: #e2efe7;
     color: #809bce;
     height: 50px;
     width: 130px;
+}
+
+.cancel-btn:hover{
+    color: #95b8d1;
 }
 
 #color-selection{
@@ -498,9 +518,17 @@ button[type=submit] {
     background-color: #809bce;
 }
 
+.blue-btn:hover{
+    color: #d6eadf;
+}
+
 .green-btn {
     color: #809bce;
     background-color: #e2efe7;    
+}
+
+.green-btn:hover{
+    color: #95b8d1;
 }
 
 .blue-btn,
@@ -538,10 +566,13 @@ button[type=submit] {
 }
 
 .all-recipes-text,
+.pinned-recipes-text,
 .search-text,
+.account-text,
 .individual-section-text {
     margin: 0;
 }
+
 
 .all-recipes-row,
 .search-row {
@@ -563,12 +594,6 @@ button[type=submit] {
     padding: 10px;
 }
 
-.all-recipes-text,
-.account-text,
-.search-text,
-.individual-section-text {
-    margin: 0;
-}
 
 
 

@@ -51,7 +51,7 @@
     <!-- Buttons section-->
     <div class="row recipe-bottom">
 
-        <button type="submit" class="blue-btn">{% if recipe_obj.get_edit_url %}<a class="edit-link" href="{{ recipe_obj.get_edit_url }}">Edit</a>{% endif %}</button>
+        {% if recipe_obj.get_edit_url %}<a class="edit-link" href="{{ recipe_obj.get_edit_url }}"><button type="submit" class="blue-btn">Edit</button></a>{% endif %}
 
         <!--If a recipe is not pinned, show button to pin. If recipe is pinned, show button to remove from pinned-->
         {% if is_pinned %}
