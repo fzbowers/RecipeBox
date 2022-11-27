@@ -9,65 +9,71 @@
     <form action="" method="POST">
         {% csrf_token %}
 
+        <!-- Name and time -->
         <div class='{% if field.field.required %}{{ form.required_css_class }}{%endif%}'>
             {{ form.errors }}
             {{ form.name.label_tag }} {{ form.name }}     
             <div>{{ form.time_to_make.label_tag }} {{ form.time_to_make }}</div>         
-        </div>
-        
+        </div>  
 
-        <!-- LABELS -->
+        <!-- Ingredients -->
         <div class="input_ingredient_wrap">
             <div class="row">
+
                 <div class="ingredient-col col-sm-6 ingredient-title">
                         <label for="Ingredient">Ingredients</label>
                 </div>
                 
                 <div class="amount-col col-sm-2 amount-title">
                     <label for="Amount">Amounts</label>
-            </div>
+                </div>
 
-            <div class="amount-col col-sm-2 amount-title">
-                <label id="unit-title">Units</label>
-        </div>
+                <div class="amount-col col-sm-2 amount-title">
+                    <label id="unit-title">Units</label>
+                </div>
+
             </div>
         </div>
         
-
-
         {% if formset %}
-        {{ formset.management_form }}
-        <div id='ingredient-form-list' class='row'>
-            {% for form in formset %}
-                {{ form }}
-            {% endfor %}
-        </div>
-        
-        <div id='empty-form' style="display: none">{{ formset.empty_form }}</div>
-        <button id='add-btn' class="col-sm-8 recipe-btn" type='button'>Add Ingredient</button>
+
+            {{ formset.management_form }}
+
+            <div id='ingredient-form-list' class='row'>
+                {% for form in formset %}
+                    {{ form }}
+                {% endfor %}
+            </div>
+            
+            <div id='empty-form' style="display: none">{{ formset.empty_form }}</div>
+            <button id='add-btn' class="col-sm-8 recipe-btn" type='button'>Add Ingredient</button>
+
         {% endif %}
 
-        <!--LABELS-->
+        <!-- Instructions -->
         <div class="input_instruction_wrap">
             <div class="row">
+                
                 <div class="instruction-col col-sm-6 instruction-text">
                         <label for="Instruction">Directions</label>
                 </div>
+
             </div>
         </div>
 
-
-
         {% if formset2 %}
-        {{ formset2.management_form }}
-        <div id='instruction-form-list' class='row'>
-            {% for form in formset2 %}
-                {{ form }}
-            {% endfor %}
-        </div>
 
-        <div id='empty-form2' style="display: none">{{ formset2.empty_form }}</div>
-        <button id='add-btn2' class="col-sm-8 recipe-btn" type='button'>Add Direction</button>
+            {{ formset2.management_form }}
+
+            <div id='instruction-form-list' class='row'>
+                {% for form in formset2 %}
+                    {{ form }}
+                {% endfor %}
+            </div>
+
+            <div id='empty-form2' style="display: none">{{ formset2.empty_form }}</div>
+            <button id='add-btn2' class="col-sm-8 recipe-btn" type='button'>Add Direction</button>
+
         {% endif %}
 
         <div class='{% if field.field.required %}{{ form.required_css_class }}{%endif%}'>
@@ -76,10 +82,12 @@
 
         <br>
         <button id="create-btn" type="submit">Save Recipe</button>
+
     </form>
     
     <a href="/"><button id="cancel-btn" type="Cancel">Cancel</button></a>
     
+    <!-- java script for add buttons-->
     <script>
         $('#add-btn').click(function () {
           let total_form = $('#id_ingredient_set-TOTAL_FORMS');

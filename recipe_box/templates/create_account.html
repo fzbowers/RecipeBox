@@ -5,12 +5,18 @@
 <section id="account">
     
     {% block title %}Create an Account{% endblock %}
+
     {% load crispy_forms_tags %}
+
     {% block content %}
+
+    <!-- Allow user to create an account -->
     <form method="POST" class="form-group">{% csrf_token %}
             {{ form|crispy }}
             <button type="submit" class="btn btn-success">Register</button>
     </form>
+
 </section>
+
 {% endblock %}
 {% endblock %}
