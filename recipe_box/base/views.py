@@ -256,9 +256,6 @@ def shopping_list(request):
 #add to list
 @login_required
 def shopping_list_add(request):
-    #FoodToBuy_obj = None
-    #FoodToBuy_obj = get_object_or_404(FoodToBuy, user=request.user)
-    #return render(request, "shopping_list.html", {"FoodToBuy": FoodToBuy.objects.all()})
     form = ShoppingForm(request.POST)
 
     context = {
@@ -271,11 +268,6 @@ def shopping_list_add(request):
         food.save()
         return HttpResponseRedirect('/shopping_list/')
 
-  #context = {
-     #   "shopping_list": FoodToBuy
-    #}
-    #if Food != None:
-       # return render(request, "shopping_list.html", context, {"Food": Food.objects.filter(user=request.user)})
     return render(request, "shopping_list.html", context)
 
 #remove from list
