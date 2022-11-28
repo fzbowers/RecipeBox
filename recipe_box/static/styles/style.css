@@ -252,7 +252,8 @@ footer {
 }
 
 .mini-section-special {
-    background: #e2efe7 
+    /*background: rgba(200, 220, 235, 0.4)*/
+    background: rgba(184, 216, 205, .5)
 }
 
 .mini-pinned {
