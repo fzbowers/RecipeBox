@@ -231,22 +231,28 @@ footer {
 
 
 
-/* ALL COLUMNS */
+/* ALL HOME COLUMNS */
 
 .section-col,
 .pinned-col,
 .mini-section,
+.mini-section-special,
 .mini-pinned {
     border-radius: 10px;
 }
 
 
 
-/* NESTED SECTIONS */
+/* NESTED HOME SECTIONS */
 
-.mini-section {
+.mini-section,
+.mini-section-special {
     border: 2px solid #aebeb5;
     color: #809bce;
+}
+
+.mini-section-special {
+    background: #e2efe7 
 }
 
 .mini-pinned {
@@ -259,7 +265,8 @@ footer {
 }
 
 .mini-section,
-.mini-pinned {
+.mini-pinned,
+.mini-section-special {
     padding: 8px;
     font-size: 25px;
     text-align: left;
@@ -424,7 +431,7 @@ select {
 .recipe-btn {
     height: 30px;
     margin: 15px;
-    margin-left: 95px; /* NEEDS TO BE CENTERED PROPERLY */    
+    margin-left: 95px;    
     font-size: 20px;
     color: #ffff;
     background-color: #809bce;
@@ -455,6 +462,7 @@ select {
     height: 46px;
 }
 
+/*control autofill behavior*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
@@ -524,6 +532,10 @@ hr {
 .mini-right {
     font-size: 22px;
 }
+
+
+
+/* DEFAUT BUTTON STYLING */
 
 button,
 button[type=submit] {

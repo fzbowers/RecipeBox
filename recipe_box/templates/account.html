@@ -10,20 +10,21 @@
 
     <!-- Show users information, give options to edit, give option to log out -->
     {% if user.is_authenticated %}
-      <p class="account-name col-sm-11">Username: {{user.username}}</p>
-      <p class="account-email col-sm-11">Email: {{user.email}}</p>
+    
+        <p class="account-name col-sm-11">Username: {{user.username}}</p>
+        <p class="account-email col-sm-11">Email: {{user.email}}</p>
 
-      <a class=" col-sm-11 account-section col-link" href="../change_password/">
+        <a class=" col-sm-11 account-section col-link" href="../change_password/">
         <p class="account-text">Change Password</p>
-      </a>
+        </a>
 
-      <a class=" col-sm-11 account-section col-link" href="../edit_profile/">
+        <a class=" col-sm-11 account-section col-link" href="../edit_profile/">
         <p class="account-text">Change Email</p>
-      </a>
+        </a>
 
-      <a class=" col-sm-11 account-section col-link" href="{% url 'logout' %}">
+        <a class=" col-sm-11 account-section col-link" href="{% url 'logout' %}">
         <p class="account text">Logout</p>
-      </a>
+        </a>
 
     <!-- If the user is not logged int, give the option to log in or create an account -->
     {% else %}
