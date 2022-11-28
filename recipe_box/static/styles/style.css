@@ -652,6 +652,9 @@ button[type=submit] {
     border: none;
     padding-top: 0;
     padding-bottom: 0;
+    height: 35px;
+    width: 120px;
+    font-size: 20px;
 }
 
 #shopping-add-btn {
@@ -659,10 +662,18 @@ button[type=submit] {
     color: #ffff;
 }
 
+#shopping-add-btn:hover{
+    color: #d6eadf;
+}
+
 #shopping-remove-btn {
     background-color: #e2efe7;
     color: #809bce;
     float: right;
+}
+
+#shopping-remove-btn:hover{
+    color: #95b8d1;
 }
 
 .shopping-items {

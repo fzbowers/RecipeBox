@@ -24,7 +24,6 @@ class SectionForm(forms.ModelForm):
 class RecipeForm(forms.ModelForm):
     error_css_class = 'error-field'
     required_css_class = 'required-field'
-
     name = forms.CharField(label="Title", label_suffix="", widget=forms.TextInput(attrs={'id' : "title"}))
     time_to_make = forms.CharField(label="Time", label_suffix="", widget=forms.TextInput(attrs={'id' : "time", 'class' : "col-sm-2"}))
     time_unit = forms.CharField(label="Unit", label_suffix="", widget=forms.TextInput(attrs={'id' : "time_unit", 'class' : "col-sm-2"}))

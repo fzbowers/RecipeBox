@@ -1,13 +1,12 @@
 from django.contrib import admin
 from django.contrib.auth import get_user_model
+from .models import Recipe, Section, Ingredient, Instruction, Food
 
 User = get_user_model() 
 
 
 
 ## Display recipies in admin page  ##
-
-from .models import Recipe, Section, Ingredient, Instruction, Food
 
 class IngredientsInline(admin.StackedInline):
     model = Ingredient

@@ -19,6 +19,8 @@
             {{ form.time_unit.label_tag }} {{ form.time_unit }} 
         </div>  
 
+        <br>
+
         <!-- Ingredients -->
         <div class="input_ingredient_wrap">
             <div class="row">
@@ -78,6 +80,8 @@
             <button id='add-btn2' class="col-sm-8 recipe-btn" type='button'>Add Direction</button>
 
         {% endif %}
+
+        <br>
 
         <div class='{% if field.field.required %}{{ form.required_css_class }}{%endif%}'>
             {{ form.section.label_tag }} {{ form.section }}              

@@ -35,9 +35,24 @@ def search(request):
             Q(name__icontains=query) & Q(user=request.user) 
         )
 
+        temp_ingredient_list = []
+
+        temp_ingredient_list = Ingredient.objects.filter(
+            Q(name__icontains=query)
+        )
+
+        ingredient_list = []
+
+        for ingredient in temp_ingredient_list: 
+            ingredient_list.append(ingredient.recipe)
+            #print(temp_recipe)
+            #if temp_recipe.user == request.user:
+            #    ingredient_list.append(ingredient.recipe)
+               
+
     context = {
     "recipe_list": recipe_list,
- #   "ingredient_list": ingredient_list,
+    "ingredient_list": ingredient_list,
     "query": query,
     }
 
