@@ -650,6 +650,10 @@ button[type=submit] {
     color: #ffffff;
 }
 
+.edit-link:hover {
+    color: #d6eadf;
+}
+
 .edit-link:link {
     text-decoration: none;
 }

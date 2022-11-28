@@ -34,7 +34,7 @@
     <!-- Buttons for editing and deleting recipe-->
     <div class="row recipe-bottom">
 
-        <button type="submit" class="blue-btn">{% if section_obj.get_edit_url %}<a class="edit-link" href="{{ section_obj.get_edit_url }}">Edit</a>{% endif %}</button>
+        <a class="edit-link" href="{{ section_obj.get_edit_url }}"><button type="submit" class="blue-btn">{% if section_obj.get_edit_url %}Edit{% endif %}</button></a>
 
         <form method="post">
             {% csrf_token %}

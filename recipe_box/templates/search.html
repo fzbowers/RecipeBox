@@ -5,8 +5,6 @@
 <section id="search">
     <!--<h2>Search Results:</h2>-->
 
-    <div class="row search-row"></div>
-
     {% if query %}
 
         <h2>
@@ -28,35 +26,9 @@
             </a> 
         </ul>
 
-
         {% endfor %}
 
-        <h2>
-
-            {% with ingredient_list.count as total_results %}
-
-                {{ total_results }} Ingredient{{ total_results|pluralize }} Found
-
-            {% endwith %} 
-
-        </h2>
-
-        {% for x in ingredeint_list %}
-
-        <ul>
-            <a class=" col-sm-11 all-sections col-link" href="{{ x.get_absolute_url }}">
-                <p class="all-recipes-text">{{ x.name }}</p>
-                <p class="all-recipes-text">Time: {{ x.time_to_make }} {{ x.time_unit }}</p>
-            </a> 
-        </ul>
-
-
-        {% endfor %}     
-
     {% endif %}
-
-
-</div>
   
 </section>
 
