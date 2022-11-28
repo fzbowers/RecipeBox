@@ -278,7 +278,6 @@ def shopping_list_add(request):
        # return render(request, "shopping_list.html", context, {"Food": Food.objects.filter(user=request.user)})
     return render(request, "shopping_list.html", context)
 
-
 #remove from list
 @login_required
 def shopping_list_delete(request, Food_id):
