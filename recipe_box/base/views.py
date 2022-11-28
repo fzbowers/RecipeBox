@@ -1,10 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-#from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserChangeForm
 from .forms import RegisterForm, EditProfileForm, RecipeForm, IngredientForm, InstructionForm, SectionForm, ShoppingForm
 from django.views.generic import TemplateView, ListView
-
-#Importing stuff for sending reset password email
 from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
@@ -14,43 +11,39 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordResetForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.template.loader import render_to_string
-#from django.db.models.query_utils import Q
 from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.db.models import Q
 from django.http import HttpResponseRedirect
-
 from django.forms.models import inlineformset_factory
 
 from .models import Recipe, Ingredient, Instruction, Section, Food
-        
 
+
+
+## Recipe Views ##
+
+#search page
 #seach based on tutorial from https://linuxhint.com/build-a-basic-search-for-a-django/
 @login_required
 def search(request):
     recipe_list = []
     if request.method == "GET":
         query = request.GET.get('search')
-        #if query == '':
-        #    query = ''
         recipe_list = Recipe.objects.filter(
             Q(name__icontains=query) & Q(user=request.user) 
         )
 
-
-
-
     context = {
     "recipe_list": recipe_list,
- #   "ingredient_list": ingredient_list,
     "query": query,
     }
 
     return render(request, "search.html", context)
 
 
-
+#home page
 @login_required(login_url="/login")
 def home(request):
     section_qs = Section.objects.filter(user=request.user)
@@ -63,12 +56,10 @@ def home(request):
     return render(request, "home.html", context)
 
 
-
+#create new recipe page
 @login_required
 def new_recipe(request):
     user = request.user
-    
-    # for get request
     form = RecipeForm(user)
     IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm, extra=1)
     formset = IngredientFormset()
@@ -80,13 +71,13 @@ def new_recipe(request):
 
         if form.is_valid():
             recipe = form.save(commit=False)
-            recipe.user = request.user # not sure if needed
+            recipe.user = request.user 
             recipe.save()
+            form.save_m2m()
 
             formset = IngredientFormset(request.POST or None, instance=recipe)
             if formset.is_valid():
                 formset.save()
-                ##return redirect(recipe.get_absolute_url())
 
             formset2 = InstructionFormset(request.POST or None, instance=recipe)
             if formset2.is_valid():
@@ -101,6 +92,7 @@ def new_recipe(request):
     return render(request, "new_recipe.html", context) 
 
 
+#edit recipe page
 @login_required
 def edit_recipe(request, title=None, *args, **kwargs):
     user = request.user
@@ -117,14 +109,13 @@ def edit_recipe(request, title=None, *args, **kwargs):
 
         if form.is_valid():
             recipe = form.save(commit=False)
-            recipe.user = request.user # not sure if needed
+            recipe.user = request.user 
             recipe.save()
             form.save_m2m()
             
             formset = IngredientFormset(request.POST or None, instance=recipe)
             if formset.is_valid():
                 formset.save()
-            ##return redirect(recipe.get_absolute_url())
 
             formset2 = InstructionFormset(request.POST or None, instance=recipe)
             if formset2.is_valid():
@@ -139,6 +130,7 @@ def edit_recipe(request, title=None, *args, **kwargs):
     return render(request, "new_recipe.html", context) 
 
 
+#view recipe page
 @login_required
 def individual_recipe(request, title=None, *args, **kwargs):
     recipe_obj = None
@@ -150,11 +142,11 @@ def individual_recipe(request, title=None, *args, **kwargs):
         else:
             is_pinned = ''
 
+        #pin and unpin recipe
         if "pinnedbtn" in request.POST:
             recipe_obj.pinned = True
             recipe_obj.save(update_fields=["pinned"])
             is_pinned = True
-
         if "unpinnedbtn" in request.POST:
             recipe_obj.pinned = False
             recipe_obj.save(update_fields=["pinned"])
@@ -171,6 +163,8 @@ def individual_recipe(request, title=None, *args, **kwargs):
     
     return render(request, "individual_recipe.html", context) 
 
+
+#view individual section page 
 @login_required
 def individual_section(request, title=None, *args, **kwargs):
     section_obj = None
@@ -195,6 +189,8 @@ def individual_section(request, title=None, *args, **kwargs):
 
     return render(request, "individual_section.html", context) 
 
+
+#veiw all recipes page
 @login_required
 def all_recipes(request):
     recipe_qs = Recipe.objects.filter(user=request.user)
@@ -204,7 +200,7 @@ def all_recipes(request):
     return render(request, "all_recipes.html", context) 
 
 
-
+#create new section
 @login_required
 def new_section(request):
     form = SectionForm(request.POST or None)
@@ -216,21 +212,24 @@ def new_section(request):
     if form.is_valid():
         section = form.save(commit=False)
         section.user = request.user
-        section.save()
+        section.save()     
         return redirect("../")
 
     return render(request, "new_section.html", context)
 
+
+#edit section page
 @login_required
 def edit_section(request, title=None, *args, **kwargs):
     section_obj = Section.objects.get(slug=title)
     form = SectionForm(request.POST or None, instance=section_obj)
 
-    if form.is_valid():
-        section = form.save(commit=False)
-        section.user = request.user
-        section.save()
-        return redirect(section.get_absolute_url())
+    if request.method == 'POST':
+        if form.is_valid():
+            section = form.save(commit=False)
+            section.user = request.user
+            section.save()
+            return redirect(section.get_absolute_url())   
 
     context = {
         "form": form,
@@ -238,6 +237,11 @@ def edit_section(request, title=None, *args, **kwargs):
 
     return render(request, "new_section.html", context)
 
+
+
+## Shopping list views ##
+
+#shopping list page
 @login_required
 def shopping_list(request):
     food_qs = Food.objects.filter(user=request.user)
@@ -248,6 +252,8 @@ def shopping_list(request):
     }
     return render(request, "shopping_list.html", context)
 
+
+#add to list
 @login_required
 def shopping_list_add(request):
     #FoodToBuy_obj = None
@@ -272,6 +278,7 @@ def shopping_list_add(request):
        # return render(request, "shopping_list.html", context, {"Food": Food.objects.filter(user=request.user)})
     return render(request, "shopping_list.html", context)
 
+#remove from list
 @login_required
 def shopping_list_delete(request, Food_id):
     Food.objects.get(id=Food_id).delete()
@@ -279,14 +286,11 @@ def shopping_list_delete(request, Food_id):
 
 
 
-
-# All of the acccount related views #
+## Acccount related views ##
 
 @login_required
 def account(request):
     return render(request, "account.html")
-
-
 
 def create_account(response):
     if response.method == "POST":

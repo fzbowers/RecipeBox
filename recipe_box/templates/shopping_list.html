@@ -6,20 +6,23 @@
 
     <h1>Shopping List</h1>
 
+    <!-- diplay items in list-->
     <u1>
-    {% for x in food_list %}
-         
+        {% for x in food_list %}
+        
             <form action="/delete/{{x.id}}/" method="post">
                 {% csrf_token %}
                 <li class="shopping-items col-sm-6">{{ x.name }} - {{ x.quantity }}
                 <button type="submit" id="shopping-remove-btn" name="delete">Remove</button></li>
             </form>
-         
+            
+        {% endfor %}
 
-    {% endfor %}
     </u1>
 
     <br>
+
+    <!-- add to list -->
     <form action="/add/" method="post">
         {% csrf_token %}
 
@@ -29,7 +32,9 @@
         {% endfor %}
 
         <button id="shopping-add-btn" type="submit">Add to list</button>
+
     </form>
 
 </section>
+
 {% endblock %}

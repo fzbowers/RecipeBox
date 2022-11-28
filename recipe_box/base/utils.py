@@ -1,7 +1,9 @@
 import random
 from django.utils.text import slugify
 
-# create recipe url slug
+
+## create recipe url slug ##
+
 def slugify_instance_name(instance, save=False, new_slug=None):
     if new_slug is None:
         slug = slugify(instance.name)

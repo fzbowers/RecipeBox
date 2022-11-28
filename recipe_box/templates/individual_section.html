@@ -6,6 +6,7 @@
 
     <h2>{{ section_obj.name }}</h2>
 
+    <!-- If a description exsists, show description -->
     {% if description %}
 
     <div class="row section-all-cols">
@@ -16,28 +17,31 @@
 
     {% endif %}
 
+    <!-- Show all recipies in section -->
     <div class="row individual-section-row">
 
         {% for x in recipe_list %}
+
         <a class=" col-sm-11 individual-section-recipe col-link" href="{{ x.get_absolute_url }}">
             <p class="individual-section-text">{{ x.name }}</p>
-            <p class="individual-section-text">Time: {{ x.time_to_make }} mins</p>
+            <p class="individual-section-text">Time: {{ x.time_to_make }} {{ x.time_unit }} </p>
         </a> 
+
         {% endfor %}
         
     </div>
 
+    <!-- Buttons for editing and deleting recipe-->
     <div class="row recipe-bottom">
-        <button type="submit" class="blue-btn">{% if section_obj.get_edit_url %}<a class="edit-link" href="{{ section_obj.get_edit_url }}">Edit</a>{% endif %}</button>
+
+        <a class="edit-link" href="{{ section_obj.get_edit_url }}"><button type="submit" class="blue-btn">{% if section_obj.get_edit_url %}Edit{% endif %}</button></a>
+
         <form method="post">
             {% csrf_token %}
             <button type="submit" class="green-btn" name="delete">Delete Section</button>
         </form>
+        
     </div>
-
-  
-</div>
-   
 </section>
 
 {% endblock %}

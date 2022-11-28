@@ -5,58 +5,30 @@
 <section id="search">
     <!--<h2>Search Results:</h2>-->
 
-    <div class="row search-row"></div>
-
     {% if query %}
 
         <h2>
 
-        {% with recipe_list.count as total_results %}
+            {% with recipe_list.count as total_results %}
 
-            {{ total_results }} Recipe{{ total_results|pluralize }} Found
+                {{ total_results }} Recipe{{ total_results|pluralize }} Found
 
-        {% endwith %}
+            {% endwith %}
 
         </h2>
 
         {% for x in recipe_list %}
 
         <ul>
-            <div class="col-sm-11 search-sections">
-                <a class="col-link" href="../recipe/{{ x.name }}/"><p class="search-text">{{ x.name }}</p></a>
-                <p class="search-text">Time: {{ x.time_to_make }} mins</p>
-            
-            </div>  
+            <a class=" col-sm-11 all-sections col-link" href="{{ x.get_absolute_url }}">
+                <p class="all-recipes-text">{{ x.name }}</p>
+                <p class="all-recipes-text">Time: {{ x.time_to_make }} {{ x.time_unit }}</p>
+            </a> 
         </ul>
-
 
         {% endfor %}
-<!--
-
-        {% with ingredient_list.count as total_results %}
-
-            {{ total_results }} Ingredeint{{ total_results|pluralize }} Found
-
-        {% endwith %} 
-
-
-        {% for x in ingredeint_list %}
-
-        <ul>
-            <div class="col-sm-11 search-sections">
-                <a class="col-link" href="../recipe/{{ x.name }}/"><p class="search-text">{{ x.name }}</p></a>
-                <p class="search-text">Time: {{ x.time_to_make }} mins</p>
-            
-            </div>  
-        </ul>
-
-
-        {% endfor %}     -->
 
     {% endif %}
-
-
-</div>
   
 </section>
 

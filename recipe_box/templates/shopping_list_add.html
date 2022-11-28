@@ -7,14 +7,18 @@
     
     {% load crispy_forms_tags %}
     
+    <!-- add to shopping list -->
     <form action='.' methods="POST">
+
         {% csrf_token %}
+
         {% for field in ShoppingForm %}
             {{ field.errors }}
             {{ field.label_tag }} {{ field }}
         {% endfor %}
 
         <button id="create-btn type="submit">Add to list</button>
+        
     </form>
 
 {% endblock %}

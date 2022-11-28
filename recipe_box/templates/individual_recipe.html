@@ -7,62 +7,75 @@
     <!-- Recipe title and time section -->
     <div class="row recipe-top">
         <p id="recipe-title">{{ recipe_obj.name }}</p>
-        <p id="recipe-time">Time: {{ recipe_obj.time_to_make }} mins</p>
+        <p id="recipe-time">Time: {{ recipe_obj.time_to_make }} {{ recipe_obj.time_unit }}</p>
     </div>
+
     <hr>
 
     <!-- Ingredients and directions section-->
     <div class="row recipe-middle">
         <div class="col-sm-4 recipe-left">
 
-
             <p>Ingredients</p>
             <div class="row ingredient-row">
+
                 {% for ingredient in recipe_obj.get_ingredients_children %}
+
                 <div class="col-sm-12 mini-left">{{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}</div>
+
                 {% endfor %}
+
             </div>
 
         </div>
 
         <div class="col-sm-8 recipe-right">
+
             <p>Directions</p>
+
             {% for instruction in recipe_obj.get_instructions_children %}
-            <div class="col-sm-12 mini-right">{{ instruction.text }}</div>
+
+                <div class="col-sm-12 mini-right">{{ instruction.text }}</div>
             
-            {% if forloop.last %}
-            {% else %} <hr>
-            {% endif %}
+                {% if forloop.last %}
+
+                    {% else %} <hr>
+
+                {% endif %}
             
             {% endfor %}
+
         </div>
     </div>
   
     <!-- Buttons section-->
     <div class="row recipe-bottom">
-        <button type="submit" class="blue-btn">{% if recipe_obj.get_edit_url %}<a class="edit-link" href="{{ recipe_obj.get_edit_url }}">Edit</a>{% endif %}</button>
+
+        {% if recipe_obj.get_edit_url %}<a class="edit-link" href="{{ recipe_obj.get_edit_url }}"><button type="submit" class="blue-btn">Edit</button></a>{% endif %}
 
         <!--If a recipe is not pinned, show button to pin. If recipe is pinned, show button to remove from pinned-->
         {% if is_pinned %}
+
             <form method="post">
                 {% csrf_token %}
                 <button type="submit" class="green-btn" name="unpinnedbtn">Unpin</button>
             </form>
+
         {% else %}
+
             <form method="post">
                 {% csrf_token %}
                 <button type="submit" class="green-btn" name="pinnedbtn">Pin</button>
             </form>
+
         {% endif %}
 
         <form method="post">
             {% csrf_token %}
             <button type="submit" class="green-btn" name="delete">Delete Recipe</button>
         </form>
-
+        
     </div>
-
-
 </section>
 
 {% endblock %}
