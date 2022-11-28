@@ -71,7 +71,7 @@ def new_recipe(request):
 
         if form.is_valid():
             recipe = form.save(commit=False)
-            recipe.user = request.user # not sure if needed
+            recipe.user = request.user 
             recipe.save()
             form.save_m2m()
 
@@ -109,7 +109,7 @@ def edit_recipe(request, title=None, *args, **kwargs):
 
         if form.is_valid():
             recipe = form.save(commit=False)
-            recipe.user = request.user # not sure if needed
+            recipe.user = request.user 
             recipe.save()
             form.save_m2m()
             
