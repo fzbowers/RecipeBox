@@ -309,10 +309,12 @@ footer {
 #search,
 #individual-section,
 #account,
-#shopping-list {
+#shopping-list,
+#account-text {
     margin: 20px;
     color: #809bce;
     font-size: 22px;
+    
 }
 
 #new-section h2,
