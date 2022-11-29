@@ -1,5 +1,19 @@
 # RecipeBox
 
+## Contributors
+- Fatima Bowers id: fzbowers
+- Lili Swann id: lvswann
+- Katrina Marks id: KatrinaMarks
+- Paige King id: PaigeKing
+
+## Website Logo
+![](WebsiteLogo.png)
+
+## Product Describtion
+Recipe Box is a website that allows users to store their favorite recipes.
+Users can create sections to organize their recipes, or they can search
+for a recipe by its name. Users can also create a shopping list.
+
 ## How to view our website
 In the RecipeBox directory, use the following commands:
 - source recipe_box/venv/bin/activate
@@ -19,3 +33,6 @@ After the given server url you can add the following
   - all recipes page: add "/all_recipes"
 
 
+
+
+[def]: WebsiteLogo.png

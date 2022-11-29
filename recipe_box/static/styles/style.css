@@ -1,14 +1,13 @@
-
 body,
 #landing {
     padding: 0;
     margin: 0;  
     background: #ffff;
-    font-family: 'Sansita', sans-serif; /* add backup fonts */
-
+    font-family: 'Sansita', sans-serif;
     position: relative;
     min-height: 100vh;
 }
+
 .page-content {
     padding-bottom: 2.5rem;
 }
@@ -19,23 +18,20 @@ button:focus {
     outline: none;
 }
 
-  
 
 
 /* STYLE LOGIN PAGE */
+
 #landing {
     display: grid;
     justify-items: center;
     align-items: center;
-
     background-color: #e2efe7;
 }
 
 .landing-box {
-    display: grid;
-    justify-content: space-around;
-    width: 45vw;
-    height: 80vh;
+    width: 43vw;
+    max-height: 90vh;
     background-color: white;
     border: 2px solid #809bce;
 }
@@ -43,105 +39,78 @@ button:focus {
 .landing-logo,
 .landing-text {
     display: flex;
-    justify-content: center;
-    justify-self: center;
-    padding: 10px;
-
 }
 
-.landing-logo {
-    max-width: 100%;
-    max-height: 80%;
+.landing-top {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    padding-top: 20px;
 }
-
+.landing-logo,
 .logo-img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 22vw;
+    height: 25vh;
 }
 
 .landing-form {
-    font-size: 15px;
+    font-size: 18px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .landing-text,
 .landing-form {
     color: #809bce;
-    
 }
 
 .landing-text,
 .no-acc {
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .landing-btn {
     background-color: #e2efe7;
     color: #809bce;
-
     height: 35px;
     width: 115px;
-
     font-size: 20px;
 }
 
 .landing-link:link {
     text-decoration: none;
 }
+
+
+
 /* STYLE CRISPY */
+
 .asteriskField {
     display: none;
 }
 
 
-.text-box {
-    position: relative;
-    top: -50px;
-}
-.forgot-pass,
-.landing-btn {
-    position: relative;
-    top: -15px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
 
 /* STYLE NAVIGATION BAR */
+
 .navbar {
     background: #e2efe7; 
     margin: 0;
     padding: 8;
 }
 
-/* Logo */
+
+
+/* LOGO */
+
 .navbar-brand{
     padding: 0;
 }
 
-/* Page Links */
+
+
+/* PAGE LINKS */
+
 .nav-link {
     height: 50px;
     font-size: 22px;
@@ -153,7 +122,14 @@ button:focus {
 .nav-link,
 .navbar button {
     color: #809bce;
+}
 
+.nav-link:hover{
+    color: #95b8d1;
+}
+
+.navbar button:hover{
+    color: #95b8d1;
 }
 
 .navbar button{
@@ -161,7 +137,6 @@ button:focus {
     font-size: 20px;
     padding: 10px;
     cursor: pointer;
-
     background: rgba(184, 216, 205, 0.5); 
 }
 
@@ -181,7 +156,6 @@ button:focus {
 .menu input[type=search] {
     background: rgba(255, 255, 255, 0.5);
     padding: 10px;
-
 }
 
 .searchbar {
@@ -191,6 +165,7 @@ button:focus {
 .navbar-collapse {
     justify-content: flex-end;
 }
+
 .custom-toggler.navbar-toggler {
     border-color: #809bce;
 }
@@ -202,17 +177,11 @@ button:focus {
 
 
 
-
-
-
-
-
 /* STYLE FOOTER */
+
 footer {
     position: absolute;
     bottom: 0;
-
-
     height: 2.5rem;
     width: 100%;
     text-align: center;
@@ -222,34 +191,25 @@ footer {
 .web-link:link {
     text-decoration: none;
 }
+
 .web-link {
     color: #809bce;
 }
 
 
 
-
-
-
-
-
-
-
-
 /* STYLE HOME PAGE */
+
 #home {
     padding-top: 20px;
 }
 
 .section-col {
     background: #d6eadf;
-    /* border: 2px solid #aebeb5; */ /* maybe */
-
 }
 
 .pinned-col {
     background: #95b8d1;
-    /* border: 2px solid #7995a9; */ /* maybe */
 }
 
 .section-col h2 {
@@ -269,23 +229,36 @@ footer {
     min-height: 65vh;
 }
 
-/* All columns */
+
+
+/* ALL HOME COLUMNS */
+
 .section-col,
 .pinned-col,
 .mini-section,
+.mini-section-special,
 .mini-pinned {
     border-radius: 10px;
 }
 
-/* Nested Sections */
-.mini-section {
+
+
+/* NESTED HOME SECTIONS */
+
+.mini-section,
+.mini-section-special {
     border: 2px solid #aebeb5;
     color: #809bce;
 }
 
+.mini-section-special {
+    /*background: rgba(200, 220, 235, 0.4)*/
+    background: rgba(184, 216, 205, .5)
+}
+
 .mini-pinned {
     border: 2px solid #7995a9;
-    color: #ffff;
+    color: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -293,8 +266,8 @@ footer {
 }
 
 .mini-section,
-.mini-pinned {
-
+.mini-pinned,
+.mini-section-special {
     padding: 8px;
     font-size: 25px;
     text-align: left;
@@ -303,7 +276,10 @@ footer {
 
 .col-link {
     color: #809bce;
+}
 
+.col-link:hover{
+    color: #95b8d1;
 }
 
 .col-link:link,
@@ -313,29 +289,28 @@ footer {
 
 .pinned-link {
     color: #ffffff;
-
 }
 
+.pinned-link:hover{
+    color: #d6eadf;
+}
 
 #home .row {
     justify-content: space-evenly;
-
 }
-
-
-
-
 
 
 
 /* NEW SECTION, NEW RECIPE, SEARCH, INDIVIDUAL SECTION, AND ALL RECIPES PAGES */
+
 #new-section,
 #new-recipe,
 #all-recipes,
 #search,
 #individual-section,
 #account,
-#shopping-list {
+#shopping-list,
+.change-account {
     margin: 20px;
     color: #809bce;
     font-size: 22px;
@@ -353,11 +328,14 @@ footer {
     margin-left: 55px;
 }
 
-/* STYLE NEW SECTION PAGE */
+
+
+/* NEW SECTION PAGE */
 
 #title,
 #freeform,
-#time {
+#time,
+#time_unit {
     color: #809bce;
     font-size: 20px;
     background-color: rgba(226, 239, 231, .6);
@@ -378,29 +356,26 @@ footer {
     margin: 0;
 }
 
-
 #cancel-btn,
 #create-btn {
     cursor: pointer;
     border: none;
-
     font-size: 20px;
-
     margin-top: 10px;
     margin-right: 15px;
 }
 
-
 #create-btn {
     background-color: #809bce;
     color: #ffff;
-
     height: 50px;
     width: 150px;
     float: left;
-
 }
 
+#create-btn:hover{
+    color: #d6eadf;
+}
 
 #cancel-btn {
     outline: none;
@@ -408,44 +383,27 @@ footer {
     color: #809bce;
     height: 50px;
     width: 130px;
+}
 
+#cancel-btn:hover{
+    color: #95b8d1;
 }
 
 #color-selection{
     font-size: 20px;
     height: 30px;
 }
+
 select {
     outline: none;
 }
 
-/*color selection based on forum quetion:https://www.appsloveworld.com/django/100/324/change-background-color-in-a-select-option-dropdown */
-select option[value="select-option"] {
-    color: #809bce;
-}
-select option[value="light-blue"] {
-    background-color: #c8dceb;
-}
-select option[value="medium-blue"] {
-    background-color: #95b8d1;
-}
-select option[value="dark-blue"] {
-    background-color: #809bce;
-}
-select option[value="light-green"] {
-    background-color: #e2efe7 ;
-}
-select option[value="medium-green"] {
-    background-color: #d6eadf;
-}
-select option[value="dark-green"] {
-    background: #b8d8cd;
-}
 
 
-/* STYLE NEW RECIPE PAGE */
+/* NEW RECIPE PAGE */
 
-#time {
+#time,
+#time_unit {
     max-width: 10vw;
     margin: 8px;
 }
@@ -454,21 +412,18 @@ select option[value="dark-green"] {
     font-size: 20px;
     height: 30px;
 }
+
 #direction,
 #ingredient,
 #amount,
 #instruction,
-#account,
 #shopping {
     color: #809bce;
     font-size: 20px;
     background-color: rgba(226, 239, 231, .6);
-
     outline: none;
     border: 1px solid #ffffff;
 }
-
-
 
 #remove {
     padding-left: 10px;
@@ -478,12 +433,14 @@ select option[value="dark-green"] {
 .recipe-btn {
     height: 30px;
     margin: 15px;
-    margin-left: 95px; /* NEEDS TO BE CENTERED PROPERLY */
-    
+    margin-left: 95px;    
     font-size: 20px;
     color: #ffff;
     background-color: #809bce;
+}
 
+.recipe-btn:hover{
+    color: #d6eadf;
 }
 
 #direction {
@@ -499,26 +456,31 @@ select option[value="dark-green"] {
 #ingredient,
 #instruction {
     margin-left: 15px;
-
 }
-
-
 
 .ingredient-title,
 .amount-title {
     display: flex;
-    align-items: center;
     height: 46px;
+}
+
+/*control autofill behavior*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill{
+    -webkit-text-fill-color: #809bce !important;
+    font-size: 20px;
 }
 
 
 
+/* INDIVIDUAL RECIPE PAGE */
 
-
-
-
-
-/* STYLE INDIVIDUAL RECIPE PAGE */
 #recipe {
     padding: 10px;
 }
@@ -527,29 +489,27 @@ select option[value="dark-green"] {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-
 }
-#recipe-title {
 
+#recipe-title {
     margin: 0;
     margin-left: 15px;
     font-size: 35px;
 }
 
-/* blue text */
 #recipe-title,
 .mini-left,
 .mini-right {
     color: #809bce;
 }
 
-/* green text */
 #recipe-time,
 .recipe-left,
 .recipe-right {
     color: #b8d8cd;
     font-size: 28px;
 }
+
 #recipe-time {
     margin: 0;
     margin-right: 15px;  
@@ -561,7 +521,6 @@ hr {
     border: none;
 }  
 
-
 .recipe-left,
 .recipe-right {
     text-align: center;
@@ -570,16 +529,16 @@ hr {
 .mini-left{
     padding: 5px;
 }
+
 .mini-left,
 .mini-right {
     font-size: 22px;
-
 }
 
 
 
+/* DEFAUT BUTTON STYLING */
 
-/* set for all buttons */
 button,
 button[type=submit] {
     border: none;
@@ -592,10 +551,17 @@ button[type=submit] {
     background-color: #809bce;
 }
 
+.blue-btn:hover{
+    color: #d6eadf;
+}
+
 .green-btn {
     color: #809bce;
-    background-color: #e2efe7;
-    
+    background-color: #e2efe7;    
+}
+
+.green-btn:hover{
+    color: #95b8d1;
 }
 
 .blue-btn,
@@ -604,12 +570,11 @@ button[type=submit] {
     width: 150px;
     margin: 15px;
     font-size: 20px;
-
 }
 
 
 
-/* STYLE ALL RECIPES, INDIVIDUAL SECTION, AND SEARCH PAGES */
+/* ALL RECIPES, INDIVIDUAL SECTION, AND SEARCH PAGES */
 
 .all-recipes-row,
 .search-row,
@@ -617,91 +582,70 @@ button[type=submit] {
     display: flex;
     justify-content: center;
 }
+
 .all-sections,
 .search-sections,
 .individual-sections {
     border: 2px solid rgba(226, 239, 231, 0.6);
     color: #809bce;
     background-color: rgba(226, 239, 231, 0.6);
-
-
     font-size: 25px;
     margin: 12px;
     border-radius: 10px;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-
 }
 
 .all-recipes-text,
+.pinned-recipes-text,
 .search-text,
+.account-text,
 .individual-section-text {
     margin: 0;
-
 }
 
-
-
-
-
-/* STYLE ALL RECIPES AND SEARCH PAGES */
 
 .all-recipes-row,
 .search-row {
     display: flex;
     justify-content: center;
 }
+
 .all-sections,
 .search-sections {
     border: 2px solid rgba(226, 239, 231, 0.6);
     color: #809bce;
     background-color: rgba(226, 239, 231, 0.6);
-
-
     font-size: 25px;
     margin: 12px;
     border-radius: 10px;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-
-}
-
-.all-recipes-text,
-.account-text,
-.search-text,
-.individual-section-text {
-    margin: 0;
-
 }
 
 
-/* STYLE INDIVIDUAL SECTION PAGE */
+
+
+/* INDIVIDUAL SECTION PAGE */
 .individual-section-top {
     border: 2px solid rgba(226, 239, 231, 0.6);
     color: #809bce;
     background-color: rgba(226, 239, 231, 0.6);
-
     min-height: 10vw;
-
 }
 
 .individual-section-recipe {
     border: 2px solid rgba(200, 220, 235, 0.6);
     color: #809bce;
     background-color: rgba(200, 220, 235, 0.6);
-
-    
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
 
 .individual-section-top,
 .individual-section-recipe {
@@ -709,7 +653,6 @@ button[type=submit] {
     margin: 12px;
     border-radius: 10px;
     padding: 10px;
-
 }
 
 .section-all-cols {
@@ -717,16 +660,21 @@ button[type=submit] {
     justify-content: center;
 }
 
-
 .edit-link {
     color: #ffffff;
 }
+
+.edit-link:hover {
+    color: #d6eadf;
+}
+
 .edit-link:link {
     text-decoration: none;
 }
 
 
 
+/* SHOPPING */
 
 #shopping-add-btn,
 #shopping-remove-btn {
@@ -734,6 +682,9 @@ button[type=submit] {
     border: none;
     padding-top: 0;
     padding-bottom: 0;
+    height: 35px;
+    width: 120px;
+    font-size: 20px;
 }
 
 #shopping-add-btn {
@@ -741,10 +692,18 @@ button[type=submit] {
     color: #ffff;
 }
 
+#shopping-add-btn:hover{
+    color: #d6eadf;
+}
+
 #shopping-remove-btn {
     background-color: #e2efe7;
     color: #809bce;
     float: right;
+}
+
+#shopping-remove-btn:hover{
+    color: #95b8d1;
 }
 
 .shopping-items {
@@ -755,7 +714,7 @@ button[type=submit] {
     padding-left: 5px;
 }
 
-/* Style account page */
+/* ACCOUNT PAGE */
 .account-name,
 .account-email {
     font-size: 30px;
@@ -763,18 +722,14 @@ button[type=submit] {
 }
 
 .account-section {
-    border: 2px solid rgb(226, 229, 239);
+    border: 2px solid rgba(226, 239, 231, 0.6);
     color: #809bce;
-    background-color: rgb(226, 229, 239);
-
-
+    background-color: rgba(226, 239, 231, 0.6);
     font-size: 25px;
     margin: 12px;
     border-radius: 10px;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-
 }

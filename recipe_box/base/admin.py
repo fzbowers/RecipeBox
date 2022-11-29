@@ -1,12 +1,12 @@
 from django.contrib import admin
 from django.contrib.auth import get_user_model
-
-# Register your models here.
-
-User = get_user_model() ## MIGHT NOT NEED
-
-#display recipies in admin page 
 from .models import Recipe, Section, Ingredient, Instruction, Food
+
+User = get_user_model() 
+
+
+
+## Display recipies in admin page  ##
 
 class IngredientsInline(admin.StackedInline):
     model = Ingredient
@@ -19,7 +19,6 @@ class RecipesAdmin(admin.ModelAdmin):
 
     def get_form(self, request, obj=None, **kwargs):
         form = super(RecipesAdmin, self).get_form(request, obj, **kwargs)
-        #form.base_fields['created_by'].initial = request.user  caused issues with inputing recipes, temp. removed 
         return form 
 
 class SectionAdmin(admin.ModelAdmin):

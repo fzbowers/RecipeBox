@@ -1,6 +1,4 @@
-
-
-  $(document).ready(function() {
+$(document).ready(function() {
 
 	//code for adding and removing buttons based on tutorial from https://www.sanwebe.com/2013/03/addremove-input-fields-dynamically-with-jquery 
 	var max_fields      = 30; //maximum input boxes allowed
@@ -33,8 +31,10 @@
 			$(dir_wrapper).append('<div><input type="text" id="direction" name="Direction" size="150"><a href="#" id="remove" class="remove_field">Remove</a></div>'); //add input box
 		}
 	});
+
 	//remove description on click
 	$(dir_wrapper).on("click",".remove_field", function(e){ 
 		e.preventDefault(); $(this).parent('div').remove(); y--;
 	})
+
 });
