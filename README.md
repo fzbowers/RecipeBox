@@ -6,6 +6,9 @@
 - Katrina Marks id: KatrinaMarks
 - Paige King id: PaigeKing
 
+## Website Logo
+![](WebsiteLogo.png)
+
 ## How to view our website
 In the RecipeBox directory, use the following commands:
 - source recipe_box/venv/bin/activate
@@ -25,3 +28,6 @@ After the given server url you can add the following
   - all recipes page: add "/all_recipes"
 
 
+
+
+[def]: WebsiteLogo.png
