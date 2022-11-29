@@ -9,6 +9,11 @@
 ## Website Logo
 ![](WebsiteLogo.png)
 
+## Product Describtion
+Recipe Box is a website that allows users to store their favorite recipes.
+Users can create sections to organize their recipes, or they can search by
+for a recipe by its name. Users can also create a shopping list.
+
 ## How to view our website
 In the RecipeBox directory, use the following commands:
 - source recipe_box/venv/bin/activate
