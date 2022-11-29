@@ -1,5 +1,11 @@
 # RecipeBox
 
+## Contributors
+- Fatima Bowers id: fzbowers
+- Lili Swann id: lvswann
+- Katrina Marks id: KatrinaMarks
+- Paige King id: PaigeKing
+
 ## How to view our website
 In the RecipeBox directory, use the following commands:
 - source recipe_box/venv/bin/activate
