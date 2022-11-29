@@ -4,9 +4,11 @@
 {% load crispy_forms_tags %}
 
 <div class="container">
-    <form method="post">
+    <form method="post" class="change-account">
+
         {% csrf_token %}
         {{ form|crispy }}
+
         <button class="blue-btn" type="submit">Save Changes</button>
     </form>
 </div>

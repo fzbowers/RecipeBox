@@ -310,11 +310,10 @@ footer {
 #individual-section,
 #account,
 #shopping-list,
-#account-text {
+.change-account {
     margin: 20px;
     color: #809bce;
     font-size: 22px;
-    
 }
 
 #new-section h2,
