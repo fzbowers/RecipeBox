@@ -1,1 +1,261 @@
+File: recipe_box/base/admin.py
+7c500e3bb (Fatima Bowers 2022-11-21 21:52:37 -0500 17)     list_display = ['user', 'name', 'slug']
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 25)     list_display = ['name', 'slug']
 
+File: recipe_box/base/forms.py
+7c500e3bb (Fatima Bowers 2022-11-21 21:52:37 -0500  6) from django.forms.widgets import CheckboxSelectMultiple
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 15) 
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 16)     name = forms.CharField(label="Name", label_suffix="", widget=forms.TextInput(attrs={'id' : "title"}))
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 17)     description = forms.CharField(label="Description", label_suffix="", required=False, widget=forms.Textarea(attrs={'placeholder' : "Enter description here...", 'id' : "freeform"}))
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 34) 
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 35)     # getting user sections
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 36)     def __init__(self, user, *args, **kwargs):
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 37)         super(RecipeForm, self).__init__(*args, **kwargs)
+7c500e3bb (Fatima Bowers 2022-11-21 21:52:37 -0500 38)         self.fields['section'].label_suffix = ""
+3717e9455 (Fatima Bowers 2022-11-26 20:10:38 -0500 39)         self.fields['section'].required = False
+7c500e3bb (Fatima Bowers 2022-11-21 21:52:37 -0500 40)         self.fields['section'].widget = CheckboxSelectMultiple(attrs={'id' : "section-select"})
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 41)         self.fields['section'].queryset = Section.objects.filter(user=user)
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 42) 
+7006af39b (Fatima Bowers 2022-11-27 19:09:31 -0500 46)     quantity = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={'id' : "amount", 'class' : "col-sm-2"}))
+7006af39b (Fatima Bowers 2022-11-27 19:09:31 -0500 47)     unit = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={'id' : "amount", 'class' : "col-sm-2"}))
+981ad42d7 (Fatima Bowers 2022-11-16 19:32:23 -0500 55)     text = forms.CharField(label='', widget=forms.TextInput(attrs={'id' : "instruction", 'class' : "col-sm-10"}))
+ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500 82)     name = forms.CharField(label='Item', label_suffix="", widget=forms.TextInput(attrs={'id' : "shopping", 'class' : "col-sm-6"}))
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 83)     quantity = forms.CharField(label='Quantity', label_suffix="", widget=forms.TextInput(attrs={'id' : "shopping", 'class' : "col-sm-2"}))
+
+File: recipe_box/base/models.py
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500   5) from django.db.models.signals import pre_save, post_save
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500   7) from .utils import slugify_instance_name, model_post_save, model_pre_save
+38a8e672f (Fatima Bowers 2022-11-15 21:17:14 -0500  14)     name = models.CharField(max_length=120)
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  15)     slug = models.SlugField(unique=True, blank=True, null=True)
+7c500e3bb (Fatima Bowers 2022-11-21 21:52:37 -0500  19) 
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  28)         return reverse("individual_section", kwargs={"title": self.slug})
+c2608da38 (Fatima Bowers 2022-11-22 09:21:37 -0500  30)     def get_edit_url(self):
+c2608da38 (Fatima Bowers 2022-11-22 09:21:37 -0500  31)         return reverse("edit_section", kwargs={"title": self.slug})
+c2608da38 (Fatima Bowers 2022-11-22 09:21:37 -0500  32)     
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  33) pre_save.connect(model_pre_save, sender=Section)
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  34) post_save.connect(model_post_save, sender=Section)
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  35) 
+38a8e672f (Fatima Bowers 2022-11-15 21:17:14 -0500  39)     name = models.CharField(max_length = 150)
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  40)     slug = models.SlugField(unique=True, blank=True, null=True)
+7c500e3bb (Fatima Bowers 2022-11-21 21:52:37 -0500  45)     section = models.ManyToManyField(Section)
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  62)         return reverse("individual_recipe", kwargs={"title": self.slug})
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  65)         return reverse("edit_recipe", kwargs={"title": self.slug})
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  67) pre_save.connect(model_pre_save, sender=Recipe)
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  68) post_save.connect(model_post_save, sender=Recipe)
+
+File: recipe_box/base/urls.py
+c2608da38 (Fatima Bowers 2022-11-22 09:21:37 -0500 13)     path("section/<str:title>/edit", views.edit_section, name="edit_section"),
+
+File: recipe_box/base/utils.py
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  1) import random
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  2) from django.utils.text import slugify
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  3) 
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  7) def slugify_instance_name(instance, save=False, new_slug=None):
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  8)     if new_slug is None:
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  9)         slug = slugify(instance.name)
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 10)     else:
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 11)         slug = new_slug
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 12) 
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 13)     Klass = instance.__class__
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 14)     qs = Klass.objects.filter(slug=slug).exclude(id=instance.id)
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 15)     if qs.exists():
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 16)         rand_int = random.randint(300_000, 500_000)
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 17)         slug = f"{slug}-{rand_int}"
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 18)         return slugify_instance_name(instance, save=save, new_slug=slug)
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 19)     instance.slug = slug
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 20)     if save:
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 21)         instance.save()
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 22)     return instance
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 23) 
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 24) def model_pre_save(sender, instance, *args, **kwargs):
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 25)     if instance.slug is None:
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 26)         slugify_instance_name(instance, save=False)
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 27) 
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 28) def model_post_save(sender, instance, created, *args, **kwargs):
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 29)     if created:
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 30)         slugify_instance_name(instance, save=True)
+
+File: recipe_box/base/views.py
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  19) from django.forms.models import inlineformset_factory
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  62)     user = request.user
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  63)     form = RecipeForm(user)
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500  64)     IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm, extra=1)
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  65)     formset = IngredientFormset()
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  69)     if request.method == 'POST':
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  70)         form = RecipeForm(user, request.POST)
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  72)         if form.is_valid():
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  73)             recipe = form.save(commit=False)
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  75)             recipe.save()
+3717e9455 (Fatima Bowers 2022-11-26 20:10:38 -0500  76)             form.save_m2m()
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  77) 
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  78)             formset = IngredientFormset(request.POST or None, instance=recipe)
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  79)             if formset.is_valid():
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  80)                 formset.save()
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  85)                 return redirect(recipe.get_absolute_url())
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  88)         'form': form,
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  89)         'formset': formset,
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  98)     user = request.user
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500  99)     recipe_obj = Recipe.objects.get(slug=title)
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 101)     form = RecipeForm(user, instance=recipe_obj)
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 102)     IngredientFormset = inlineformset_factory(Recipe, Ingredient, form=IngredientForm, extra=0)
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 103)     formset = IngredientFormset(instance=recipe_obj)
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 107)     if request.method == 'POST':
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 108)         form = RecipeForm(user, request.POST, instance=recipe_obj)
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 110)         if form.is_valid():
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 111)             recipe = form.save(commit=False)
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 113)             recipe.save()
+7c500e3bb (Fatima Bowers 2022-11-21 21:52:37 -0500 114)             form.save_m2m()
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 115)             
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 116)             formset = IngredientFormset(request.POST or None, instance=recipe)
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 117)             if formset.is_valid():
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 118)                 formset.save()
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 123)             return redirect(recipe.get_absolute_url())
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 126)         'form': form,
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 127)         'formset': formset,
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 138)         recipe_obj = get_object_or_404(Recipe, slug=title, user=request.user)
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 172)         section_obj = get_object_or_404(Section, slug=title, user=request.user)
+7c500e3bb (Fatima Bowers 2022-11-21 21:52:37 -0500 181)         print(title)
+7c500e3bb (Fatima Bowers 2022-11-21 21:52:37 -0500 182)         recipe_list = Recipe.objects.filter(section__slug=title)
+7c500e3bb (Fatima Bowers 2022-11-21 21:52:37 -0500 183) 
+7c500e3bb (Fatima Bowers 2022-11-21 21:52:37 -0500 186)         "recipe_list": recipe_list,
+3717e9455 (Fatima Bowers 2022-11-26 20:10:38 -0500 215)         section.save()     
+c2608da38 (Fatima Bowers 2022-11-22 09:21:37 -0500 219) 
+c2608da38 (Fatima Bowers 2022-11-22 09:21:37 -0500 222) @login_required
+c2608da38 (Fatima Bowers 2022-11-22 09:21:37 -0500 223) def edit_section(request, title=None, *args, **kwargs):
+c2608da38 (Fatima Bowers 2022-11-22 09:21:37 -0500 224)     section_obj = Section.objects.get(slug=title)
+c2608da38 (Fatima Bowers 2022-11-22 09:21:37 -0500 225)     form = SectionForm(request.POST or None, instance=section_obj)
+c2608da38 (Fatima Bowers 2022-11-22 09:21:37 -0500 226) 
+3717e9455 (Fatima Bowers 2022-11-26 20:10:38 -0500 227)     if request.method == 'POST':
+3717e9455 (Fatima Bowers 2022-11-26 20:10:38 -0500 228)         if form.is_valid():
+3717e9455 (Fatima Bowers 2022-11-26 20:10:38 -0500 229)             section = form.save(commit=False)
+3717e9455 (Fatima Bowers 2022-11-26 20:10:38 -0500 230)             section.user = request.user
+3717e9455 (Fatima Bowers 2022-11-26 20:10:38 -0500 231)             section.save()
+3717e9455 (Fatima Bowers 2022-11-26 20:10:38 -0500 232)             return redirect(section.get_absolute_url())   
+c2608da38 (Fatima Bowers 2022-11-22 09:21:37 -0500 233) 
+c2608da38 (Fatima Bowers 2022-11-22 09:21:37 -0500 234)     context = {
+c2608da38 (Fatima Bowers 2022-11-22 09:21:37 -0500 235)         "form": form,
+c2608da38 (Fatima Bowers 2022-11-22 09:21:37 -0500 236)     }
+c2608da38 (Fatima Bowers 2022-11-22 09:21:37 -0500 237) 
+c2608da38 (Fatima Bowers 2022-11-22 09:21:37 -0500 238)     return render(request, "new_section.html", context)
+2626c52b1 (Fatima Bowers 2022-11-16 17:29:04 -0500 329)             user = form.save()
+
+File: recipe_box/static/styles/style.css
+3ed95cdbb (Fatima Bowers 2022-11-26 20:57:10 -0500  33)     width: 43vw;
+3ed95cdbb (Fatima Bowers 2022-11-26 20:57:10 -0500  34)     max-height: 90vh;
+3ed95cdbb (Fatima Bowers 2022-11-26 20:57:10 -0500  44) .landing-top {
+3ed95cdbb (Fatima Bowers 2022-11-26 20:57:10 -0500  45)     display: grid;
+3ed95cdbb (Fatima Bowers 2022-11-26 20:57:10 -0500  46)     justify-items: center;
+3ed95cdbb (Fatima Bowers 2022-11-26 20:57:10 -0500  47)     align-items: center;
+3ed95cdbb (Fatima Bowers 2022-11-26 20:57:10 -0500  48)     padding-top: 20px;
+3ed95cdbb (Fatima Bowers 2022-11-26 20:57:10 -0500  50) .landing-logo,
+3ed95cdbb (Fatima Bowers 2022-11-26 20:57:10 -0500  53)     height: 25vh;
+3ed95cdbb (Fatima Bowers 2022-11-26 20:57:10 -0500  58)     margin-left: 50px;
+3ed95cdbb (Fatima Bowers 2022-11-26 20:57:10 -0500  59)     margin-right: 50px;
+bbdaeee5d (Fatima Bowers 2022-11-27 16:40:54 -0500 131) .navbar button:hover{
+bbdaeee5d (Fatima Bowers 2022-11-27 16:40:54 -0500 132)     color: #95b8d1;
+bbdaeee5d (Fatima Bowers 2022-11-27 16:40:54 -0500 133) }
+bbdaeee5d (Fatima Bowers 2022-11-27 16:40:54 -0500 134) 
+7c500e3bb (Fatima Bowers 2022-11-21 21:52:37 -0500 327) #section-select {
+7c500e3bb (Fatima Bowers 2022-11-21 21:52:37 -0500 328)     margin-left: 55px;
+7c500e3bb (Fatima Bowers 2022-11-21 21:52:37 -0500 329) }
+7c500e3bb (Fatima Bowers 2022-11-21 21:52:37 -0500 330) 
+7c500e3bb (Fatima Bowers 2022-11-21 21:52:37 -0500 350)     margin-left: 14px;
+981ad42d7 (Fatima Bowers 2022-11-16 19:32:23 -0500 418) #amount,
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 419) #instruction,
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 420) #shopping {
+981ad42d7 (Fatima Bowers 2022-11-16 19:32:23 -0500 433) .recipe-btn {
+981ad42d7 (Fatima Bowers 2022-11-16 19:32:23 -0500 451) #amount,
+981ad42d7 (Fatima Bowers 2022-11-16 19:32:23 -0500 452) #instruction {
+981ad42d7 (Fatima Bowers 2022-11-16 19:32:23 -0500 456) #ingredient,
+981ad42d7 (Fatima Bowers 2022-11-16 19:32:23 -0500 457) #instruction {
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 662) 
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 663) .edit-link {
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 664)     color: #ffffff;
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 665) }
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 671) .edit-link:link {
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 672)     text-decoration: none;
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 673) }
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 674) 
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 679) #shopping-add-btn,
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 680) #shopping-remove-btn {
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 681)     cursor: pointer;
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 682)     border: none;
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 683)     padding-top: 0;
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 684)     padding-bottom: 0;
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 688) }
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 689) 
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 690) #shopping-add-btn {
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 691)     background-color: #809bce;
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 692)     color: #ffff;
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 693) }
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 694) 
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 699) #shopping-remove-btn {
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 700)     background-color: #e2efe7;
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 701)     color: #809bce;
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 702)     float: right;
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 703) }
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 704) 
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 709) .shopping-items {
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 710)     margin: 10px;
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 711) }
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 712) 
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 713) #shopping {
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 714)     padding-left: 5px;
+3717e9455 (Fatima Bowers 2022-11-26 20:10:38 -0500 725)     border: 2px solid rgba(226, 239, 231, 0.6);
+3717e9455 (Fatima Bowers 2022-11-26 20:10:38 -0500 727)     background-color: rgba(226, 239, 231, 0.6);
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 735) }
+
+File: recipe_box/templates/all_recipes.html
+5d8109c23 (Fatima Bowers 2022-11-17 09:05:48 -0500 13)         <a class=" col-sm-11 all-sections col-link" href="{{ x.get_absolute_url }}">
+5d8109c23 (Fatima Bowers 2022-11-17 09:05:48 -0500 14)             <p class="all-recipes-text">{{ x.name }}</p>
+5d8109c23 (Fatima Bowers 2022-11-17 09:05:48 -0500 16)         </a>
+
+File: recipe_box/templates/individual_recipe.html
+981ad42d7 (Fatima Bowers 2022-11-16 19:32:23 -0500 24)                 <div class="col-sm-12 mini-left">{{ ingredient.quantity }} {{ ingredient.unit }} {{ ingredient.name }}</div>
+981ad42d7 (Fatima Bowers 2022-11-16 19:32:23 -0500 32)         <div class="col-sm-8 recipe-right">
+981ad42d7 (Fatima Bowers 2022-11-16 19:32:23 -0500 36)             {% for instruction in recipe_obj.get_instructions_children %}
+981ad42d7 (Fatima Bowers 2022-11-16 19:32:23 -0500 45)             
+981ad42d7 (Fatima Bowers 2022-11-16 19:32:23 -0500 46)             {% endfor %}
+
+File: recipe_box/templates/individual_section.html
+5d8109c23 (Fatima Bowers 2022-11-17 09:05:48 -0500 25)         <a class=" col-sm-11 individual-section-recipe col-link" href="{{ x.get_absolute_url }}">
+5d8109c23 (Fatima Bowers 2022-11-17 09:05:48 -0500 26)             <p class="individual-section-text">{{ x.name }}</p>
+5d8109c23 (Fatima Bowers 2022-11-17 09:05:48 -0500 28)         </a>
+
+File: recipe_box/templates/new_recipe.html 
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500   8)  
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500   9)     <form action="" method="POST">
+ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500  11) 
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  13)         <div class='{% if field.field.required %}{{ form.required_css_class }}{%endif%}'>
+ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500  15)             {{ form.errors }}
+bbdaeee5d (Fatima Bowers 2022-11-27 16:40:54 -0500  18)             <br>
+bbdaeee5d (Fatima Bowers 2022-11-27 16:40:54 -0500  20)             {{ form.time_to_make.label_tag }} {{ form.time_to_make }}
+bbdaeee5d (Fatima Bowers 2022-11-27 16:40:54 -0500  21)             {{ form.time_unit.label_tag }} {{ form.time_unit }} 
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  57) 
+ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500  88)         <div class='{% if field.field.required %}{{ form.required_css_class }}{%endif%}'>
+ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500  89)             {{ form.section.label_tag }} {{ form.section }}              
+ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500  90)         </div>
+ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500  91) 
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500  98)     <a href="/"><button id="cancel-btn" type="Cancel">Cancel</button></a>
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 101)     <script>
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 103)         $('#add-btn').click(function () {
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 106)       
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 109)         });
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 119)       </script>
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 120) 
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 121) </section>
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 123) {% endblock %}
+
+File: recipe_box/templates/new_section.html
+3717e9455 (Fatima Bowers 2022-11-26 20:10:38 -0500 10)     <form action="" method="POST">
+bbdaeee5d (Fatima Bowers 2022-11-27 16:40:54 -0500 13)         {{ form.name.label_tag }} {{ form.name }}
+3717e9455 (Fatima Bowers 2022-11-26 20:10:38 -0500 18) 
+dbe6727bf (Fatima Bowers 2022-11-15 13:17:58 -0500 23)     <a href="/"><button id="cancel-btn" type="Cancel">Cancel</button></a>
+
+File: recipe_box/templates/shopping_list.html
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500  5) <section id="shopping-list">
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 15)                 <li class="shopping-items col-sm-6">{{ x.name }} - {{ x.quantity }}
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 16)                 <button type="submit" id="shopping-remove-btn" name="delete">Remove</button></li>
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 23)     <br>
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 34)         <button id="shopping-add-btn" type="submit">Add to list</button>
+2ab7f640e (Fatima Bowers 2022-11-20 23:55:06 -0500 38) </section>
