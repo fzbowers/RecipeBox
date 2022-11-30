@@ -230,21 +230,27 @@ ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500  11)
 ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500  15)             {{ form.errors }}
 bbdaeee5d (Fatima Bowers 2022-11-27 16:40:54 -0500  18)             <br>
 bbdaeee5d (Fatima Bowers 2022-11-27 16:40:54 -0500  20)             {{ form.time_to_make.label_tag }} {{ form.time_to_make }}
-bbdaeee5d (Fatima Bowers 2022-11-27 16:40:54 -0500  21)             {{ form.time_unit.label_tag }} {{ form.time_unit }} 
-3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  57) 
-ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500  88)         <div class='{% if field.field.required %}{{ form.required_css_class }}{%endif%}'>
-ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500  89)             {{ form.section.label_tag }} {{ form.section }}              
-ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500  90)         </div>
-ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500  91) 
-c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500  98)     <a href="/"><button id="cancel-btn" type="Cancel">Cancel</button></a>
-c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 101)     <script>
-c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 103)         $('#add-btn').click(function () {
-c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 106)       
-c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 109)         });
-c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 119)       </script>
-3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500 120) 
-c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 121) </section>
-c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 123) {% endblock %}
+bbdaeee5d (Fatima Bowers 2022-11-27 16:40:54 -0500  21)             {{ form.time_unit.label_tag }} {{ form.time_unit }}  
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500  45)         <div id='empty-form' style="display: none">{{ formset.empty_form }}</div>
+981ad42d7 (Fatima Bowers 2022-11-16 19:32:23 -0500  46)         <button id='add-btn' class="col-sm-8 recipe-btn" type='button'>Add Ingredient</button>
+981ad42d7 (Fatima Bowers 2022-11-16 19:32:23 -0500  69)         <button id='add-btn2' class="col-sm-8 recipe-btn" type='button'>Add Direction</button>
+ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500  72)         <div class='{% if field.field.required %}{{ form.required_css_class }}{%endif%}'>
+ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500  73)             {{ form.section.label_tag }} {{ form.section }}
+ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500  74)         </div>
+ddeed3dd0 (Fatima Bowers 2022-11-22 09:05:48 -0500  75)
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500  80)     <a href="/"><button id="cancel-btn" type="Cancel">Cancel</button></a>
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500  82)     <script>
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500  83)         $('#add-btn').click(function () {
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500  84)           let total_form = $('#id_ingredient_set-TOTAL_FORMS');
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500  85)           let form_idx = total_form.val();
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500  86)
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500  87)           $('#ingredient-form-list').append($('#empty-form').html().replace(/__prefix__/g, form_idx));
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500  88)           total_form.val(parseInt(form_idx)+1);
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500  89)         });
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500  98)       </script>
+3da433004 (Fatima Bowers 2022-11-13 23:01:56 -0500  99)
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 100) </section>
+c331e6507 (Fatima Bowers 2022-11-15 17:30:37 -0500 101) {% endblock %}
 
 File: recipe_box/templates/new_section.html
 3717e9455 (Fatima Bowers 2022-11-26 20:10:38 -0500 10)     <form action="" method="POST">
