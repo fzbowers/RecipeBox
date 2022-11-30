@@ -4,13 +4,14 @@ Name: Katrina Marks
 Product Name: RecipeBox
 
 ## Background
-    This product is for people who need to organize recipes. Possible users are 
+This product is for people who need to organize recipes. Possible users are 
 home cooks, chefs, and anyone who wants a paperless way to easily store and 
 find their recipes. This product is also for people who enjoy aethestically 
 layed out food blogs, because RecipeBox allows users to make their own sections 
 and organize their recipes however they want. This product could also be for 
 people who want a cute and paperless shopping list.
-    For the market opportunity this website would be free, but could possibly
+
+For the market opportunity this website would be free, but could possibly
 make money from relevant advertisements. It could advertise for food blogs, 
 grocery stores, and cookware.
 
