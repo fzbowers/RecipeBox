@@ -32,6 +32,9 @@ After the given server url you can add the following
   - new recipe page: add "/new_recipe"
   - all recipes page: add "/all_recipes"
 
+## License
+RecipeBox is available under the MIT license. See the [LICENSE](https://github.com/utk-cs340-fall22/RecipeBox/blob/main/LICENSE) for more info.
+
 
 
 
