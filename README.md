@@ -15,7 +15,7 @@ Users can create sections to organize their recipes, or they can search
 for a recipe by its name. Users can also create a shopping list.
 
 ## How to view our website
-First pull the RecipeBox repo. In the RecipeBox directory, use the following commands:
+First clone the RecipeBox repo. In the RecipeBox directory, use the following commands:
 - source recipe_box/venv/bin/activate
 - python recipe_box/manage.py runserver
 - copy and paste the given server url to your browser
