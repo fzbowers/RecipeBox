@@ -26,6 +26,7 @@ there are also built in instructions on the website for things like resetting a 
 
 ### For First Time Users:
 - Click create account and fill out the form with a username, email, and secure password.
+- If you ever forgot your password, clicking reset password and entering your email will send the reset link to your terminal.
 - Login with your username and password; this will take you to the homepage.
 
 ### The Homepage
