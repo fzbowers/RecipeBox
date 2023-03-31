@@ -1,10 +1,10 @@
 # RecipeBox
 
 ## Contributors
-- Fatima Bowers id: fzbowers
-- Lili Swann id: lvswann
-- Katrina Marks id: KatrinaMarks
-- Paige King id: PaigeKing
+- Fatima Bowers 
+- Lili Swann 
+- Katrina Marks
+- Paige King
 
 ## Website Logo
 ![](WebsiteLogo.png)
